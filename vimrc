@@ -25,6 +25,8 @@ set listchars+=trail:.
 set showbreak=↪
 set cursorline
 set scrolloff    =999
+set wildmenu
+set wildmode=list:longest
 set nocompatible               " be iMproved
 filetype off                   " required! by vundle
 
