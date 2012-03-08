@@ -13,3 +13,5 @@ if [ -r "$HOME/repos/todir/todir" ]
     . "$HOME/repos/todir/todir"
     to_dir "rp" "$HOME/repos"
 fi
+
+alias bex="bundle exec"
