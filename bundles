@@ -1,0 +1,92 @@
+"
+" Active bundles
+"
+
+Bundle 'The-NERD-tree'
+Bundle 'scrooloose/nerdcommenter'
+
+" Themes
+Bundle 'molokai'
+Bundle 'Impact'
+Bundle 'groenewege/vim-less'
+
+" Language plugins
+"Bundle 'Vimerl'
+" Vimerl: {{{
+let erlang_show_errors       =  0 " Don't show errors on erlang files
+"}}}
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'vim-coffee-script'
+Bundle 'Markdown'
+
+" Utils
+Bundle 'ctrlp.vim'
+" Ctrlp:  {{{
+" wildignore is a internal option but it's used by ctrlp and ctrl-T
+set wildignore  +=*.git "exclude .git dir
+set wildignore  +=*.beam "exclude erlang's object files
+set wildignore  +=.bundle
+" Hack to fix the root directory for ctrlp
+autocmd VimEnter * :nnoremap <c-p> :CtrlP pwd<CR>
+"}}}
+Bundle 'EasyMotion'
+" Easymotion:{{{
+let g:EasyMotion_leader_key  =  '<leader>m' " Change EasyMotion default leader key to <leader>'m'
+"}}}
+Bundle 'fugitive.vim'
+Bundle 'Lokaltog/vim-powerline'
+" Powerline:{{{
+let g:Powerline_symbols      =  'fancy' " use fancy symbols
+"}}}
+Bundle 'ZoomWin'
+Bundle 'surround.vim'
+"vim-snipmate must be loaded before than supertab
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/snipmate-snippets'
+Bundle 'ervandew/supertab'
+Bundle 'ack.vim'
+Bundle 'ap/vim-css-color'
+
+"
+" Libs
+"
+" vim-addon-mw-utils and tlib are
+" dependencies of snipmate
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'L9'
+
+"
+" Testing
+"
+Bundle 'orftz/sbd.vim'
+Bundle 'scratch'
+Bundle 'Tabular'
+Bundle 'FuzzyFinder'
+Bundle 'Syntastic'
+" Syntastic:{{{
+" ignore erlang
+let g:syntastic_mode_map =
+  \ { 'mode' : 'active',
+  \   'active_filetypes' : [],
+  \   'passive_filetypes': ['erlang']}
+"}}}
+Bundle 'Buffergator'
+Bundle 'vim-indent-object'
+Bundle 'Tagbar'
+Bundle 'tomtom/quickfixsigns_vim'
+Bundle 'AndrewRadev/simple_bookmarks.vim'
+Bundle 'tpope/vim-rails'
+Bundle 'delimitMate.vim'
+Bundle 'matchit.zip'
+Bundle 'kana/vim-textobj-user'
+Bundle 'kana/vim-textobj-line'
+Bundle 'jcf/vim-latex'
+" Vimlatex:{{{
+"Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+let g:Tex_ViewRule_pdf='Preview'
+"}}}
+" vim:ft=vim:fdm=marker

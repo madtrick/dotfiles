@@ -1,0 +1,13 @@
+clear control
+clear mod4
+
+!### Map Command-left and Command-right to control like keys
+keycode 133 = Control_L
+keycode 134 = Control_R
+!### change 134 to 116 if using Ubuntu hardy, not 8.10 or later. ###
+add control = Control_L Control_R
+
+add mod4 = Super_L
+
+!### Use Function key on Apple keyboard without having to do <fn>+<FX>
+keycode 212 = F4

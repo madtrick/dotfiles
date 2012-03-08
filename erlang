@@ -1,0 +1,6 @@
+%
+% Application to reload erlang modules in shell
+% grabbed from http://www.rustyrazorblade.com/2010/12/erlang-code-auto-reloader/
+%
+%code:load_abs("/home/madtrick/code/erlang-reloader/reloader").
+%reloader:start().
