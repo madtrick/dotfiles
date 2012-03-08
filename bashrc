@@ -7,3 +7,9 @@ export PS1='\n[\u@\h \[\033[0m\]{\[\033[1;34m\] \W \[\033[0m\]}$( __git_ps1 " (\
 [[ -s "/home/madtrick/.rvm/scripts/rvm" ]] && source "/home/madtrick/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
 export EDITOR=vim
+
+if [ -r "$HOME/repos/todir/todir" ]
+  then
+    . "$HOME/repos/todir/todir"
+    to_dir "rp" "$HOME/repos"
+fi
