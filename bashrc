@@ -46,7 +46,7 @@ export EDITOR=vim
 if [ -r "$HOME/repos/todir/todir" ]
   then
     . "$HOME/repos/todir/todir"
-    to_dir "rp" "$HOME/repos"
+    to_dir "rp" "$HOME/repos/"
 fi
 
 alias bex="bundle exec"
