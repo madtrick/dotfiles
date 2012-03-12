@@ -24,6 +24,14 @@ extract () {
     fi
 }
 
+# Make a directory and immediately 'cd' into it
+function mkcd() {
+  mkdir -p "$*"
+  cd "$*"
+}
+
+source ~/repos/dotfiles/dirs.plugins.bash
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
