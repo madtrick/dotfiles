@@ -72,7 +72,7 @@ nnoremap <A-right>  <C-w>l
 nnoremap <A-up>     <C-w>k
 nnoremap <A-down>   <C-w>j
 
-nnoremap <tab> <C-w>w "Fast cycling between windows
+nnoremap <tab> <C-w>w | "Fast cycling between windows
 
 " Fugitive mappings
 nnoremap gs :Gstatus<CR>
