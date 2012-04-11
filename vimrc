@@ -66,6 +66,7 @@ nnoremap <leader>gs :source ~/.gvimrc<CR>
 nnoremap <leader>Bs :BundleSearch<CR>
 nnoremap <leader>Bl :BundleList<CR>
 nnoremap <leader>Bi :BundleInstall<CR>
+nnoremap <leader>Bf :edit ~/.vim/bundles<CR>
 
 " Move with ease
 nnoremap <A-left>   <C-w>h
