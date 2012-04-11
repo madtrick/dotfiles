@@ -95,7 +95,11 @@ nnoremap k gk
 
 inoremap jj <ESC> " Esc is so far away without this mapping...
 
-
+" Move lines with ease
+nnoremap <C-down> :m+<CR>==
+nnoremap <C-up>   :m-2<CR>==
+vnoremap <C-up>   :m-2<CR>gv=gv
+vnoremap <C-down> :m'>+<CR>gv=gv
 "
 " Autocommands
 "
