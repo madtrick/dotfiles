@@ -21,6 +21,7 @@ set smartcase
 set equalalways
 set list
 set listchars-=eol:$
+set listchars+=tab:..
 set listchars+=trail:.
 set showbreak=↪
 set cursorline
@@ -55,11 +56,11 @@ filetype plugin indent on
 "
 " Mappings
 "
-noremap <leader>ñ :NERDTreeToggle<CR>
 
 " Easy .vimrc edition
 nnoremap <leader>e :vsplit ~/.vimrc<CR>
 nnoremap <leader>s :source ~/.vimrc<CR>
+nnoremap <leader>gs :source ~/.gvimrc<CR>
 
 " Bundle shortcuts
 nnoremap <leader>Bs :BundleSearch<CR>
@@ -73,29 +74,6 @@ nnoremap <A-up>     <C-w>k
 nnoremap <A-down>   <C-w>j
 
 nnoremap <tab> <C-w>w | "Fast cycling between windows
-
-" Fugitive mappings
-nnoremap gs :Gstatus<CR>
-nnoremap gd :Gdiff<CR>
-
-" Scracth buffer mappings
-nnoremap <C-s>o :ScratchOpen<CR>
-nnoremap <C-s>c :ScratchClose<CR>
-
-" Surround mappings
-nmap <leader>" ysiw"E
-nmap <leader>' ysiw'E
-
-" Ack mappings
-nmap <leader>A :Ack<space>
-
-" Tagbar mappings
-nnoremap <silent> <leader>tt :TagbarToggle<CR>
-
-" Vim indent object mappings
-"nmap <C-i>a :normal vai<cr>
-"nmap <C-i>i :normal vii<cr>
-"nmap <C-i>I :normal vaI<cr>
 
 " Hacky mapping to show TODOS
 " currently only search in the src/ of the working dir
@@ -116,14 +94,6 @@ nnoremap k gk
 
 inoremap jj <ESC> " Esc is so far away without this mapping...
 
-nnoremap <silent> <leader>C :Sbd<CR> "Close buffer but don't affect window arrangement
-
-
-" Don't user arrow keys
-"noremap <Up> <nop>
-"noremap <Down> <nop>
-"noremap <Left> <nop>
-"noremap <Right> <nop>
 
 "
 " Autocommands
