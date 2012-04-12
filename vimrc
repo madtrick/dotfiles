@@ -25,7 +25,7 @@ set listchars+=tab:..
 set listchars+=trail:.
 set showbreak=↪
 set cursorline
-set scrolloff    =999
+"set scrolloff    =999
 set wildmenu
 set wildmode=list:longest
 set nocompatible               " be iMproved
@@ -88,12 +88,13 @@ nnoremap <space><space> @@ "Execute again last executed macro
 
 nnoremap <BS> :nohlsearch<CR>
 
-inoremap <C-e> <ESC>A | "Go to EOL in insert mode
+inoremap <C-e> <ESC>A| "Go to EOL in insert mode
 
 nnoremap j gj "up/down movement on wrapped lines
 nnoremap k gk
 
 inoremap jj <ESC> " Esc is so far away without this mapping...
+inoremap kk <ESC>:w<CR> | "save a file
 
 " Move lines with ease
 nnoremap <C-down> :m+<CR>==
