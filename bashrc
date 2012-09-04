@@ -1,7 +1,7 @@
 [[ -s "/home/madtrick/.rvm/scripts/rvm" ]] && source "/home/madtrick/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
 
-
+[[ -d $HOME/repos/rebar ]] && export PATH=$PATH:$HOME/repos/rebar/
 # Got at http://www.shell-fu.org/lister.php?id=375
 extract () {
     if [ -f $1 ] ; then
@@ -25,12 +25,11 @@ extract () {
 }
 
 # Make a directory and immediately 'cd' into it
-function mkcd() {
+mkcd() {
   mkdir -p "$*"
   cd "$*"
 }
 
-source ~/repos/dotfiles/dirs.plugins.bash
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return

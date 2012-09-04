@@ -101,11 +101,22 @@ nnoremap <C-down> :m+<CR>==
 nnoremap <C-up>   :m-2<CR>==
 vnoremap <C-up>   :m-2<CR>gv=gv
 vnoremap <C-down> :m'>+<CR>gv=gv
+
+" Play with Yanked/Deleted objects
+nnoremap <C-left> `[
+nnoremap <C-right> `]
+
+" Change focused tab
+nnoremap <S-A-Right> gt
+nnoremap <S-A-Left> gT
+
+nnoremap tn :tabnew<cr>
+nnoremap tc :tabclose<cr>
 "
 " Autocommands
 "
-
 " Set erb files with coffeescript in it, to be interpreted as coffee
+
 autocmd BufRead *.coffee.erb :set ft=coffee
 
 " Move all vim help files to the right
