@@ -1,0 +1,10 @@
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+# Required by the __git_ps1 function
+export GIT_PS1_SHOWDIRTYSTATE=true
+export GIT_PS1_SHOWUNTRACKEDFILES=true
+
+export PS1='\n[\u@\h \[\033[0m\]{\[\033[1;34m\] \W \[\033[0m\]}$( __git_ps1 " (\[\033[0;32m\]%s\[\033[0m\])") $(rvm-prompt i v p g) ]\n>>'
+
+# vim:ft=sh
