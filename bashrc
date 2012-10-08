@@ -11,9 +11,9 @@ do
 done
 DOTFILES_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
-source $DOTFILES_DIR/bash.env
-source $DOTFILES_DIR/bash.alias
-source $DOTFILES_DIR/bash.prompt
-source $DOTFILES_DIR/bash.functions
-source $DOTFILES_DIR/bash.rvm
-source $DOTFILES_DIR/bash.plugins
+source $DOTFILES_DIR/bash/bash.env
+source $DOTFILES_DIR/bash/bash.alias
+source $DOTFILES_DIR/bash/bash.prompt
+source $DOTFILES_DIR/bash/bash.functions
+source $DOTFILES_DIR/bash/bash.rvm
+source $DOTFILES_DIR/bash/bash.plugins
