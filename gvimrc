@@ -13,7 +13,11 @@ highlight SpecialKey guibg=red " Set a red background for 'listchars'
 highlight CursorLine guibg=#121212
 
 " Patche{ font for vim-powerline
-set guifont="Menlo-Powerline"
+if has("gui_macvim")
+  set guifont=Menlo\ Regular:h13
+else
+  set guifont="Menlo-Powerline"
+endif
 
 "
 " Code stolen from Janus {{{
