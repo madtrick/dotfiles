@@ -54,8 +54,8 @@ nmap <leader>" ysiw"E
 nmap <leader>' ysiw'E
 "}}}
 "vim-snipmate must be loaded before than supertab
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/snipmate-snippets'
+"Bundle 'garbas/vim-snipmate'
+"Bundle 'honza/snipmate-snippets'
 Bundle 'ervandew/supertab'
 Bundle 'ack.vim'
 " Ack:{{{
