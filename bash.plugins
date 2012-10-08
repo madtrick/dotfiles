@@ -1,0 +1,24 @@
+if [ -r "$HOME/repos/todir/todir" ]; then
+    . "$HOME/repos/todir/todir"
+    to_dir "rp" "$HOME/repos/"
+fi
+
+if [ -e $CODEPATH/scripts/git-flow-completion ]; then
+ . $CODEPATH/scripts/git-flow-completion/git-flow-completion.bash
+fi
+
+if [ -f /opt/local/etc/bash_completion ]; then
+  #
+  # Bash completion in Mac
+  #
+  . /opt/local/etc/bash_completion
+fi
+
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+  #
+  # Bash completion in Ubuntun
+  #
+   . /etc/bash_completion
+ fi
+
+# vim:ft=sh
