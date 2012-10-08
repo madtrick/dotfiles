@@ -1,13 +1,14 @@
 [user]
-	name = Farruco Sanjurjo
-	email = farruco.sanjurjo@trabesoluciones.net
+  name = Farruco Sanjurjo
 [color]
-	ui = true
+  ui = true
 [core]
-	editor = vim
-	excludesfile = /home/madtrick/.global_gitignore
+  editor = vim
+  excludesfile = ~/.global_gitignore
 [alias]
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   st = status
   co = checkout
   com = commit
+
+# vim:ft=sh
