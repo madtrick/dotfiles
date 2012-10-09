@@ -26,4 +26,18 @@ mkcd() {
   cd "$*"
 }
 
+#
+# Overwrite cd function to allow the inclusion of hooks.
+#
+# Hooks must be inside files .bash.cd_hooks
+#
+function cd(){
+  local args=$@
+  builtin cd $args
+  if [[ -e $PWD/.bash.cd_hooks ]]; then
+    sh $PWD/.bash.cd_hooks
+  fi
+  echo $PWD
+}
+
 # vim:ft=sh
