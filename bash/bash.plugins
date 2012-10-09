@@ -7,7 +7,8 @@ if [ -e $CODEPATH/scripts/git-flow-completion ]; then
  . $CODEPATH/scripts/git-flow-completion/git-flow-completion.bash
 fi
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
+ #Check if brew is available
+if $(command -v brew >/dev/null 2>&1) && [[ $? && -f $(brew --prefix)/etc/bash_completion ]]; then
   #
   # Bash completion in Mac
   #
