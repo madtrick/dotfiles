@@ -7,11 +7,11 @@ if [ -e $CODEPATH/scripts/git-flow-completion ]; then
  . $CODEPATH/scripts/git-flow-completion/git-flow-completion.bash
 fi
 
-if [ -f /opt/local/etc/bash_completion ]; then
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
   #
   # Bash completion in Mac
   #
-  . /opt/local/etc/bash_completion
+    . $(brew --prefix)/etc/bash_completion
 fi
 
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
