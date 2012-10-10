@@ -10,5 +10,5 @@
   st = status
   co = checkout
   com = commit
-
-# vim:ft=sh
+  cl = !bash -lc 'git_clone_config' | xargs -I configvalues git clone --config configvalues --
+  # vim:ft=sh

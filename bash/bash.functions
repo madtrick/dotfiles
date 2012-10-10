@@ -26,4 +26,13 @@ mkcd() {
   cd "$*"
 }
 
+function git_clone_config(){
+  local options=""
+  if [[ -f $PWD/.gitconfig.clone ]]; then
+    while read line ; do
+      options=$options" "$line
+    done < $PWD/.gitconfig.clone
+    echo "$options"
+  fi
+}
 # vim:ft=sh
