@@ -7,7 +7,7 @@
   excludesfile = ~/.global_gitignore
 [alias]
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-  st = status
+  st = status --short
   co = checkout
   com = commit
   cl = !bash -ic 'git_clone_config' | xargs -I configvalues git clone --config configvalues --
