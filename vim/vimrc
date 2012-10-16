@@ -25,7 +25,7 @@ set listchars+=tab:..
 set listchars+=trail:.
 set showbreak=↪
 set cursorline
-"set scrolloff    =999
+set scrolloff    =10
 set wildmenu
 set wildmode=list:longest
 set nocompatible               " be iMproved
