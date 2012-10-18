@@ -13,7 +13,7 @@ function prompt_command {
 local username=$(whoami)
 local host=$(hostname -s)
 local current_dir=$(basename $(pwd))
-local git_branch=$(__git_ps1)
+local git_branch=$(__git_ps1 )
 local ruby_version=$(rvm-prompt i v p g)
 local time=$(date +"%Y/%m/%d  %H:%M")
 
@@ -42,8 +42,11 @@ fi
 local NO_COLOR="\[\033[0m\]"
 local LIGHT_BLUE="\[\033[1;34m\]"
 local GREEN="\[\033[0;32m\]"
-export PS1="\n[$username@$host {$LIGHT_BLUE$current_dir$NO_COLOR} $git_branch $ruby_version]$fill$time\n>"
-#export PS1='\n[\u@\h \[\033[0m\]{\[\033[1;34m\] \W \[\033[0m\]}$( __git_ps1 " (\[\033[0;32m\]%s\[\033[0m\])") $(rvm-prompt i v p g) ]${fill}${newPWD}\n>>'
+
+#
+# NOTE: Have to reapply __git_ps1 becayse if I used the escape sequences in the git_branch variable the calculations were wrong
+#
+export PS1="\n[$username@$host {$LIGHT_BLUE$current_dir$NO_COLOR} $(__git_ps1 "($GREEN%s$NO_COLOR)") $ruby_version]$fill$time\n>>"
 }
 
 export PROMPT_COMMAND=prompt_command
