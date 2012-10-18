@@ -1,0 +1,4 @@
+## Handle small typos in patsh used with cd
+shopt -s cdspell
+
+# vim:ft=sh
