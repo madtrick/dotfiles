@@ -1,0 +1,3 @@
+## Configure Up and Down keys to look for commands in history
+"\e[A": history-search-backward
+"\e[B": history-search-forward
