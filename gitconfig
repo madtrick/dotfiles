@@ -11,4 +11,5 @@
   co = checkout
   com = commit
   cl = !bash -ic 'git_clone_config' | xargs -I configvalues git clone --config configvalues --
+  ba = branch -a
   # vim:ft=sh
