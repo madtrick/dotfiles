@@ -5,6 +5,46 @@
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 
-export PS1='\n[\u@\h \[\033[0m\]{\[\033[1;34m\] \W \[\033[0m\]}$( __git_ps1 " (\[\033[0;32m\]%s\[\033[0m\])") $(rvm-prompt i v p g) ]\n>>'
 
+##
+## Code got at http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x869.html
+##
+function prompt_command {
+local username=$(whoami)
+local host=$(hostname -s)
+local current_dir=$(basename $(pwd))
+local git_branch=$(__git_ps1)
+local ruby_version=$(rvm-prompt i v p g)
+local time=$(date)
+
+#   Find the width of the prompt:
+TERMWIDTH=${COLUMNS}
+
+#   Add all the accessories below ...
+local temp="[${username}@${host} {${current_dir}} ${git_branch} ${ruby_version}]"
+
+let fillsize=${TERMWIDTH}-${#temp}-${#time}
+if [ "$fillsize" -gt "0" ]
+then
+  fill="-------------------------------------------------------------------------------------------------------------------------------------------"
+  #   It's theoretically possible someone could need more
+  #   dashes than above, but very unlikely!  HOWTO users,
+  #   the above should be ONE LINE, it may not cut and
+  #   paste properly
+  fill="${fill:0:${fillsize}}"
+fi
+
+if [ "$fillsize" -lt "0" ]
+then
+  fill=""
+  let cut=3-${fillsize}
+fi
+local NO_COLOR="\[\033[0m\]"
+local LIGHT_BLUE="\[\033[1;34m\]"
+local GREEN="\[\033[0;32m\]"
+export PS1="\n[$username@$host {$LIGHT_BLUE$current_dir$NO_COLOR} $git_branch $ruby_version]$fill$time\n>"
+#export PS1='\n[\u@\h \[\033[0m\]{\[\033[1;34m\] \W \[\033[0m\]}$( __git_ps1 " (\[\033[0;32m\]%s\[\033[0m\])") $(rvm-prompt i v p g) ]${fill}${newPWD}\n>>'
+}
+
+export PROMPT_COMMAND=prompt_command
 # vim:ft=sh
