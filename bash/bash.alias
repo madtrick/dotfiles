@@ -1,3 +1,7 @@
 alias bi="bundle install"
 alias bex="bundle exec"
+alias gst="git st"
+alias gau="git add -u"
+alias gcm="git commit -m"
+alias gac="gau && gcm"
 # vim:ft=sh
