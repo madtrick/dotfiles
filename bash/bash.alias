@@ -4,4 +4,5 @@ alias gst="git st"
 alias gau="git add -u"
 alias gcm="git commit -m"
 alias gac="gau && gcm"
+alias glg="git lg"
 # vim:ft=sh
