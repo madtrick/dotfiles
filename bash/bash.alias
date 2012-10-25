@@ -6,6 +6,7 @@ alias gau="git add -u"
 alias gcm="git commit -m"
 alias gac="gau && gcm"
 alias glg="git lg"
+alias gdi="git diff"
 
 alias tmux="tmux -2" #Force 256 colors
 # vim:ft=sh

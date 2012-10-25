@@ -63,7 +63,7 @@ nnoremap <leader>s :source ~/.vimrc<CR>
 nnoremap <leader>gs :source ~/.gvimrc<CR>
 
 " Open bundles file
-nnoremap <leader>b :tabedit ~/.vim/bundles<CR>
+nnoremap <leader>bu :tabedit ~/.vim/bundles<CR>
 
 " Bundle shortcuts
 nnoremap <leader>Bs :BundleSearch<CR>
