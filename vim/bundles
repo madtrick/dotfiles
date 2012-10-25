@@ -11,6 +11,10 @@ Bundle 'scrooloose/nerdcommenter'
 " Themes
 Bundle 'molokai'
 Bundle 'Impact'
+Bundle 'jellybeans.vim'
+Bundle 'twilight256.vim'
+Bundle 'xoria256.vim'
+Bundle 'solarized'
 
 " Language plugins
 "Bundle 'Vimerl'

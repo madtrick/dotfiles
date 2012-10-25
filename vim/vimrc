@@ -1,7 +1,5 @@
 " Leader key
-let mapleader="ñ"
-
-
+let mapleader = "ñ"
 " Backpsace everywhere in insert mode
 set backspace=start,eol,indent
 set tabstop      =2
@@ -47,7 +45,7 @@ syntax enable
 
 " vim colorscheme for terminal
 if !has("gui_running")
-	color impact
+	color jellybeans
 endif
 
 " Filetype
@@ -69,10 +67,10 @@ nnoremap <leader>Bi :BundleInstall<CR>
 nnoremap <leader>Bf :edit ~/.vim/bundles<CR>
 
 " Move with ease
-nnoremap <A-left>   <C-w>h
-nnoremap <A-right>  <C-w>l
-nnoremap <A-up>     <C-w>k
-nnoremap <A-down>   <C-w>j
+nnoremap <Space>h <C-w>h
+nnoremap <Space>l <C-w>l
+nnoremap <Space>k <C-w>k
+nnoremap <Space>j <C-w>j
 
 nnoremap <tab> <C-w>w | "Fast cycling between windows
 
