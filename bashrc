@@ -17,3 +17,4 @@ source $DOTFILES_DIR/bash/bash.rvm
 source $DOTFILES_DIR/bash/bash.plugins
 source $DOTFILES_DIR/bash/bash.prompt
 source $DOTFILES_DIR/bash/bash.functions
+source $DOTFILES_DIR/bash/bash.tmux

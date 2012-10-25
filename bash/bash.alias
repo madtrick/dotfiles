@@ -1,8 +1,11 @@
 alias bi="bundle install"
 alias bex="bundle exec"
+
 alias gst="git st"
 alias gau="git add -u"
 alias gcm="git commit -m"
 alias gac="gau && gcm"
 alias glg="git lg"
+
+alias tmux="tmux -2" #Force 256 colors
 # vim:ft=sh
