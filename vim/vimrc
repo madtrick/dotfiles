@@ -23,6 +23,7 @@ set listchars+=tab:..
 set listchars+=trail:.
 set showbreak=↪
 set cursorline
+set cursorcolumn
 set scrolloff    =10
 set wildmenu
 set wildmode=list:longest
@@ -46,6 +47,7 @@ syntax enable
 " vim colorscheme for terminal
 if !has("gui_running")
 	color jellybeans
+  :hi CursorLine  cterm=NONE ctermbg=Black ctermfg=white
 endif
 
 " Filetype
@@ -59,6 +61,9 @@ filetype plugin indent on
 nnoremap <leader>e :vsplit ~/.vimrc<CR>
 nnoremap <leader>s :source ~/.vimrc<CR>
 nnoremap <leader>gs :source ~/.gvimrc<CR>
+
+" Open bundles file
+nnoremap <leader>b :tabedit ~/.vim/bundles<CR>
 
 " Bundle shortcuts
 nnoremap <leader>Bs :BundleSearch<CR>
