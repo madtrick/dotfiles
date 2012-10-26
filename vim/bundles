@@ -15,7 +15,10 @@ Bundle 'jellybeans.vim'
 Bundle 'twilight256.vim'
 Bundle 'xoria256.vim'
 Bundle 'solarized'
-
+Bundle 'sjl/badwolf'
+Bundle 'Zenburn'
+Bundle 'noahfrederick/Hemisu'
+"
 " Language plugins
 "Bundle 'Vimerl'
 " Vimerl: {{{

@@ -46,8 +46,7 @@ syntax enable
 
 " vim colorscheme for terminal
 if !has("gui_running")
-	color jellybeans
-  :hi CursorLine  cterm=NONE ctermbg=Black ctermfg=white
+  color badwolf
 endif
 
 " Filetype
