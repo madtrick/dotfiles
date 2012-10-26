@@ -114,7 +114,11 @@ nnoremap <S-A-Left> gT
 
 nnoremap tn :tabnew<cr>
 nnoremap tc :tabclose<cr>
-"
+
+" Resize windows
+nnoremap <silent>++ :5wincmd <<cr>
+nnoremap <silent>-- :5wincmd ><cr>
+
 " Autocommands
 "
 " Set erb files with coffeescript in it, to be interpreted as coffee
