@@ -1,5 +1,10 @@
 " Leader key
 let mapleader = "ñ"
+
+" Change cursor color in terminal
+"let &t_SI="\033]12;red\033\\"
+"let &t_EI="\033]12;green\033\\"
+
 " Backpsace everywhere in insert mode
 set backspace=start,eol,indent
 set tabstop      =2
@@ -92,10 +97,10 @@ nnoremap <BS> :nohlsearch<CR>
 
 inoremap <C-e> <ESC>A| "Go to EOL in insert mode
 
-nnoremap j gj "up/down movement on wrapped lines
-nnoremap k gk
+"nnoremap j gj "up/down movement on wrapped lines
+"nnoremap k gk
 
-inoremap jj <ESC> " Esc is so far away without this mapping...
+"inoremap jj <ESC> " Esc is so far away without this mapping...
 inoremap kk <ESC>:w<CR> | "save a file
 
 " Move lines with ease
