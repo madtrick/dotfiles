@@ -36,6 +36,7 @@ set wildignore  +=*.git "exclude .git dir
 set wildignore  +=*.beam "exclude erlang's object files
 set wildignore  +=.bundle
 set wildignore  +=*vendor/ruby/*
+set wildignore  +=*/.tmp/*
 " Hack to fix the root directory for ctrlp
 autocmd VimEnter * :nnoremap <c-p> :CtrlP pwd<CR>
 "}}}
