@@ -35,4 +35,13 @@ function git_clone_config(){
     echo "$options"
   fi
 }
+
+# List 256 colours along with is code
+function colors(){
+  for code in {0..255}
+  do
+    echo -e "\e[38;05;${code}m $code: Test";
+  done
+}
+
 # vim:ft=sh

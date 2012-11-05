@@ -29,16 +29,27 @@ function prompt_command {
   ## 'eval' is required to use $fillsize into the brace expansion
   eval printf -v fill "$filler%.0s" {1..$fillsize}
 
-  local BOLD="\033[1m"
-  local NONE="\[\033[0m\]"
-  local LIGHT_BLUE="\[\033[1;34m\]"
-  local GREEN="\[\033[0;32m\]"
+
+  local NONE="\[\033[0m\]"    # unsets color to term's fg color
+
+  # Get 256 colors
+  function bold() { echo -ne "\[\033[1m\]$1\[\033[0m\]"; }
+  function fg_color () { echo  "\\[\\033[38;5;$1m\\]"; }
+  function bg_color () { echo  "\\[\\033[48;5;$1m\\]"; }
 
   #
   # NOTE: Have to reapply __git_ps1 becayse if I used the escape sequences in the git_branch variable the calculations were wrong
   #
-  export PS1="\n$BOLD[$username@$host {$LIGHT_BLUE$current_dir$NONE$BOLD} $(__git_ps1 "($GREEN%s$NONE$BOLD)") $ruby_version]$fill$time\n>>$NONE"
+  PS1="\n["
+  PS1=$PS1"$(fg_color 68)$username@$host$NONE"
+  PS1=$PS1" {$(fg_color 117)$current_dir$NONE} "
+  PS1=$PS1"$(__git_ps1 "($GREEN%s$NONE$BOLD)")"
+  PS1=$PS1" $ruby_version"
+  PS1=$PS1"]"
+  PS1=$PS1"$fill$time"
+  PS1=$PS1"\n>>"
+  PS1=$PS1"$NONE"
+  export PS1
 }
-
 export PROMPT_COMMAND=prompt_command
 # vim:ft=sh
