@@ -28,29 +28,16 @@ function prompt_command {
 
   ## 'eval' is required to use $fillsize into the brace expansion
   eval printf -v fill "$filler%.0s" {1..$fillsize}
-  #if [ "$fillsize" -gt "0" ]
-  #then
-  #  fill="---------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
-  #  #   It's theoretically possible someone could need more
-  #  #   dashes than above, but very unlikely!  HOWTO users,
-  #  #   the above should be ONE LINE, it may not cut and
-  #  #   paste properly
-  #  fill="${fill:0:${fillsize}}"
-  #fi
 
-  #if [ "$fillsize" -lt "0" ]
-  #then
-  #  fill=""
-  #  let cut=3-${fillsize}
-  #fi
-  local NO_COLOR="\[\033[0m\]"
+  local BOLD="\033[1m"
+  local NONE="\[\033[0m\]"
   local LIGHT_BLUE="\[\033[1;34m\]"
   local GREEN="\[\033[0;32m\]"
 
   #
   # NOTE: Have to reapply __git_ps1 becayse if I used the escape sequences in the git_branch variable the calculations were wrong
   #
-  export PS1="\n[$username@$host {$LIGHT_BLUE$current_dir$NO_COLOR} $(__git_ps1 "($GREEN%s$NO_COLOR)") $ruby_version]$fill$time\n>>"
+  export PS1="\n$BOLD[$username@$host {$LIGHT_BLUE$current_dir$NONE$BOLD} $(__git_ps1 "($GREEN%s$NONE$BOLD)") $ruby_version]$fill$time\n>>$NONE"
 }
 
 export PROMPT_COMMAND=prompt_command
