@@ -23,12 +23,10 @@ function prompt_command {
 
   #   Add all the accessories below ...
   local temp="[${username}@${host} {${current_dir}} ${git_branch} ${ruby_version}]"
-
   let fillsize=${TERMWIDTH}-${#temp}-${#time}
 
   ## 'eval' is required to use $fillsize into the brace expansion
   eval printf -v fill "$filler%.0s" {1..$fillsize}
-
 
   local NONE="\[\033[0m\]"    # unsets color to term's fg color
 
@@ -36,19 +34,18 @@ function prompt_command {
   function bold() { echo -ne "\[\033[1m\]$1\[\033[0m\]"; }
   function fg_color () { echo  "\\[\\033[38;5;$1m\\]"; }
   function bg_color () { echo  "\\[\\033[48;5;$1m\\]"; }
+  function colorize () { echo  "$(fg_color $1)$2$NONE"; }
 
   #
   # NOTE: Have to reapply __git_ps1 becayse if I used the escape sequences in the git_branch variable the calculations were wrong
   #
   PS1="\n"
-  PS1=$PS1"$(fg_color 68)$username@$host$NONE"
-  PS1=$PS1" $(fg_color 117)$current_dir$NONE "
-  PS1=$PS1"$(__git_ps1 "$(fg_color 112)∓ %s$NONE")"
-  PS1=$PS1" $(fg_color 161)♦ $ruby_version$NONE"
-  PS1=$PS1""
-  PS1=$PS1"$(fg_color 234)$fill$NONE$(fg_color 239)$time$NONE"
-  PS1=$PS1"\n$(fg_color 240)➡$NONE "
-  PS1=$PS1"$NONE"
+  PS1=$PS1"$(colorize 68 "$username@$host")"
+  PS1=$PS1" $(colorize 117 "$current_dir ")"
+  PS1=$PS1"$(__git_ps1 "$(colorize 112 "∓ %s$NONE")")"
+  PS1=$PS1" $(colorize 161 "♦ $ruby_version")"
+  PS1=$PS1"$(colorize 234 $fill)$(colorize 239 "$time")"
+  PS1=$PS1"\n$(colorize 240 "➡$NONE ")"
   export PS1
 }
 export PROMPT_COMMAND=prompt_command
