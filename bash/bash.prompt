@@ -15,7 +15,7 @@ function prompt_command {
   local current_dir=$(basename $(pwd))
   local git_branch=$(__git_ps1 )
   local ruby_version=$(rvm-prompt i v p g)
-  local time=$(date +"%Y/%m/%d  %H:%M")
+  local time=$(date +"%m/%d ⌚ %H:%M")
   local filler='.'
 
   #   Find the width of the prompt:
@@ -40,14 +40,14 @@ function prompt_command {
   #
   # NOTE: Have to reapply __git_ps1 becayse if I used the escape sequences in the git_branch variable the calculations were wrong
   #
-  PS1="\n["
+  PS1="\n"
   PS1=$PS1"$(fg_color 68)$username@$host$NONE"
-  PS1=$PS1" {$(fg_color 117)$current_dir$NONE} "
-  PS1=$PS1"$(__git_ps1 "($GREEN%s$NONE$BOLD)")"
-  PS1=$PS1" $ruby_version"
-  PS1=$PS1"]"
-  PS1=$PS1"$fill$time"
-  PS1=$PS1"\n>>"
+  PS1=$PS1" $(fg_color 117)$current_dir$NONE "
+  PS1=$PS1"$(__git_ps1 "$(fg_color 112)∓ %s$NONE")"
+  PS1=$PS1" $(fg_color 161)♦ $ruby_version$NONE"
+  PS1=$PS1""
+  PS1=$PS1"$(fg_color 234)$fill$NONE$(fg_color 239)$time$NONE"
+  PS1=$PS1"\n$(fg_color 240)➡$NONE "
   PS1=$PS1"$NONE"
   export PS1
 }
