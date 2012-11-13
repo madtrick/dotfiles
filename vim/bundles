@@ -27,6 +27,7 @@ let erlang_show_errors       =  0 " Don't show errors on erlang files
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-coffee-script'
 Bundle 'Markdown'
+Bundle 'uarun/vim-protobuf'
 
 " Utils
 Bundle 'ctrlp.vim'

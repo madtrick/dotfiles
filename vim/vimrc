@@ -1,10 +1,10 @@
 " Leader key
 let mapleader = "ñ"
 
-" Change cursor color in terminal
+"" Change cursor color in terminal
 "let &t_SI="\033]12;red\033\\"
-"let &t_EI="\033]12;green\033\\"
-
+"let &t_EI="\033]12;grey\033\\"
+"autocmd VimLeave * :silent :!echo -ne "\033P\033]12;grey\007\033\\"
 " Backpsace everywhere in insert mode
 set backspace=start,eol,indent
 set tabstop      =2
@@ -34,7 +34,6 @@ set wildmenu
 set wildmode=list:longest
 set nocompatible               " be iMproved
 filetype off                   " required! by vundle
-
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -61,10 +60,16 @@ filetype plugin indent on
 " Mappings
 "
 
+"""""""""""""""""""""""""""""""""""
 " Easy .vimrc edition
+"""""""""""""""""""""""""""""""""""
 nnoremap <leader>e :vsplit ~/.vimrc<CR>
 nnoremap <leader>s :source ~/.vimrc<CR>
 nnoremap <leader>gs :source ~/.gvimrc<CR>
+
+"""""""""""""""""""""""""""""""""""
+" Bundles mappings
+"""""""""""""""""""""""""""""""""""
 
 " Open bundles file
 nnoremap <leader>bu :tabedit ~/.vim/bundles<CR>
@@ -75,14 +80,35 @@ nnoremap <leader>Bl :BundleList<CR>
 nnoremap <leader>Bi :BundleInstall<CR>
 nnoremap <leader>Bf :edit ~/.vim/bundles<CR>
 
+"""""""""""""""""""""""""""""""""""
+" Windows mappings
+"""""""""""""""""""""""""""""""""""
+
 " Move with ease
-nnoremap <Space>h <C-w>h
-nnoremap <Space>l <C-w>l
-nnoremap <Space>k <C-w>k
-nnoremap <Space>j <C-w>j
+nnoremap H <C-w>h
+nnoremap L <C-w>l
+nnoremap J <C-w>j
+nnoremap K <C-w>k
 
 nnoremap <tab> <C-w>w | "Fast cycling between windows
 
+" Resize windows
+nnoremap <silent>++ :5wincmd <<cr>
+nnoremap <silent>-- :5wincmd ><cr>
+
+"""""""""""""""""""""""""""""""""""
+" Tabs mappings
+"""""""""""""""""""""""""""""""""""
+
+" Change focused tab
+nnoremap <C-t>l gt
+nnoremap <C-t>h gT
+nnoremap tn :tabnew<cr>
+nnoremap tc :tabclose<cr>
+
+"""""""""""""""""""""""""""""""""""
+" Misc mappings
+"""""""""""""""""""""""""""""""""""
 " Hacky mapping to show TODOS
 " currently only search in the src/ of the working dir
 nnoremap <leader>sT :silent execute 'Ack "TODO" '. getcwd() .'/src'<cr>
@@ -94,13 +120,7 @@ nnoremap <space>  @q "Execute the macro in register q
 nnoremap <space><space> @@ "Execute again last executed macro
 
 nnoremap <BS> :nohlsearch<CR>
-
 inoremap <C-e> <ESC>A| "Go to EOL in insert mode
-
-"nnoremap j gj "up/down movement on wrapped lines
-"nnoremap k gk
-
-"inoremap jj <ESC> " Esc is so far away without this mapping...
 inoremap kk <ESC>:w<CR> | "save a file
 
 " Move lines with ease
@@ -110,24 +130,16 @@ vnoremap <C-up>   :m-2<CR>gv=gv
 vnoremap <C-down> :m'>+<CR>gv=gv
 
 " Play with Yanked/Deleted objects
-nnoremap <C-left> `[
-nnoremap <C-right> `]
+nnoremap gV `[v`]
+"nnoremap <C-left> `[
+"nnoremap <C-right> `]
 
-" Change focused tab
-nnoremap <S-A-Right> gt
-nnoremap <S-A-Left> gT
 
-nnoremap tn :tabnew<cr>
-nnoremap tc :tabclose<cr>
-
-" Resize windows
-nnoremap <silent>++ :5wincmd <<cr>
-nnoremap <silent>-- :5wincmd ><cr>
-
+"""""""""""""""""""""""""""""""""""
 " Autocommands
-"
-" Set erb files with coffeescript in it, to be interpreted as coffee
+"""""""""""""""""""""""""""""""""""
 
+" Set erb files with coffeescript in it, to be interpreted as coffee
 autocmd BufRead *.coffee.erb :set ft=coffee
 
 " Move all vim help files to the right
