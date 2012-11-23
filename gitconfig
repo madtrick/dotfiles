@@ -6,6 +6,9 @@
   editor = vim
   excludesfile = ~/.global_gitignore
 [alias]
+  f = "!git ls-files | grep -i"
+  g = "grep -Ii"
+  gr =  "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   st = status --short
   co = checkout
