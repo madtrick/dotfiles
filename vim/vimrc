@@ -32,6 +32,7 @@ set cursorcolumn
 set scrolloff    =10
 set wildmenu
 set wildmode=list:longest
+set encoding=utf-8
 set nocompatible               " be iMproved
 filetype off                   " required! by vundle
 set rtp+=~/.vim/bundle/vundle/
