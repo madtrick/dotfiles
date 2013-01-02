@@ -1,4 +1,5 @@
-alias ls="ls -G"
+# Use GNU ls (gls is the name given by brew)
+alias ls="gls --color=auto"
 
 alias bi="bundle install"
 alias bex="bundle exec"
