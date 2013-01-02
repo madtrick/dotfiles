@@ -1,3 +1,5 @@
+alias ls="ls -G"
+
 alias bi="bundle install"
 alias bex="bundle exec"
 
