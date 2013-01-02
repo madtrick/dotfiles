@@ -102,6 +102,8 @@ nnoremap <silent>-- :5wincmd ><cr>
 """""""""""""""""""""""""""""""""""
 
 " Change focused tab
+nnoremap <leader>tl gt
+nnoremap <leader>th gT
 nnoremap <C-t>l gt
 nnoremap <C-t>h gT
 nnoremap tn :tabnew<cr>
