@@ -1,0 +1,37 @@
+# Configs
+config defaultToCurrentScreen true
+config windowHintsShowIcons true
+
+# Monitor aliases
+alias mon-air 1440x900
+
+# Default layouts
+default 1monitor resolutions:${mon-air}
+
+# Position aliases
+alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
+
+# 1 monitor layout
+layout  1monitor 'Spotify' ${1-main}
+
+# Move/Resize bindings
+bind f:cmd;shift ${full}
+
+# Push bindings
+bind right:ctrl;shift push right bar-resize:screenSizeX/2
+bind left:ctrl;shift push left center
+
+# Nudge bindings
+bind right:ctrl;alt nudge +10% +0
+
+# Focus bindings
+bind left:ctrl focus left
+
+# Hint bindings
+bind esc:cmd hint
+
+# Layout bindings
+bind l:cmd layout 1monitor
+
+# Grid bindings
+bind esc:ctrl grid
