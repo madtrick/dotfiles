@@ -1,7 +1,7 @@
 # Use GNU ls (gls is the name given by brew)
 alias ls="gls --color=auto"
 
-alias bi="bundle install"
+alias bi="bundle install --path vendor/"
 alias bex="bundle exec"
 
 alias gst="git st"
