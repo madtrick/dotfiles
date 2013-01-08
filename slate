@@ -23,16 +23,15 @@ alias onethird-screen-width move windowTopLeftX;windowTopLeftY screenSizeX/3;scr
 alias twothird-screen-width move windowTopLeftX;windowTopLeftY (screenSizeX*2)/3;screenSizeY
 
 alias move-half move screenSizeX/2;screenOriginY windowSizeX;windowSizeY
-alias move-left move screenOriginX;screenOriginY windowSizeX;windowSizeY
-alias move-right move screenSizeX-(windowSizeX);screenOriginY windowSizeX;windowSizeY
+alias corner-right corner top-right
+alias corner-left corner top-left
 
-alias fourth-third-right sequence focus left | ${twothird-screen-width} | focus right | ${onethird-screen-width} | ${move-right}
-alias fourth-third-left sequence focus right > ${twothird-screen-width} | ${onethird-screen-width} | ${move-right}
-#alias half-half-left sequence ${move-left} | ${half-screen-width} | focus right | ${move-half} | ${half-screen-width}
+alias fourth-third-right sequence focus left | ${twothird-screen-width} | focus right | ${onethird-screen-width} | ${corner-right}
+alias fourth-third-left sequence focus right > ${twothird-screen-width} | ${onethird-screen-width} | ${corner-right}
 alias half-half-right sequence ${move-half} | ${half-screen-width} | focus left | ${half-screen-width} | focus right
 
-alias half-screen-left sequence ${move-left} | ${half-screen-width}
-alias half-screen-right sequence ${move-half} | ${half-screen-width}
+alias half-screen-left sequence ${half-screen-width} | ${corner-left}
+alias half-screen-right sequence ${half-screen-width} | ${corner-right}
 
 alias 2-throw-left throw 0 resize
 alias 2-throw-right throw 1 resize
@@ -41,8 +40,8 @@ alias 2-throw-right throw 1 resize
 bind f:cmd;shift ${full}
 bind left:cmd;shift ${2-throw-left}
 bind right:cmd;shift ${2-throw-right}
-bind 4:alt;cmd ${fourth-third-left}
-bind 5:alt;cmd ${fourth-third-right}
+bind 1:alt;cmd ${fourth-third-left}
+bind 2:alt;cmd ${fourth-third-right}
 bind e:alt;cmd ${half-half-right}
 bind right:alt;cmd ${half-screen-right}
 bind left:alt;cmd ${half-screen-left}
