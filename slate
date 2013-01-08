@@ -13,27 +13,47 @@ default 1monitor resolutions:${mon-air}
 
 # Position aliases
 alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
-alias half-left move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
-alias half-right move screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
+
+alias third-window-width move windowTopLeftX;windowTopLeftY windowSizeX/3;windowSizeY
+alias half-window-width move windowTopLeftX;windowTopLeftY windowSizeX/2;windowSizeY
+alias half-window-height move windowTopLeftX;windowTopLeftY windowSizeX;windowSizeY/2
+
+alias half-screen-width move windowTopLeftX;windowTopLeftY screenSizeX/2;screenSizeY
+alias onethird-screen-width move windowTopLeftX;windowTopLeftY screenSizeX/3;screenSizeY
+alias twothird-screen-width move windowTopLeftX;windowTopLeftY (screenSizeX*2)/3;screenSizeY
+
+alias move-half move screenSizeX/2;screenOriginY windowSizeX;windowSizeY
+alias move-left move screenOriginX;screenOriginY windowSizeX;windowSizeY
+alias move-right move screenSizeX-(windowSizeX);screenOriginY windowSizeX;windowSizeY
+
+alias fourth-third-right sequence focus left | ${twothird-screen-width} | focus right | ${onethird-screen-width} | ${move-right}
+alias fourth-third-left sequence focus right > ${twothird-screen-width} | ${onethird-screen-width} | ${move-right}
+#alias half-half-left sequence ${move-left} | ${half-screen-width} | focus right | ${move-half} | ${half-screen-width}
+alias half-half-right sequence ${move-half} | ${half-screen-width} | focus left | ${half-screen-width} | focus right
+
+alias half-screen-left sequence ${move-left} | ${half-screen-width}
+alias half-screen-right sequence ${move-half} | ${half-screen-width}
+
 alias 2-throw-left throw 0 resize
 alias 2-throw-right throw 1 resize
-
-# 1 monitor layout
-#layout  1monitor 'Spotify' ${1-main}
 
 # Move/Resize bindings
 bind f:cmd;shift ${full}
 bind left:cmd;shift ${2-throw-left}
 bind right:cmd;shift ${2-throw-right}
-bind right:alt;cmd ${half-right}
-bind left:alt;cmd ${half-left}
+bind 4:alt;cmd ${fourth-third-left}
+bind 5:alt;cmd ${fourth-third-right}
+bind e:alt;cmd ${half-half-right}
+bind right:alt;cmd ${half-screen-right}
+bind left:alt;cmd ${half-screen-left}
 
 # Push bindings
-bind right:ctrl;shift push right bar-resize:screenSizeX/2
-bind left:ctrl;shift push left center
+#bind right:ctrl;shift push right bar-resize:screenSizeX/2
+#bind left:ctrl;shift push left center
 
 # Nudge bindings
 bind right:ctrl;alt nudge +10% +0
+bind left:ctrl;alt nudge -10% +0
 
 # Focus bindings
 bind left:cmd focus left
@@ -47,3 +67,6 @@ bind esc:cmd hint
 
 # Grid bindings
 bind esc:ctrl grid
+
+# Tab switcher
+#bind tab:cmd switch
