@@ -1,0 +1,18 @@
+# ~/.tmuxinator/pfc.yml
+# you can make as many tabs as you wish...
+
+project_name: pfc
+project_root: ~/Repos/personal
+tabs:
+  - qrauth :
+    - cd qrauth
+    - vim .
+  - qra4wa : 
+    - cd qr4wa
+    - vim .
+  - qrauthclient4r :
+    - cd qrauthclient4r
+    - vim .
+  - wsep : 
+    - cd wsep
+    - vim .
