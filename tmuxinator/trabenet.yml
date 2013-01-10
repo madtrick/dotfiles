@@ -1,0 +1,9 @@
+# ~/.tmuxinator/trabenet.yml
+# you can make as many tabs as you wish...
+
+project_name: Trabenet
+project_root: ~/Repos/work/trabenet
+rvm: 1.9.3-p327
+tabs:
+  - editor: vim .
+  - server: bex rails s
