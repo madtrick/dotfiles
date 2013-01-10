@@ -13,5 +13,6 @@ alias glg="git lg"
 alias gdi="git diff"
 
 alias tmux="tmux -2" #Force 256 colors
-alias tmls="tmux list-sessions"
+alias tmuxls="tmux list-sessions"
+alias tmuxkill="tmux kill-session"
 # vim:ft=sh
