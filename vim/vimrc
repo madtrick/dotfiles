@@ -131,16 +131,13 @@ inoremap <C-e> <ESC>A| "Go to EOL in insert mode
 inoremap kk <ESC>:w<CR> | "save a file
 
 " Move lines with ease
-nnoremap <C-down> :m+<CR>==
-nnoremap <C-up>   :m-2<CR>==
-vnoremap <C-up>   :m-2<CR>gv=gv
-vnoremap <C-down> :m'>+<CR>gv=gv
+nnoremap <C-j> :m+<CR>==
+nnoremap <C-k>   :m-2<CR>==
+vnoremap <C-j> :m'>+<CR>gv=gv
+vnoremap <C-k>   :m-2<CR>gv=gv
 
 " Play with Yanked/Deleted objects
 nnoremap gV `[v`]
-"nnoremap <C-left> `[
-"nnoremap <C-right> `]
-
 
 """""""""""""""""""""""""""""""""""
 " Autocommands
