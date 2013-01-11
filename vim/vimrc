@@ -97,7 +97,7 @@ nnoremap K <C-w>k
 
 nnoremap <tab> <C-w>w | "Fast cycling between windows
 
-" Resize windows
+" Resize windows horizontally
 nnoremap <silent>++ :5wincmd <<cr>
 nnoremap <silent>-- :5wincmd ><cr>
 
@@ -112,6 +112,24 @@ nnoremap <C-t>l gt
 nnoremap <C-t>h gT
 nnoremap tn :tabnew<cr>
 nnoremap tc :tabclose<cr>
+
+"""""""""""""""""""""""""""""""""""
+" Jump mappings
+"""""""""""""""""""""""""""""""""""
+nnoremap ' `
+nnoremap ` '
+
+"""""""""""""""""""""""""""""""""""
+" Copy/Paste mappings
+"""""""""""""""""""""""""""""""""""
+" Move lines with ease
+nnoremap <C-j> :m+<CR>==
+nnoremap <C-k> :m-2<CR>==
+vnoremap <C-j> :m'>+<CR>gv=gv
+vnoremap <C-k> :m-2<CR>gv=gv
+
+" Play with Yanked/Deleted objects
+nnoremap gV `[v`]
 
 """""""""""""""""""""""""""""""""""
 " Misc mappings
@@ -130,14 +148,6 @@ nnoremap <BS> :nohlsearch<CR>
 inoremap <C-e> <ESC>A| "Go to EOL in insert mode
 inoremap kk <ESC>:w<CR> | "save a file
 
-" Move lines with ease
-nnoremap <C-j> :m+<CR>==
-nnoremap <C-k>   :m-2<CR>==
-vnoremap <C-j> :m'>+<CR>gv=gv
-vnoremap <C-k>   :m-2<CR>gv=gv
-
-" Play with Yanked/Deleted objects
-nnoremap gV `[v`]
 
 """""""""""""""""""""""""""""""""""
 " Autocommands
