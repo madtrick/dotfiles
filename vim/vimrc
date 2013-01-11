@@ -68,7 +68,7 @@ filetype plugin indent on
 """""""""""""""""""""""""""""""""""
 " Easy .vimrc edition
 """""""""""""""""""""""""""""""""""
-nnoremap <leader>e :vsplit ~/.vimrc<CR>
+nnoremap <leader>e :tabedit ~/.vimrc<CR>
 nnoremap <leader>s :source ~/.vimrc<CR>
 nnoremap <leader>gs :source ~/.gvimrc<CR>
 

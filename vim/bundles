@@ -3,8 +3,9 @@
 "
 
 Bundle 'The-NERD-tree'
-" Nerdtree:  {{{
-noremap <leader>ñ :NERDTreeToggle<CR>
+Bundle 'jistr/vim-nerdtree-tabs'
+" Nerdtree-Tabs  {{{
+noremap <leader>ñ :NERDTreeTabsToggle<CR>
 "}}}
 Bundle 'scrooloose/nerdcommenter'
 
