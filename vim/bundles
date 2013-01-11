@@ -75,7 +75,26 @@ nmap <leader>A :Ack<space>
 Bundle 'ap/vim-css-color'
 Bundle 'Syntastic'
 Bundle 'groenewege/vim-less'
+Bundle 'delimitMate.vim'
+Bundle 'orftz/sbd.vim'
+" Sbd:{{{
+nnoremap <silent> <leader>C :Sbd<CR> "Close buffer but don't affect window arrangement
+"}}}
+Bundle 'Tabular'
+Bundle 'kana/vim-textobj-user'
+Bundle 'kana/vim-textobj-line'
+Bundle 'tomtom/quickfixsigns_vim'
+Bundle 'tpope/vim-rails'
+Bundle 'matchit.zip'
+Bundle 'jcf/vim-latex'
 
+" Vimlatex:{{{
+"Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+let g:Tex_ViewRule_pdf='Preview'
+"}}}
 "
 " Libs
 "
@@ -84,37 +103,4 @@ Bundle 'groenewege/vim-less'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'L9'
-
-"
-" Testing
-"
-Bundle 'orftz/sbd.vim'
-" Sbd:{{{
-nnoremap <silent> <leader>C :Sbd<CR> "Close buffer but don't affect window arrangement
-"}}}
-Bundle 'scratch'
-Bundle 'Tabular'
-"Bundle 'FuzzyFinder'
-Bundle 'Buffergator'
-"Bundle 'vim-indent-object'
-"Bundle 'Tagbar'
-" Tagbar:{{{
-" Tagbar mappings
-nnoremap <silent> <leader>tt :TagbarToggle<CR>
-"}}}
-Bundle 'tomtom/quickfixsigns_vim'
-Bundle 'AndrewRadev/simple_bookmarks.vim'
-Bundle 'tpope/vim-rails'
-Bundle 'delimitMate.vim'
-Bundle 'matchit.zip'
-Bundle 'kana/vim-textobj-user'
-Bundle 'kana/vim-textobj-line'
-Bundle 'jcf/vim-latex'
-" Vimlatex:{{{
-"Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-let g:Tex_ViewRule_pdf='Preview'
-"}}}
 " vim:ft=vim:fdm=marker
