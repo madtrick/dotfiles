@@ -66,7 +66,7 @@ bind left:cmd focus left
 bind right:cmd focus right
 
 # Hint bindings
-bind esc:cmd hint hjklnmuio
+bind esc:cmd hint hjklbnmyuio
 
 # Layout bindings
 #bind l:cmd layout 1monitor
