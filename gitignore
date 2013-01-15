@@ -1,0 +1,8 @@
+# vendored gems
+vendor/ruby/
+
+# Gembundler config
+.bundle/
+
+# Desktop Services Store
+.DS_Store
