@@ -1,8 +1,8 @@
 # Configs
-config defaultToCurrentScreen true
-config windowHintsShowIcons true
+config defaultToCurrentScreen         true
+config windowHintsShowIcons           true
 config windowHintsIgnoreHiddenWindows false
-config windowHintsSpread true
+config windowHintsSpread              true
 
 # Monitor aliases
 alias mon-air 1440x900
@@ -14,44 +14,44 @@ default 1monitor resolutions:${mon-air}
 # Position aliases
 alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
 
-alias third-window-width move windowTopLeftX;windowTopLeftY windowSizeX/3;windowSizeY
-alias half-window-width move windowTopLeftX;windowTopLeftY windowSizeX/2;windowSizeY
-alias half-window-height move windowTopLeftX;windowTopLeftY windowSizeX;windowSizeY/2
+alias third-window-width  move windowTopLeftX;windowTopLeftY windowSizeX/3;windowSizeY
+alias half-window-width   move windowTopLeftX;windowTopLeftY windowSizeX/2;windowSizeY
+alias half-window-height  move windowTopLeftX;windowTopLeftY windowSizeX;windowSizeY/2
 
-alias half-screen-width move windowTopLeftX;windowTopLeftY screenSizeX/2;screenSizeY
+alias half-screen-width     move windowTopLeftX;windowTopLeftY screenSizeX/2;screenSizeY
 alias onethird-screen-width move windowTopLeftX;windowTopLeftY screenSizeX/3;screenSizeY
 alias twothird-screen-width move windowTopLeftX;windowTopLeftY (screenSizeX*2)/3;screenSizeY
 
-alias move-half move screenSizeX/2;screenOriginY windowSizeX;windowSizeY
-alias corner-right corner top-right
-alias corner-left corner top-left
+alias move-half     move    screenSizeX/2;screenOriginY windowSizeX;windowSizeY
+alias corner-right  corner  top-right
+alias corner-left   corner  top-left
 
 alias fourth-third-right sequence focus left | ${twothird-screen-width} | focus right | ${onethird-screen-width} | ${corner-right}
 alias fourth-third-left sequence focus right > ${twothird-screen-width} | ${onethird-screen-width} | ${corner-right}
 alias half-half-right sequence ${move-half} | ${half-screen-width} | focus left | ${half-screen-width} | focus right
 
-alias half-screen-left sequence ${half-screen-width} | ${corner-left}
+alias half-screen-left  sequence ${half-screen-width} | ${corner-left}
 alias half-screen-right sequence ${half-screen-width} | ${corner-right}
 
-alias 2-throw-left throw 0 resize
+alias 2-throw-left throw  0 resize
 alias 2-throw-right throw 1 resize
-alias 2-throw-down throw 1 resize
-alias 2-throw-up throw 0 resize
+alias 2-throw-down throw  1 resize
+alias 2-throw-up throw    0 resize
 
 # Move/Resize bindings
 bind f:cmd;shift ${full}
 
-bind left:cmd;shift ${2-throw-left}
-bind right:cmd;shift ${2-throw-right}
-bind down:cmd;shift ${2-throw-down}
-bind up:cmd;shift ${2-throw-up}
+bind left:cmd;shift   ${2-throw-left}
+bind right:cmd;shift  ${2-throw-right}
+bind down:cmd;shift   ${2-throw-down}
+bind up:cmd;shift     ${2-throw-up}
 
 bind 1:alt;cmd ${fourth-third-left}
 bind 2:alt;cmd ${fourth-third-right}
 
-bind e:alt;cmd ${half-half-right}
-bind right:alt;cmd ${half-screen-right}
-bind left:alt;cmd ${half-screen-left}
+bind e:alt;cmd      ${half-half-right}
+bind right:alt;cmd  ${half-screen-right}
+bind left:alt;cmd   ${half-screen-left}
 
 # Push bindings
 #bind right:ctrl;shift push right bar-resize:screenSizeX/2
@@ -59,11 +59,11 @@ bind left:alt;cmd ${half-screen-left}
 
 # Nudge bindings
 bind right:ctrl;alt nudge +10% +0
-bind left:ctrl;alt nudge -10% +0
+bind left:ctrl;alt  nudge -10% +0
 
 # Focus bindings
-bind left:cmd focus left
-bind right:cmd focus right
+bind left:cmd   focus left
+bind right:cmd  focus right
 
 # Hint bindings
 bind esc:cmd hint hjklbnmyuio
@@ -73,6 +73,3 @@ bind esc:cmd hint hjklbnmyuio
 
 # Grid bindings
 bind esc:ctrl grid
-
-# Tab switcher
-#bind tab:cmd switch
