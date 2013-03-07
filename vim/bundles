@@ -3,6 +3,9 @@
 "
 
 Bundle 'The-NERD-tree'
+" Nerdtree  {{{
+let NERDTreeIgnore = ['\.aux$', '\.pdf$']
+"}}}
 Bundle 'jistr/vim-nerdtree-tabs'
 " Nerdtree-Tabs  {{{
 noremap <leader>ñ :NERDTreeTabsToggle<CR>
@@ -29,6 +32,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-coffee-script'
 Bundle 'Markdown'
 Bundle 'uarun/vim-protobuf'
+Bundle 'jcf/vim-latex'
 
 " Utils
 Bundle 'ctrlp.vim'
