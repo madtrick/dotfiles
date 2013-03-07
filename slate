@@ -3,6 +3,7 @@ config defaultToCurrentScreen         true
 config windowHintsShowIcons           true
 config windowHintsIgnoreHiddenWindows false
 config windowHintsSpread              true
+config windowHintsSpreadPadding       40
 
 # Monitor aliases
 alias mon-air 1440x900
@@ -23,15 +24,17 @@ alias onethird-screen-width move windowTopLeftX;windowTopLeftY screenSizeX/3;scr
 alias twothird-screen-width move windowTopLeftX;windowTopLeftY (screenSizeX*2)/3;screenSizeY
 
 alias move-half     move    screenSizeX/2;screenOriginY windowSizeX;windowSizeY
-alias corner-right  corner  top-right
-alias corner-left   corner  top-left
+alias corner-top-right  corner  top-right
+alias corner-top-left   corner  top-left
+alias corner-bottom-right corner bottom-right
+alias corner-bottom-left  corner bottom-left
 
-alias fourth-third-right sequence focus left | ${twothird-screen-width} | focus right | ${onethird-screen-width} | ${corner-right}
-alias fourth-third-left sequence focus right > ${twothird-screen-width} | ${onethird-screen-width} | ${corner-right}
+alias fourth-third-right sequence focus left | ${twothird-screen-width} | focus right | ${onethird-screen-width} | ${corner-top-right}
+alias fourth-third-left sequence focus right > ${twothird-screen-width} | ${onethird-screen-width} | ${corner-top-right}
 alias half-half-right sequence ${move-half} | ${half-screen-width} | focus left | ${half-screen-width} | focus right
 
-alias half-screen-left  sequence ${half-screen-width} | ${corner-left}
-alias half-screen-right sequence ${half-screen-width} | ${corner-right}
+alias half-screen-left  sequence ${half-screen-width} | ${corner-top-left}
+alias half-screen-right sequence ${half-screen-width} | ${corner-top-right}
 
 alias 2-throw-left throw  0 resize
 alias 2-throw-right throw 1 resize
@@ -46,16 +49,17 @@ bind right:cmd;shift  ${2-throw-right}
 bind down:cmd;shift   ${2-throw-down}
 bind up:cmd;shift     ${2-throw-up}
 
-bind 1:alt;cmd ${fourth-third-left}
-bind 2:alt;cmd ${fourth-third-right}
+#bind 1:alt;cmd ${fourth-third-left}
+#bind 2:alt;cmd ${fourth-third-right}
 
 bind e:alt;cmd      ${half-half-right}
 bind right:alt;cmd  ${half-screen-right}
 bind left:alt;cmd   ${half-screen-left}
 
-# Push bindings
-#bind right:ctrl;shift push right bar-resize:screenSizeX/2
-#bind left:ctrl;shift push left center
+#bind i:fn;ctrl ${corner-top-right}
+#bind u:fn;ctrl ${corner-top-left}
+#bind k:fn;ctrl ${corner-bottom-right}
+#bind j:fn;ctrl ${corner-bottom-left}
 
 # Nudge bindings
 bind right:ctrl;alt nudge +10% +0
@@ -73,3 +77,6 @@ bind esc:cmd hint hjklbnmyuio
 
 # Grid bindings
 bind esc:ctrl grid
+
+# Reload slate
+bind r:ctrl;alt;cmd relaunch
