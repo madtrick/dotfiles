@@ -4,6 +4,8 @@ let mapleader = "ñ"
 if exists('$TMUX')
   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  " Copy to the clipboard when yankin
+  set clipboard=unnamed
 else
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
@@ -39,6 +41,10 @@ set cursorcolumn
 set scrolloff    =10
 set wildmenu
 set wildmode=list:longest
+" Execute commands in per-project .vimrc files
+set exrc
+set secure
+
 set nocompatible               " be iMproved
 filetype off                   " required! by vundle
 set rtp+=~/.vim/bundle/vundle/
@@ -154,7 +160,6 @@ inoremap kk <ESC>:w<CR> | "save a file
 """""""""""""""""""""""""""""""""""
 " Autocommands
 """""""""""""""""""""""""""""""""""
-
 " Set erb files with coffeescript in it, to be interpreted as coffee
 autocmd BufRead *.coffee.erb :set ft=coffee
 
