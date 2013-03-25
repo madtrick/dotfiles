@@ -4,7 +4,6 @@
 
 Bundle 'The-NERD-tree'
 " Nerdtree  {{{
-let NERDTreeIgnore = ['\.aux$', '\.pdf$']
 "}}}
 Bundle 'jistr/vim-nerdtree-tabs'
 " Nerdtree-Tabs  {{{
