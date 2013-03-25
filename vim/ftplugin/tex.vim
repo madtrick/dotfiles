@@ -5,4 +5,6 @@ imap <buffer> <leader>it <Plug>Tex_InsertItemOnThisLine
 
 " But the solution given in the faq is not enough. We have to remove
 " the mapping too
-iunmap <buffer> é
+if mapcheck("é", "i") != ""
+  iunmap <buffer> é
+endif
