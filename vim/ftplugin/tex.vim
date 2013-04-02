@@ -8,3 +8,5 @@ imap <buffer> <leader>it <Plug>Tex_InsertItemOnThisLine
 if mapcheck("é", "i") != ""
   iunmap <buffer> é
 endif
+
+let g:Tex_MultipleCompileFormats = 'pdf'
