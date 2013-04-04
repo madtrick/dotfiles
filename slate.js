@@ -67,6 +67,40 @@ var fullHeight = S.op("move", {
   "height": "screenSizeY"
 });
 
+var widthSlice = function(slice){
+  return S.op("move",{
+      "x" : "windowTopLeftX",
+      "y" : "windowTopLeftY",
+      "width" : function(){
+        return Math.round(S.screen().rect().width*slice);
+      },
+      "height" : "windowSizeY"
+  });
+};
+
+var moveTo = function(to){
+  return S.op("move",{
+      "x" : function(){
+        var x,
+            windowWidth = S.app().mainWindow().size().width,
+            screenWidth = S.screen().rect().width;
+
+        if (to === "left"){
+          x = screenWidth - windowWidth;
+        }
+
+        if (to === "right"){
+          x = "screenOriginX";
+        }
+
+        return x;
+      },
+      "y" : "windowTopLeftY",
+      "width" : "windowSizeX",
+      "height" : "windowSizeY"
+  });
+};
+
 /*
  * Bindings
  */
@@ -79,7 +113,11 @@ S.bind("3:alt;cmd", quarterBottomLeft);
 S.bind("4:alt;cmd", quarterBottomRight);
 S.bind("h:alt;cmd", halfScreen);
 S.bind("l:alt;cmd", fullHeight);
+S.bind("4:shift;cmd", widthSlice(4/12));
+S.bind("8:shift;cmd", widthSlice(8/12));
 
+S.bind("l:ctrl;alt;cmd", moveTo("left"));
+S.bind("k:ctrl;alt;cmd", moveTo("right"));
 /*
  * Helpers
  */
