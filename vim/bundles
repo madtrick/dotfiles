@@ -78,7 +78,7 @@ nmap <leader>A :Ack<space>
 Bundle 'ap/vim-css-color'
 Bundle 'Syntastic'
 Bundle 'groenewege/vim-less'
-Bundle 'delimitMate.vim'
+"Bundle 'delimitMate.vim'
 Bundle 'orftz/sbd.vim'
 " Sbd:{{{
 nnoremap <silent> <leader>C :Sbd<CR> "Close buffer but don't affect window arrangement
@@ -90,7 +90,6 @@ Bundle 'tomtom/quickfixsigns_vim'
 Bundle 'tpope/vim-rails'
 Bundle 'matchit.zip'
 Bundle 'jcf/vim-latex'
-
 " Vimlatex:{{{
 "Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
@@ -98,6 +97,8 @@ Bundle 'jcf/vim-latex'
 let g:tex_flavor='latex'
 let g:Tex_ViewRule_pdf='Preview'
 "}}}
+Bundle 'Auto-Pairs'
+
 "
 " Libs
 "

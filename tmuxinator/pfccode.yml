@@ -6,16 +6,21 @@ project_root: ~/Repos/personal
 tabs:
   - qrauth :
     - cd qrauth
-    - vim .
+    - vim
   - qra4wa :
     - cd qr4wa
-    - vim .
+    - vim
   - qrauthclient4r :
     - cd qrauthclient4r
-    - vim .
+    - vim
   - wsep :
     - cd wsep
-    - vim .
+    - vim
+  - qrauthmockclient :
+    - cd qrauthmockclient
+    - vim
   - wiki :
     - cd pfcwiki
-    - vim .
+    - vim
+  - bash :
+    - cd repos

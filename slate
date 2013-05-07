@@ -44,10 +44,10 @@ alias 2-throw-up throw    0 resize
 # Move/Resize bindings
 bind f:cmd;shift ${full}
 
-bind left:cmd;shift   ${2-throw-left}
-bind right:cmd;shift  ${2-throw-right}
-bind down:cmd;shift   ${2-throw-down}
-bind up:cmd;shift     ${2-throw-up}
+#bind left:cmd;shift   ${2-throw-left}
+#bind right:cmd;shift  ${2-throw-right}
+#bind down:cmd;shift   ${2-throw-down}
+#bind up:cmd;shift     ${2-throw-up}
 
 #bind 1:alt;cmd ${fourth-third-left}
 #bind 2:alt;cmd ${fourth-third-right}
@@ -66,8 +66,8 @@ bind right:ctrl;alt nudge +10% +0
 bind left:ctrl;alt  nudge -10% +0
 
 # Focus bindings
-bind left:cmd   focus left
-bind right:cmd  focus right
+#bind left:cmd   focus left
+#bind right:cmd  focus right
 
 # Hint bindings
 bind esc:cmd hint hjklbnmyuio
