@@ -17,10 +17,11 @@ Bundle 'Impact'
 Bundle 'jellybeans.vim'
 Bundle 'twilight256.vim'
 Bundle 'xoria256.vim'
-Bundle 'solarized'
 Bundle 'sjl/badwolf'
 Bundle 'Zenburn'
 Bundle 'noahfrederick/Hemisu'
+Bundle 'Solarized'
+
 "
 " Language plugins
 "Bundle 'Vimerl'
@@ -29,23 +30,28 @@ let erlang_show_errors       =  0 " Don't show errors on erlang files
 "}}}
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-coffee-script'
-Bundle 'Markdown'
-Bundle 'uarun/vim-protobuf'
-Bundle 'jcf/vim-latex'
+"Bundle 'Markdown'
+"Bundle 'uarun/vim-protobuf'
 
 " Utils
 Bundle 'ctrlp.vim'
 " Ctrlp:  {{{
 " wildignore is a internal option but it's used by ctrlp and ctrl-T
-set wildignore  +=*.git "exclude .git dir
-set wildignore  +=*.beam "exclude erlang's object files
-set wildignore  +=.bundle
-set wildignore  +=*vendor/ruby/*
-set wildignore  +=*/.tmp/*
+"set wildignore  +=*.git "exclude .git dir
+"set wildignore  +=*.beam "exclude erlang's object files
+"set wildignore  +=.bundle
+"set wildignore  +=*vendor/ruby/*
+"set wildignore  +=*/.tmp/*
+
+let g:ctrlp_custom_ignore = '\.git$\|'
+let g:ctrlp_custom_ignore .= '\.beam$\|'
+let g:ctrlp_custom_ignore .= '\vendor/ruby$\|'
+let g:ctrlp_custom_ignore .= '\.tmp$\|'
+"let g:ctrlp_custom_ignore .= '\.DS_Store$'
 " Hack to fix the root directory for ctrlp
 autocmd VimEnter * :nnoremap <c-p> :CtrlP pwd<CR>
 "}}}
-Bundle 'EasyMotion'
+"Bundle 'EasyMotion'
 " Easymotion:{{{
 let g:EasyMotion_leader_key  =  '<leader>m' " Change EasyMotion default leader key to <leader>'m'
 "}}}
@@ -89,7 +95,7 @@ Bundle 'kana/vim-textobj-line'
 Bundle 'tomtom/quickfixsigns_vim'
 Bundle 'tpope/vim-rails'
 Bundle 'matchit.zip'
-Bundle 'jcf/vim-latex'
+"Bundle 'jcf/vim-latex'
 " Vimlatex:{{{
 "Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
@@ -98,6 +104,7 @@ let g:tex_flavor='latex'
 let g:Tex_ViewRule_pdf='Preview'
 "}}}
 Bundle 'Auto-Pairs'
+"Bundle 'abolish.vim'
 
 "
 " Libs

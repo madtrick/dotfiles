@@ -86,7 +86,9 @@ var twoMonitorThrow = function(to){
   if (to === "up") screenReference = "0";
 
   return S.op("throw",{
-    "screen" : screenReference
+    "screen" : screenReference,
+    "width" : "screenSizeX",
+     "height" : "screenSizeY"
   });
 };
 

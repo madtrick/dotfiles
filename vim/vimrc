@@ -63,7 +63,9 @@ syntax enable
 
 " vim colorscheme for terminal
 if !has("gui_running")
-  color badwolf
+  "color badwolf
+  "color solarized
+  color molokai
 endif
 
 " Filetype
