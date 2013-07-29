@@ -15,6 +15,7 @@
   com = commit
   cl = !bash -ic 'git_clone_config' | xargs -I configvalues git clone --config configvalues --
   ba = branch -a
-#[push]
-#  default = simple
+[push]
+  default = simple
+
   # vim:ft=sh
