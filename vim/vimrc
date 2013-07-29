@@ -66,6 +66,16 @@ if !has("gui_running")
   "color badwolf
   "color solarized
   color molokai
+
+  " Fix for the ESC delay using powerline
+  " Got at: http://usevim.com/2013/07/24/powerline-escape-fix/
+  " and also at: https://gist.github.com/brendonrapp/5944296
+  set ttimeoutlen=10
+  augroup FastEscape
+    autocmd!
+    au InsertEnter * set timeoutlen=0
+    au InsertLeave * set timeoutlen=1000
+  augroup END
 endif
 
 " Filetype
