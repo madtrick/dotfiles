@@ -24,7 +24,6 @@ Bundle 'Solarized'
 
 "
 " Language plugins
-"Bundle 'Vimerl'
 " Vimerl: {{{
 let erlang_show_errors       =  0 " Don't show errors on erlang files
 "}}}
@@ -51,30 +50,13 @@ let g:ctrlp_custom_ignore .= '\.tmp$\|'
 " Hack to fix the root directory for ctrlp
 autocmd VimEnter * :nnoremap <c-p> :CtrlP pwd<CR>
 "}}}
-"Bundle 'EasyMotion'
-" Easymotion:{{{
-let g:EasyMotion_leader_key  =  '<leader>m' " Change EasyMotion default leader key to <leader>'m'
-"}}}
-Bundle 'fugitive.vim'
-" Fugitive:{{{
-" Fugitive mappings
-nnoremap gs :Gstatus<CR>
-nnoremap gd :Gdiff<CR>
-"}}}
-Bundle 'Lokaltog/vim-powerline'
-" Powerline:{{{
-let g:Powerline_symbols      =  'fancy' " use fancy symbols
-"}}}
-Bundle 'ZoomWin'
+Bundle 'tpope/vim-fugitive'
 Bundle 'surround.vim'
 " Surround:{{{
 " Surround mappings
 nmap <leader>" ysiw"E
 nmap <leader>' ysiw'E
 "}}}
-"vim-snipmate must be loaded before than supertab
-"Bundle 'garbas/vim-snipmate'
-"Bundle 'honza/snipmate-snippets'
 Bundle 'ervandew/supertab'
 Bundle 'ack.vim'
 " Ack:{{{
@@ -84,7 +66,6 @@ nmap <leader>A :Ack<space>
 Bundle 'ap/vim-css-color'
 Bundle 'Syntastic'
 Bundle 'groenewege/vim-less'
-"Bundle 'delimitMate.vim'
 Bundle 'orftz/sbd.vim'
 " Sbd:{{{
 nnoremap <silent> <leader>C :Sbd<CR> "Close buffer but don't affect window arrangement
@@ -92,7 +73,6 @@ nnoremap <silent> <leader>C :Sbd<CR> "Close buffer but don't affect window arran
 Bundle 'Tabular'
 Bundle 'kana/vim-textobj-user'
 Bundle 'kana/vim-textobj-line'
-Bundle 'tomtom/quickfixsigns_vim'
 Bundle 'tpope/vim-rails'
 Bundle 'matchit.zip'
 "Bundle 'jcf/vim-latex'
@@ -104,14 +84,26 @@ let g:tex_flavor='latex'
 let g:Tex_ViewRule_pdf='Preview'
 "}}}
 Bundle 'Auto-Pairs'
-"Bundle 'abolish.vim'
+Bundle 'bling/vim-airline'
+" Vim-airline{{{
+let g:airline_powerline_fonts=1
+let g:airline_enable_branch=1
+let g:airline_theme='badwolf'
+
+"Setting here the symbols was the only way I found to
+" show the glyphs in the statusline (got at
+" https://github.com/bling/vim-airline/issues/76?source=cc)
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+let g:airline_branch_prefix = '⭠'
+let g:airline_readonly_symbol = '⭤'
+let g:airline_linecolumn_prefix = '⭡'
+"}}}
 
 "
 " Libs
 "
-" vim-addon-mw-utils and tlib are
-" dependencies of snipmate
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
 Bundle 'L9'
 " vim:ft=vim:fdm=marker

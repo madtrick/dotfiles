@@ -45,6 +45,12 @@ set wildmode=list:longest
 set exrc
 set secure
 
+" Reduce timeout after <ESC> is recvd. This is only a good idea on fast links.
+" Got at: https://code.google.com/p/iterm2/issues/detail?id=1322
+set ttimeout
+set ttimeoutlen=20
+set notimeout
+
 set nocompatible               " be iMproved
 filetype off                   " required! by vundle
 set rtp+=~/.vim/bundle/vundle/
@@ -63,19 +69,7 @@ syntax enable
 
 " vim colorscheme for terminal
 if !has("gui_running")
-  "color badwolf
-  "color solarized
   color molokai
-
-  " Fix for the ESC delay using powerline
-  " Got at: http://usevim.com/2013/07/24/powerline-escape-fix/
-  " and also at: https://gist.github.com/brendonrapp/5944296
-  set ttimeoutlen=10
-  augroup FastEscape
-    autocmd!
-    au InsertEnter * set timeoutlen=0
-    au InsertLeave * set timeoutlen=1000
-  augroup END
 endif
 
 " Filetype
