@@ -53,12 +53,24 @@ var quarterBottomLeft = S.op("move",{
     "height": "screenSizeY/2"
 });
 
-var halfScreen = S.op("move", {
-  "x" : "screenOriginX",
-  "y" : "screenOriginY",
-  "width" : "screenSizeX/2",
-  "height": "screenSizeY"
-});
+var halfScreen = function(where){
+  var origin;
+  if (where === undefined)
+    origin = "windowTopLeftX"
+
+  if (where === "left")
+    origin = "screenOriginX"
+
+  if (where === "right")
+    origin = "screenOriginX+(screenSizeX/2)"
+ 
+ return S.op("move", {
+    "x" : origin,
+    "y" : "screenOriginY",
+    "width" : "screenSizeX/2",
+    "height": "screenSizeY"
+  });
+};
 
 var fullHeight = S.op("move", {
   "x" : "windowTopLeftX",
@@ -141,6 +153,13 @@ var oneMonitorScreenConfigBig = {
   }
 };
 
+var oneMonitorScreenConfigLaptop = {
+  resolutions : [monitorsResolutions.macbook],
+  screens : {
+    macbook : 0
+  }
+};
+
 /************************************
  * Layout setups
  ************************************/
@@ -162,10 +181,8 @@ var twoMonitorLayouBigUpLaptopDown = S.layout("twoMonitorLayouBigUpLaptopDown", 
 
 var oneMonitorLayoutBig = S.layout("oneMonitorLayoutBig", {
   "iTerm" : {
-    /*
-     * NOTE: 
-     * I have to use a function to apply to operations to the same window as "chain" and "sequence" didn't work
-     */
+     //NOTE: 
+     //I have to use a function to apply to operations to the same window as "chain" and "sequence" didn't work
      
     operations : [function(win){
       win.doOperation(widthSlice(8/12));
@@ -174,11 +191,9 @@ var oneMonitorLayoutBig = S.layout("oneMonitorLayoutBig", {
     }]
   },
   "Google Chrome" : {
-    /*
-     * NOTE: using the win object to move the Chrome window doesn't work 
-     * see https://github.com/jigish/slate/issues/287
-     */
+     //see https://github.com/jigish/slate/issues/287
     //operations : [function(win){
+    //NOTE: using the win object to move the Chrome window doesn't work 
     //  win.doOperation(widthSlice(4/12));
     //  win.doOperation(fullHeight);
     //  win.doOperation(moveTo("right"));
@@ -190,6 +205,11 @@ var oneMonitorLayoutBig = S.layout("oneMonitorLayoutBig", {
       height: "screenSizeY"
     })]
   }
+});
+
+var oneMonitorLayoutLaptop = S.layout("oneMonitorLayoutLaptop", {
+  "iTerm" : { operations : [fullscreen] },
+  "Google Chrome" : { operations : [fullscreen] }
 });
 
 var latexEditionLayout = S.layout("latexEditionLayout", {
@@ -212,36 +232,43 @@ var latexEditionLayout = S.layout("latexEditionLayout", {
 /************************************
  * Binding setups
  ************************************/
-S.bind("g:alt;cmd", fullscreen);
-S.bind("c:alt;cmd", center);
 S.bind("1:alt;cmd", quarterTopRight);
 S.bind("2:alt;cmd", quarterTopLeft);
 S.bind("3:alt;cmd", quarterBottomLeft);
 S.bind("4:alt;cmd", quarterBottomRight);
-S.bind("h:alt;cmd", halfScreen);
-S.bind("l:alt;cmd", fullHeight);
 S.bind("4:shift;cmd", widthSlice(4/12));
 S.bind("8:shift;cmd", widthSlice(8/12));
-S.bind("left:cmd;shift", twoMonitorThrow("left"));
-S.bind("right:cmd;shift", twoMonitorThrow("right"));
-S.bind("up:cmd;shift", twoMonitorThrow("up"));
-S.bind("down:cmd;shift", twoMonitorThrow("down"));
+
 S.bind("left:cmd", focusTo("left"));
+S.bind("left:alt;cmd", halfScreen("left"));
+S.bind("left:cmd;shift", twoMonitorThrow("left"));
+
 S.bind("right:cmd", focusTo("right"));
+S.bind("right:alt;cmd", halfScreen("right"));
+S.bind("right:cmd;shift", twoMonitorThrow("right"));
+
 S.bind("up:cmd", focusTo("up"));
+S.bind("up:cmd;shift", twoMonitorThrow("up"));
+
 S.bind("down:cmd", focusTo("down"));
+S.bind("down:cmd;shift", twoMonitorThrow("down"));
 
-S.bind("l:ctrl;alt;cmd", moveTo("left"));
+S.bind("c:alt;cmd", center);
+S.bind("g:alt;cmd", fullscreen);
+S.bind("h:alt;cmd", halfScreen());
 S.bind("k:ctrl;alt;cmd", moveTo("right"));
+S.bind("l:alt;cmd", fullHeight);
+S.bind("l:ctrl;alt;cmd", moveTo("left"));
 
-S.bind("l:fn;ctrl;alt", S.op("layout", {name : latexEditionLayout}));
-S.bind("p:fn;ctrl;alt", S.op("layout", {name : oneMonitorLayoutBig}));
+S.bind("r:ctrl;alt;cmd", S.op("relaunch"))
 
 /************************************
  * Default setups
  ************************************/
-S.default(twoMonitorScreenConfigBigUpLaptopDown.resolutions, twoMonitorLayouBigUpLaptopDown);
-S.default(oneMonitorScreenConfigBig.resolutions, oneMonitorLayoutBig);
+S.default(twoMonitorScreenConfigBigUpLaptopDown.resolutions, "twoMonitorLayouBigUpLaptopDown");
+S.default(oneMonitorScreenConfigBig.resolutions, "oneMonitorLayoutBig");
+S.default(oneMonitorScreenConfigLaptop.resolutions, "oneMonitorLayoutLaptop");
+
 /*
  * Helpers
  */
