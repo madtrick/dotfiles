@@ -11,6 +11,7 @@ alias gcm="git commit"
 alias gac="gau && gcm"
 alias glg="git lg"
 alias gdi="git diff"
+alias gfp="git fetch --prun"
 
 alias tmux="tmux -2" #Force 256 colors
 alias tmuxls="tmux list-sessions"
