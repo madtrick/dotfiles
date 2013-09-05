@@ -44,4 +44,10 @@ function colors(){
   done
 }
 
+# Resource .bashrc file
+function resource(){
+  green "Reloading bashrc file"
+  . ~/.bashrc
+}
+
 # vim:ft=sh
