@@ -14,3 +14,11 @@ function green() {
 function yellow() {
     echo -e "$YELLOW$*$NORMAL"
 }
+
+# Utility function to open bitbucket pages from the command line
+function _open_bb_page {
+  local page="https://bitbucket.$(git config remote.origin.url | cut -f2 -d. | sed -e 's/:/\//')"
+  open $page/$1
+}
+
+# vim:ft=sh

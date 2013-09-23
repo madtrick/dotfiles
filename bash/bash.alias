@@ -13,7 +13,9 @@ alias glg="git lg"
 alias gdi="git diff"
 alias gfp="git fetch --prun"
 alias gba="git ba"
-alias bi="open https://bitbucket.$(git config remote.origin.url | cut -f2 -d. | sed -e 's/:/\//')"
+alias bi="_open_bb_page"
+alias bip="_open_bb_page 'pull-requests'"
+alias bin="_open_bb_page 'pull-request/new'"
 alias gi="open https://github.$(git config remote.origin.url | cut -f2 -d. | sed -e 's/:/\//')"
 
 alias tmux="tmux -2" #Force 256 colors
