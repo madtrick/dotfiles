@@ -50,4 +50,14 @@ function resource(){
   . ~/.bashrc
 }
 
+# Launch python SimpleHTTPServer
+function python_http_server(){
+  if [ -z "$1" ]
+  then
+    python -m SimpleHTTPServer
+  else
+    python -m SimpleHTTPServer $1
+  fi
+}
+
 # vim:ft=sh

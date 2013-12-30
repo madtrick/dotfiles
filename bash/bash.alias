@@ -22,4 +22,6 @@ alias tmux="tmux -2" #Force 256 colors
 alias tmuxls="tmux list-sessions"
 alias tmuxkill="tmux kill-session -t"
 alias tmuxatc="tmux attach-session -t"
+
+alias pyhttp=python_http_server
 # vim:ft=sh
