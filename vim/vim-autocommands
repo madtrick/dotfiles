@@ -1,0 +1,21 @@
+"""""""""""""""""""""""""""""""""""
+" Autocommands
+"""""""""""""""""""""""""""""""""""
+" Set erb files with coffeescript in it, to be interpreted as coffee
+autocmd BufRead *.coffee.erb :set ft=coffee
+
+" Move all vim help files to the right
+augroup Help2Right
+  autocmd!
+  autocmd BufRead $HOME/.vim/*/doc/* :wincmd L
+  autocmd BufRead */vim/*/doc/* :wincmd L
+augroup end
+
+" Close help without :q
+augroup HelpClose
+  autocmd!
+  autocmd! BufRead */vim/*/doc/* :nmap <buffer> q :q<CR> " Close help with q (local mapping)
+  autocmd! BufRead $HOME/.vim/*/doc/* :nmap <buffer> q :q<CR>
+augroup end
+
+" vim:ft=vim

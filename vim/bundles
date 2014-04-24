@@ -1,12 +1,20 @@
-Bundle 'The-NERD-tree'
-" Nerdtree  {{{
+""""""""""""""""""""""""""""""""""""""""
+" UI ENHANCEMENTS
+""""""""""""""""""""""""""""""""""""""""
+"Bundle 'The-NERD-tree'
+"" Nerdtree  {{{
 "}}}
-Bundle 'jistr/vim-nerdtree-tabs'
-" Nerdtree-Tabs  {{{
-noremap <leader>ñ :NERDTreeTabsToggle<CR>
-"}}}
+"Bundle 'jistr/vim-nerdtree-tabs'
+"" Nerdtree-Tabs  {{{
+"noremap <leader>ñ :NERDTreeTabsToggle<CR>
+""}}}
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'bling/vim-airline'
+Bundle 'tpope/vim-vinegar'
+
+""""""""""""""""""""""""""""""""""""""""
+" UTILS
+""""""""""""""""""""""""""""""""""""""""
 " Vim-airline{{{
 let g:airline_powerline_fonts=1
 let g:airline_enable_branch=1
@@ -24,27 +32,6 @@ let g:airline_readonly_symbol = '⭤'
 let g:airline_linecolumn_prefix = '⭡'
 "}}}
 Bundle 'LustyJuggler'
-
-"" Themes
-"Bundle 'molokai'
-"Bundle 'Impact'
-"Bundle 'jellybeans.vim'
-"Bundle 'twilight256.vim'
-"Bundle 'xoria256.vim'
-Bundle 'sjl/badwolf'
-"Bundle 'Zenburn'
-"Bundle 'noahfrederick/Hemisu'
-"Bundle 'Solarized'
-
-""
-"" Language plugins
-"" Vimerl: {{{
-"let erlang_show_errors       =  0 " Don't show errors on erlang files
-""}}}
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'vim-coffee-script'
-
-" Utils
 Bundle 'ctrlp.vim'
 " Ctrlp:  {{{
 " wildignore is a internal option but it's used by ctrlp and ctrl-T
@@ -54,11 +41,11 @@ Bundle 'ctrlp.vim'
 "set wildignore  +=*vendor/ruby/*
 "set wildignore  +=*/.tmp/*
 
-let g:ctrlp_custom_ignore = '\.git$\|'
-let g:ctrlp_custom_ignore .= '\.beam$\|'
-let g:ctrlp_custom_ignore .= '\vendor/ruby$\|'
-let g:ctrlp_custom_ignore .= '\.tmp$\|'
-"let g:ctrlp_custom_ignore .= '\.DS_Store$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir' : 'vendor/ruby/\|.git/\|node_modules/\|bower_components/',
+  \ 'file' : '.beam$'
+  \}
+
 " Hack to fix the root directory for ctrlp
 autocmd VimEnter * :nnoremap <c-p> :CtrlP pwd<CR>
 "}}}
@@ -75,40 +62,80 @@ Bundle 'ack.vim'
 nmap <leader>A :Ack<space>
 "}}}
 "Bundle 'Syntastic'
+Bundle 'tpope/vim-jdaddy'
+
+""""""""""""""""""""""""""""""""""""""""
+" THEMES
+""""""""""""""""""""""""""""""""""""""""
+Bundle 'sjl/badwolf'
+Bundle 'molokai'
+"Bundle 'Impact'
+"Bundle 'jellybeans.vim'
+"Bundle 'twilight256.vim'
+"Bundle 'xoria256.vim'
+"Bundle 'Zenburn'
+"Bundle 'noahfrederick/Hemisu'
+Bundle 'Solarized'
+
+
+""""""""""""""""""""""""""""""""""""""""
+" LANGUAGES
+""""""""""""""""""""""""""""""""""""""""
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'vim-coffee-script'
+
+""""""""""""""""""""""""""""""""""""""""
+" MOTIONS
+""""""""""""""""""""""""""""""""""""""""
+Bundle 'goldfeld/vim-seek'
+" Vim-seek{{{
+let g:seek_subst_disable=1
+let g:seek_enable_jumps=1
+"}}}
+
+" Utils
 Bundle 'orftz/sbd.vim'
 " Sbd:{{{
 nnoremap <silent> <leader>C :Sbd<CR> "Close buffer but don't affect window arrangement
 "}}}
 Bundle 'Tabular'
+" Tabular{{{
+nmap t= :Tabularize /=
+nmap t: :Tabularize /=
+vmap t= :Tabularize /=
+vmap t: :Tabularize /=
+"}}}
 Bundle 'kana/vim-textobj-user'
 Bundle 'kana/vim-textobj-line'
-Bundle 'tpope/vim-rails'
 Bundle 'matchit.zip'
-Bundle 'jcf/vim-latex'
+Bundle 'Auto-Pairs'
+Bundle 'tpope/vim-unimpaired'
+
+Bundle 'mbbill/undotree'
+Bundle 'abolish.vim'
+
+Bundle 'rizzatti/dash.vim'
+Bundle 'justinmk/vim-gtfo'
+
+
+""""""""""""""""""""""""""""""""""""""""
+" DISABLED PLUGINS
+""""""""""""""""""""""""""""""""""""""""
+"Bundle 'jcf/vim-latex'
 " Vimlatex:{{{
 "Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
 " The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-let g:Tex_ViewRule_pdf='Preview'
-"}}}
-Bundle 'Auto-Pairs'
-
-Bundle 'rainbow_parentheses.vim'
-" RainbowParentheses{{{
-nnoremap <leader>r :RainbowParenthesesToggle<CR>
+"let g:tex_flavor='latex'
+"let g:Tex_ViewRule_pdf='Preview'
 "}}}
 
-"
-" Libs
-"
+
+""""""""""""""""""""""""""""""""""""""""
+" LIBRARIES
+""""""""""""""""""""""""""""""""""""""""
 Bundle 'L9'
-
-" Out os use
-"Bundle 'ap/vim-css-color'
-"Bundle 'groenewege/vim-less'
-"Bundle 'tpope/vim-fugitive'
-"Bundle 'Markdown'
-"Bundle 'uarun/vim-protobuf'
+" Funcoo is a dependency of dash
+Bundle 'rizzatti/funcoo.vim'
 
 " vim:ft=vim:fdm=marker

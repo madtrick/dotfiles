@@ -1,0 +1,85 @@
+"""""""""""""""""""""""""""""""""""
+" Easy .vimrc edition
+"""""""""""""""""""""""""""""""""""
+nnoremap <leader>e :tabedit ~/.vimrc<CR>
+nnoremap <leader>s :source ~/.vimrc<CR>
+nnoremap <leader>gs :source ~/.gvimrc<CR>
+
+"""""""""""""""""""""""""""""""""""
+" Bundles mappings
+"""""""""""""""""""""""""""""""""""
+
+" Open bundles file
+nnoremap <leader>bu :tabedit ~/.vim/bundles<CR>
+
+" Bundle shortcuts
+nnoremap <leader>Bs :BundleSearch<CR>
+nnoremap <leader>Bl :BundleList<CR>
+nnoremap <leader>Bi :BundleInstall<CR>
+
+"""""""""""""""""""""""""""""""""""
+" Windows mappings
+"""""""""""""""""""""""""""""""""""
+
+" Move with ease
+nnoremap H <C-w>h
+nnoremap L <C-w>l
+nnoremap J <C-w>j
+nnoremap K <C-w>k
+
+"nnoremap <tab> <C-w>w | "Fast cycling between windows
+
+" Resize windows horizontally
+"nnoremap <silent>++ :5wincmd <<cr>
+"nnoremap <silent>-- :5wincmd ><cr>
+
+"""""""""""""""""""""""""""""""""""
+" Tabs mappings
+"""""""""""""""""""""""""""""""""""
+
+" Change focused tab
+nnoremap <leader>tl gt
+nnoremap <leader>th gT
+nnoremap tc :tabclose<cr>
+nnoremap tn :tabnew<cr>
+
+"""""""""""""""""""""""""""""""""""
+" Jump mappings
+"""""""""""""""""""""""""""""""""""
+nnoremap ' `
+nnoremap ` '
+
+"""""""""""""""""""""""""""""""""""
+" Copy/Paste mappings
+"""""""""""""""""""""""""""""""""""
+" Move lines with ease
+nnoremap <C-j> :m+<CR>==
+nnoremap <C-k> :m-2<CR>==
+vnoremap <C-j> :m'>+<CR>gv=gv
+vnoremap <C-k> :m-2<CR>gv=gv
+
+" Play with Yanked/Deleted objects
+nnoremap gV `[v`]
+
+"""""""""""""""""""""""""""""""""""
+" Misc mappings
+"""""""""""""""""""""""""""""""""""
+" Hacky mapping to show TODOS
+" currently only search in the src/ of the working dir
+nnoremap <leader>sT :silent execute 'Ack "TODO" '. getcwd() .'/src'<cr>
+
+" Help mappings
+nnoremap <leader>H :vert help<space>
+
+nnoremap <space>  @q "Execute the macro in register q
+nnoremap <space><space> @@ "Execute again last executed macro
+
+nnoremap <BS> :nohlsearch<CR>
+inoremap <C-e> <ESC>A| "Go to EOL in insert mode
+inoremap kk <ESC>:w<CR> | "save a file
+
+" Close the QuickFix window
+nnoremap <leader>qc :cclose<CR>
+
+
+" vim:ft=vim

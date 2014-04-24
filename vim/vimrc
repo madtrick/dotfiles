@@ -1,11 +1,6 @@
 " Leader key
 let mapleader = "ñ"
 
-" Temporary macro. Delete when finished with
-" sgcaispinc process
-let @q = '_d/inputi.addField(new routines.StringField("f.wyiwF"Pviw~f)i,ndt;2F)Pf;dl'
-let @p = '@qj@p'
-
 if exists('$TMUX')
   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
@@ -19,8 +14,7 @@ endif
 " If the encoding is not set early then some characters
 " like the one used in showbreak look weird
 set encoding=utf-8
-" Backpsace everywhere in insert mode
-set backspace=start,eol,indent
+set backspace=start,eol,indent " Backpsace everywhere in insert mode
 set tabstop      =2
 set softtabstop  =2
 set shiftwidth   =2
@@ -42,12 +36,11 @@ set listchars+=tab:..
 set listchars+=trail:.
 set showbreak=↪
 set cursorline
-set cursorcolumn
 set scrolloff    =10
 set wildmenu
 set wildmode=list:longest
-" Execute commands in per-project .vimrc files
-set exrc
+set whichwrap+=<,>,h,l,[,] "http://vim.wikia.com/wiki/Automatically_wrap_left_and_right
+set exrc " Execute commands in per-project .vimrc files
 set secure
 
 " Reduce timeout after <ESC> is recvd. This is only a good idea on fast links.
@@ -74,136 +67,17 @@ syntax enable
 
 " vim colorscheme for terminal
 if !has("gui_running")
-  color badwolf
+  color molokai
 endif
 
 " Filetype
 filetype plugin indent on
 
-"
-" Mappings
-"
+" As netwr is not loaded via a bundle
+" I set its config here
+"let g:netrw_keepdir=0 " change the current dir to the directory you are currently browsing
 
-"""""""""""""""""""""""""""""""""""
-" Easy .vimrc edition
-"""""""""""""""""""""""""""""""""""
-nnoremap <leader>e :tabedit ~/.vimrc<CR>
-nnoremap <leader>s :source ~/.vimrc<CR>
-nnoremap <leader>gs :source ~/.gvimrc<CR>
-
-"""""""""""""""""""""""""""""""""""
-" Bundles mappings
-"""""""""""""""""""""""""""""""""""
-
-" Open bundles file
-nnoremap <leader>bu :tabedit ~/.vim/bundles<CR>
-
-" Bundle shortcuts
-nnoremap <leader>Bs :BundleSearch<CR>
-nnoremap <leader>Bl :BundleList<CR>
-nnoremap <leader>Bi :BundleInstall<CR>
-nnoremap <leader>Bf :edit ~/.vim/bundles<CR>
-
-"""""""""""""""""""""""""""""""""""
-" Windows mappings
-"""""""""""""""""""""""""""""""""""
-
-" Move with ease
-nnoremap H <C-w>h
-nnoremap L <C-w>l
-nnoremap J <C-w>j
-nnoremap K <C-w>k
-
-nnoremap <tab> <C-w>w | "Fast cycling between windows
-
-" Resize windows horizontally
-nnoremap <silent>++ :5wincmd <<cr>
-nnoremap <silent>-- :5wincmd ><cr>
-
-"""""""""""""""""""""""""""""""""""
-" Tabs mappings
-"""""""""""""""""""""""""""""""""""
-
-" Change focused tab
-nnoremap <leader>tl gt
-nnoremap <leader>th gT
-nnoremap tc :tabclose<cr>
-
-"""""""""""""""""""""""""""""""""""
-" Jump mappings
-"""""""""""""""""""""""""""""""""""
-nnoremap ' `
-nnoremap ` '
-
-"""""""""""""""""""""""""""""""""""
-" Copy/Paste mappings
-"""""""""""""""""""""""""""""""""""
-" Move lines with ease
-nnoremap <C-j> :m+<CR>==
-nnoremap <C-k> :m-2<CR>==
-vnoremap <C-j> :m'>+<CR>gv=gv
-vnoremap <C-k> :m-2<CR>gv=gv
-
-" Play with Yanked/Deleted objects
-nnoremap gV `[v`]
-
-"""""""""""""""""""""""""""""""""""
-" Misc mappings
-"""""""""""""""""""""""""""""""""""
-" Hacky mapping to show TODOS
-" currently only search in the src/ of the working dir
-nnoremap <leader>sT :silent execute 'Ack "TODO" '. getcwd() .'/src'<cr>
-
-" Help mappings
-nnoremap <leader>H :vert help<space>
-
-nnoremap <space>  @q "Execute the macro in register q
-nnoremap <space><space> @@ "Execute again last executed macro
-
-nnoremap <BS> :nohlsearch<CR>
-inoremap <C-e> <ESC>A| "Go to EOL in insert mode
-inoremap kk <ESC>:w<CR> | "save a file
-
-" Close the QuickFix window
-nnoremap <leader>qc :cclose<CR>
-
-
-"""""""""""""""""""""""""""""""""""
-" Autocommands
-"""""""""""""""""""""""""""""""""""
-" Set erb files with coffeescript in it, to be interpreted as coffee
-autocmd BufRead *.coffee.erb :set ft=coffee
-
-" Move all vim help files to the right
-augroup Help2Right
-  autocmd!
-  autocmd BufRead $HOME/.vim/*/doc/* :wincmd L
-  autocmd BufRead */vim/*/doc/* :wincmd L
-augroup end
-
-" Close help without :q
-augroup HelpClose
-  autocmd!
-  autocmd! BufRead */vim/*/doc/* :nmap <buffer> q :q<CR> " Close help with q (local mapping)
-  autocmd! BufRead $HOME/.vim/*/doc/* :nmap <buffer> q :q<CR>
-augroup end
-
-
-function! LastBundle()
-  echo g:bundles_file
-  let l:vimrc_window = bufwinnr(expand(g:bundles_file)) " Find current window for .vimrc. If any
-  if (l:vimrc_window == -1)
-    :exec "vsplit +" g:bundles_file | "Open in a separate split a move to the last line "+"
-  else
-    :exec l:vimrc_window . "wincmd w"
-  endif
-
-  call search("^Bundle", "bc") "Find Bundle backwards
-endfunction
-
-function! AddBundle()
-  call LastBundle()
-  :normal! oBundle ''
-endfunction
-
-command! AddBundle :call AddBundle()
+" Load all the other files
+source ~/.vim/vim-mappings
+source ~/.vim/vim-helpers
+source ~/.vim/vim-autocommands

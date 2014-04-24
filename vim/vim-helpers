@@ -1,0 +1,20 @@
+function! LastBundle()
+  echo g:bundles_file
+  let l:vimrc_window = bufwinnr(expand(g:bundles_file)) " Find current window for .vimrc. If any
+  if (l:vimrc_window == -1)
+    :exec "vsplit +" g:bundles_file | "Open in a separate split a move to the last line "+"
+  else
+    :exec l:vimrc_window . "wincmd w"
+  endif
+
+  call search("^Bundle", "bc") "Find Bundle backwards
+endfunction
+
+function! AddBundle()
+  call LastBundle()
+  :normal! oBundle ''
+endfunction
+
+command! AddBundle :call AddBundle()
+
+" vim:ft=vim
