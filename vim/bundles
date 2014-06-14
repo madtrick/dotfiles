@@ -100,10 +100,10 @@ nnoremap <silent> <leader>C :Sbd<CR> "Close buffer but don't affect window arran
 "}}}
 Bundle 'Tabular'
 " Tabular{{{
-nmap t= :Tabularize /=
-nmap t: :Tabularize /=
-vmap t= :Tabularize /=
-vmap t: :Tabularize /=
+nmap t= :Tabularize /=<CR>
+nmap t: :Tabularize /:<CR>
+vmap t= :Tabularize /=<CR>
+vmap t: :Tabularize /:<CR>
 "}}}
 Bundle 'kana/vim-textobj-user'
 Bundle 'kana/vim-textobj-line'
