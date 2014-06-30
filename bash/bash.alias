@@ -19,7 +19,7 @@ alias bip="_open_bb_page 'pull-requests'"
 alias bin="_open_bb_page 'pull-request/new'"
 alias gi="open https://github.$(git config remote.origin.url | cut -f2 -d. | sed -e 's/:/\//')"
 
-alias tmux="tmux -2" #Force 256 colors
+alias tmuxnew="tmux -2 new-session" #Force 256 colors
 alias tmuxls="tmux list-sessions"
 alias tmuxkill="tmux kill-session -t"
 alias tmuxatc="tmux attach-session -t"
