@@ -51,16 +51,20 @@ set notimeout
 
 set nocompatible               " be iMproved
 filetype off                   " required! by vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle'
 
 " Load all the other plugins
 source ~/.vim/bundles
 let g:bundles_file ="~/.vim/bundles"
+call vundle#end()
+
+" Filetype
+filetype plugin indent on
 
 " Enable syntax highlight
 syntax enable
@@ -69,9 +73,6 @@ syntax enable
 if !has("gui_running")
   color molokai
 endif
-
-" Filetype
-filetype plugin indent on
 
 " As netwr is not loaded via a bundle
 " I set its config here

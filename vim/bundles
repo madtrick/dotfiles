@@ -1,16 +1,16 @@
 """"""""""""""""""""""""""""""""""""""""
 " UI ENHANCEMENTS
 """"""""""""""""""""""""""""""""""""""""
-"Bundle 'The-NERD-tree'
+"Plugin 'The-NERD-tree'
 "" Nerdtree  {{{
 "}}}
-"Bundle 'jistr/vim-nerdtree-tabs'
+"Plugin 'jistr/vim-nerdtree-tabs'
 "" Nerdtree-Tabs  {{{
 "noremap <leader>ñ :NERDTreeTabsToggle<CR>
 ""}}}
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-vinegar'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-vinegar'
 
 """"""""""""""""""""""""""""""""""""""""
 " UTILS
@@ -31,8 +31,8 @@ let g:airline_branch_prefix = '⭠'
 let g:airline_readonly_symbol = '⭤'
 let g:airline_linecolumn_prefix = '⭡'
 "}}}
-Bundle 'LustyJuggler'
-Bundle 'ctrlp.vim'
+Plugin 'LustyJuggler'
+Plugin 'ctrlp.vim'
 " Ctrlp:  {{{
 " wildignore is a internal option but it's used by ctrlp and ctrl-T
 "set wildignore  +=*.git "exclude .git dir
@@ -49,79 +49,79 @@ let g:ctrlp_custom_ignore = {
 " Hack to fix the root directory for ctrlp
 autocmd VimEnter * :nnoremap <c-p> :CtrlP pwd<CR>
 "}}}
-Bundle 'surround.vim'
+Plugin 'surround.vim'
 " Surround:{{{
 " Surround mappings
 nmap <leader>" ysiw"E
 nmap <leader>' ysiw'E
 "}}}
-Bundle 'ervandew/supertab'
-Bundle 'ack.vim'
+Plugin 'ervandew/supertab'
+Plugin 'ack.vim'
 " Ack:{{{
 " Ack mappings
 nmap <leader>A :Ack<space>
 "}}}
-"Bundle 'Syntastic'
-Bundle 'tpope/vim-jdaddy'
+"Plugin 'Syntastic'
+Plugin 'tpope/vim-jdaddy'
 
 """"""""""""""""""""""""""""""""""""""""
 " THEMES
 """"""""""""""""""""""""""""""""""""""""
-Bundle 'sjl/badwolf'
-Bundle 'molokai'
-"Bundle 'Impact'
-"Bundle 'jellybeans.vim'
-"Bundle 'twilight256.vim'
-"Bundle 'xoria256.vim'
-"Bundle 'Zenburn'
-"Bundle 'noahfrederick/Hemisu'
-Bundle 'Solarized'
+Plugin 'sjl/badwolf'
+Plugin 'molokai'
+"Plugin 'Impact'
+"Plugin 'jellybeans.vim'
+"Plugin 'twilight256.vim'
+"Plugin 'xoria256.vim'
+"Plugin 'Zenburn'
+"Plugin 'noahfrederick/Hemisu'
+Plugin 'Solarized'
 
 
 """"""""""""""""""""""""""""""""""""""""
 " LANGUAGES
 """"""""""""""""""""""""""""""""""""""""
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'vim-coffee-script'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'vim-coffee-script'
 
 """"""""""""""""""""""""""""""""""""""""
 " MOTIONS
 """"""""""""""""""""""""""""""""""""""""
-Bundle 'goldfeld/vim-seek'
+Plugin 'goldfeld/vim-seek'
 " Vim-seek{{{
 let g:seek_subst_disable=1
 let g:seek_enable_jumps=1
 "}}}
 
 " Utils
-Bundle 'orftz/sbd.vim'
+Plugin 'orftz/sbd.vim'
 " Sbd:{{{
 nnoremap <silent> <leader>C :Sbd<CR> "Close buffer but don't affect window arrangement
 "}}}
-Bundle 'Tabular'
+Plugin 'Tabular'
 " Tabular{{{
 nmap t= :Tabularize /=<CR>
 nmap t: :Tabularize /:<CR>
 vmap t= :Tabularize /=<CR>
 vmap t: :Tabularize /:<CR>
 "}}}
-Bundle 'kana/vim-textobj-user'
-Bundle 'kana/vim-textobj-line'
-Bundle 'matchit.zip'
-Bundle 'Auto-Pairs'
-Bundle 'tpope/vim-unimpaired'
+Plugin 'kana/vim-textobj-user'
+Plugin 'kana/vim-textobj-line'
+Plugin 'matchit.zip'
+Plugin 'Auto-Pairs'
+Plugin 'tpope/vim-unimpaired'
 
-Bundle 'mbbill/undotree'
-Bundle 'abolish.vim'
+Plugin 'mbbill/undotree'
+Plugin 'abolish.vim'
 
-Bundle 'rizzatti/dash.vim'
-Bundle 'justinmk/vim-gtfo'
+Plugin 'rizzatti/dash.vim'
+Plugin 'justinmk/vim-gtfo'
 
 
 """"""""""""""""""""""""""""""""""""""""
 " DISABLED PLUGINS
 """"""""""""""""""""""""""""""""""""""""
-"Bundle 'jcf/vim-latex'
+"Plugin 'jcf/vim-latex'
 " Vimlatex:{{{
 "Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
@@ -134,8 +134,8 @@ Bundle 'justinmk/vim-gtfo'
 """"""""""""""""""""""""""""""""""""""""
 " LIBRARIES
 """"""""""""""""""""""""""""""""""""""""
-Bundle 'L9'
+Plugin 'L9'
 " Funcoo is a dependency of dash
-Bundle 'rizzatti/funcoo.vim'
+Plugin 'rizzatti/funcoo.vim'
 
 " vim:ft=vim:fdm=marker
