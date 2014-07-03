@@ -19,8 +19,8 @@ var fullscreen = S.op("move", {
 });
 
 var center = S.op("move", {
-  "x" : "screenSizeX/2 - windowSizeX/2",
-  "y" : "screenSizeY/2 - windowSizeY/2",
+  "x" : "screenOriginX+screenSizeX/2-windowSizeX/2",
+  "y" : "screenOriginY+screenSizeY/2-windowSizeY/2",
   "width" : "windowSizeX",
   "height": "windowSizeY"
 });
@@ -135,7 +135,7 @@ var focusTo = function(to){
  ************************************/
 var monitorsResolutions = {
   samsung : "2560x1440",
-  macbook : "1440x900"
+  macbook : "1280x800"
 };
 
 var twoMonitorScreenConfigBigUpLaptopDown = {
