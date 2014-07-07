@@ -24,5 +24,7 @@ alias tmuxls="tmux list-sessions"
 alias tmuxkill="tmux kill-session -t"
 alias tmuxatc="tmux attach-session -t"
 
+alias npm-exec="PATH=$(npm bin):$PATH"
+
 alias pyhttp=python_http_server
 # vim:ft=sh
