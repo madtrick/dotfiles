@@ -14,7 +14,7 @@ function prompt_command {
   local host=$(hostname -s)
   local current_dir=$(basename $(pwd))
   local git_branch=$(__git_ps1 )
-  local ruby_version=$(rvm-prompt i v p g)
+  local ruby_version=$(rbenv version-name)
   local time=$(date +"%m/%d %H:%M")
   local filler='.'
 
