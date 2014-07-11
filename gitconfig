@@ -15,6 +15,7 @@
   com = commit
   cl = !bash -ic 'git_clone_config' | xargs -I configvalues git clone --config configvalues --
   ba = branch -a
+  cam = commit --amend --reuse-message=HEAD
 [push]
   default = simple
 
