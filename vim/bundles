@@ -86,6 +86,8 @@ Plugin 'Solarized'
 """"""""""""""""""""""""""""""""""""""""
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-coffee-script'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 
 """"""""""""""""""""""""""""""""""""""""
 " MOTIONS
