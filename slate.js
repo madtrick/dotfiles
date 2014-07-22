@@ -108,7 +108,7 @@ var moveTo = function(to){
   var x;
 
   if (to === "right"){
-    x = "screenSizeX-windowSizeX";
+    x = "screenOriginX+(screenSizeX-windowSizeX)";
   }
 
   if (to === "left"){
