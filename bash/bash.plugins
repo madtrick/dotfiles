@@ -22,4 +22,14 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
    . /etc/bash_completion
  fi
 
+# The test to know if a command exists was
+# found here:
+# http://stackoverflow.com/questions/592620/how-to-check-if-a-program-exists-from-a-bash-script
+if hash grunt 2>/dev/null; then
+  #
+  # Grunt completion
+  #
+  eval "$(grunt --completion=bash)"
+fi
+
 # vim:ft=sh
