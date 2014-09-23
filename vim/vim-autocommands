@@ -4,6 +4,9 @@
 " Set erb files with coffeescript in it, to be interpreted as coffee
 autocmd BufRead *.coffee.erb :set ft=coffee
 
+" Set haml coffee files to be interpreted ass haml
+autocmd BufREad,BufNewFile *.hamlc set ft=haml
+
 " Move all vim help files to the right
 augroup Help2Right
   autocmd!
