@@ -101,10 +101,14 @@ let g:seek_enable_jumps=1
 " Utils
 Plugin 'Tabular'
 " Tabular{{{
-nmap t= :Tabularize /=<CR>
-nmap t: :Tabularize /:<CR>
-vmap t= :Tabularize /=<CR>
-vmap t: :Tabularize /:<CR>
+" The match expression was extracted from the help of the plugin.
+"
+" This expression matches only the first '=' or ':' in the selection
+" so extract '=' or ':' are not aligned
+nmap t= :Tabularize /^[^=]*\zs=/<CR>
+nmap t: :Tabularize /^[^:]*\zs:/<CR>
+vmap t= :Tabularize /^[^=]*\zs=/<CR>
+vmap t: :Tabularize /^[^:]*\zs:/<CR>
 "}}}
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-line'
