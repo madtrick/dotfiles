@@ -17,6 +17,7 @@
   ba = branch -a
   cam = commit --amend --reuse-message=HEAD
   nuke = reset --hard HEAD
+  vista = stash show -p stash@{0}
 [push]
   default = simple
 
