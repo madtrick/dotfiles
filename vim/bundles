@@ -66,6 +66,12 @@ Plugin 'Syntastic'
 let g:syntastic_javascript_checkers = ['jshint']
 "}}}
 Plugin 'tpope/vim-jdaddy'
+Plugin 'SirVer/ultisnips'
+" ultisnips:{{{
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"}}}
+Plugin 'honza/vim-snippets'
 
 """"""""""""""""""""""""""""""""""""""""
 " THEMES
