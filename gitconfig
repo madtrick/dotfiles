@@ -6,21 +6,22 @@
   editor = vim
   excludesfile = ~/.global_gitignore
 [alias]
-  f     = "!git ls-files | grep -i" # find files
-  g     = "grep -Ii" # grep for content on the index
-  gr    = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
-  lg    = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-  lp    = log -p
-  st    = status --short
-  co    = checkout
-  com   = commit
-  cl    = !bash -ic 'git_clone_config' | xargs -I configvalues git clone --config configvalues --
-  ba    = branch -a
-  cam   = commit --amend --reuse-message=HEAD
-  nuke  = reset --hard HEAD
-  vista = stash show -p stash@{0} #show the diff between the index and the first stash
+  f                = "!git ls-files | grep -i" # find files
+  g                = "grep -Ii" # grep for content on the index
+  gr               = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
+  lg               = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  lp               = log -p
+  st               = status --short
+  co               = checkout
+  com              = commit
+  cl               = !bash -ic 'git_clone_config' | xargs -I configvalues git clone --config configvalues --
+  ba               = branch -a
+  cam              = commit --amend --reuse-message=HEAD
+  nuke             = reset --hard HEAD
+  vista            = stash show -p stash@{0} #show the diff between the index and the first stash
   current-branch   = "rev-parse --abbrev-ref HEAD"
   rebase-to-branch = "!f() { git rebase -i $(git merge-base $(git current-branch) $1); }; f" # rebase to the common ancestor between the current branch and the supplied one
+  ap               = add -p
 [push]
   default = simple
 

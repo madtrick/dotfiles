@@ -17,6 +17,7 @@ alias gba="git ba"
 alias gcam="git cam"
 alias gru="git rebase -i @{u}"
 alias gco="git co"
+alias gap="git ap"
 alias bi="_open_bb_page"
 alias bip="_open_bb_page 'pull-requests'"
 alias bin="_open_bb_page 'pull-request/new'"
@@ -26,6 +27,8 @@ alias tmuxnew="tmux -2 new-session" #Force 256 colors
 alias tmuxls="tmux list-sessions"
 alias tmuxkill="tmux kill-session -t"
 alias tmuxatc="tmux attach-session -t"
+
+alias vagrant="VAGRANT_DEFAULT_PROVIDER=virtualbox vagrant"
 
 alias npm-exec="PATH=$(npm bin):$PATH"
 
