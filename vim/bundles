@@ -64,6 +64,7 @@ nmap <leader>A :Ack<space>
 Plugin 'Syntastic'
 " Syntastic:{{{
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_always_populate_loc_list = 1
 "}}}
 Plugin 'tpope/vim-jdaddy'
 Plugin 'SirVer/ultisnips'
