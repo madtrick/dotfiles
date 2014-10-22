@@ -1,3 +1,7 @@
 snippet exp "Declare the exports for the module"
 module.exports = $1;
 endsnippet
+
+snippet inj "Inject a dependency using the injector"
+var $1 = $injector.get('$2');
+endsnippet
