@@ -238,6 +238,7 @@ S.bind("3:alt;cmd", quarterBottomLeft);
 S.bind("4:alt;cmd", quarterBottomRight);
 S.bind("4:shift;cmd", widthSlice(4/12));
 S.bind("8:shift;cmd", widthSlice(8/12));
+S.bind("9:shift;cmd", widthSlice(10/12));
 
 S.bind("left:cmd", focusTo("left"));
 S.bind("left:alt;cmd", halfScreen("left"));
