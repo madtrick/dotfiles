@@ -74,7 +74,7 @@ syntax enable
 
 " vim colorscheme for terminal
 if !has("gui_running")
-  color molokai
+  color badwolf
 endif
 
 " As netwr is not loaded via a bundle
