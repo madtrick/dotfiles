@@ -81,5 +81,8 @@ inoremap kk <ESC>:w<CR> | "save a file
 " Close the QuickFix window
 nnoremap <leader>qc :cclose<CR>
 
+" Fuzzy Find a directory
+nnoremap Z :call fzf#run({'source': 'find * -type d', 'sink': 'Explore'})<CR>
+
 
 " vim:ft=vim

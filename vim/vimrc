@@ -63,6 +63,9 @@ source ~/.vim/bundles
 let g:bundles_file ="~/.vim/bundles"
 call vundle#end()
 
+" Integrate the shell Fuzzy Finder
+set rtp+=~/.fzf
+
 " Filetype
 filetype plugin indent on
 
