@@ -60,4 +60,9 @@ function python_http_server(){
   fi
 }
 
+# Search for files
+function search_for(){
+  find . -name "*$1*"
+}
+
 # vim:ft=sh

@@ -36,4 +36,6 @@ alias vagrant="VAGRANT_DEFAULT_PROVIDER=virtualbox vagrant"
 alias npm-exec="PATH=$(npm bin):$PATH"
 
 alias pyhttp=python_http_server
+
+alias f=search_for
 # vim:ft=sh
