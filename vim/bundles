@@ -73,6 +73,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 "}}}
 Plugin 'honza/vim-snippets'
+Plugin 'blueyed/vim-diminactive'
 
 """"""""""""""""""""""""""""""""""""""""
 " THEMES
