@@ -5,7 +5,7 @@ alias bi="bundle install --path vendor/"
 alias bex="bundle exec"
 
 alias gr='[ ! -z `git rev-parse --show-cdup`  ] && cd `git rev-parse --show-cdup || pwd`'
-alias gst="git st"
+#alias gst="git st"
 alias gau="git add -u"
 alias gaa="git add ."
 alias gcm="git commit"
@@ -22,9 +22,10 @@ alias bi="_open_bb_page"
 alias bip="_open_bb_page 'pull-requests'"
 alias bin="_open_bb_page 'pull-request/new'"
 alias gi="open https://github.$(git config remote.origin.url | cut -f2 -d. | sed -e 's/:/\//')"
-alias gns="git number -s" #uses the git-number tool
+alias gst="git number -s" #uses the git-number tool
 alias gna="git number add"
 alias gnd="git number diff"
+alias grc=resolve_conflict_in_editor
 
 alias tmuxnew="tmux -2 new-session" #Force 256 colors
 alias tmuxls="tmux list-sessions"

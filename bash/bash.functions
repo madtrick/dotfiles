@@ -65,4 +65,9 @@ function search_for(){
   find . -name "*$1*"
 }
 
+# Open conflicted file in editor
+function resolve_conflict_in_editor(){
+  vim $(git list $1)
+}
+
 # vim:ft=sh
