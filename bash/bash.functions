@@ -62,7 +62,13 @@ function python_http_server(){
 
 # Search for files
 function search_for(){
-  find . -name "*$1*"
+  local scope="."
+
+  if [ -n "$2" ]; then
+    scope=$2
+  fi
+
+  find $scope -name "*$1*"
 }
 
 # Open conflicted file in editor
