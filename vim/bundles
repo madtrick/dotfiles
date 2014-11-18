@@ -10,27 +10,29 @@
 ""}}}
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'bling/vim-airline'
+" Vim-airline{{{
+let g:airline#extensions#syntastic#enabled = 1
+
+let g:airline_powerline_fonts = 1
+let g:airline_enable_branch   = 1
+let g:airline_theme           = 'badwolf_custom'
+
+"Setting here the symbols was the only way I found to
+" show the glyphs in the statusline (got at
+" https://github.com/bling/vim-airline/issues/76?source=cc)
+let g:airline_left_sep          = '⮀'
+let g:airline_left_alt_sep      = '⮁'
+let g:airline_right_sep         = '⮂'
+let g:airline_right_alt_sep     = '⮃'
+let g:airline_branch_prefix     = '⭠'
+let g:airline_readonly_symbol   = '⭤'
+let g:airline_linecolumn_prefix = '⭡'
+"}}}
 Plugin 'tpope/vim-vinegar'
 
 """"""""""""""""""""""""""""""""""""""""
 " UTILS
 """"""""""""""""""""""""""""""""""""""""
-" Vim-airline{{{
-let g:airline_powerline_fonts=1
-let g:airline_enable_branch=1
-let g:airline_theme='badwolf'
-
-"Setting here the symbols was the only way I found to
-" show the glyphs in the statusline (got at
-" https://github.com/bling/vim-airline/issues/76?source=cc)
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
-let g:airline_branch_prefix = '⭠'
-let g:airline_readonly_symbol = '⭤'
-let g:airline_linecolumn_prefix = '⭡'
-"}}}
 Plugin 'LustyJuggler'
 Plugin 'ctrlp.vim'
 " Ctrlp:  {{{
