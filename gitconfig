@@ -22,6 +22,7 @@
   current-branch   = "rev-parse --abbrev-ref HEAD"
   rebase-to-branch = "!f() { git rebase -i $(git merge-base $(git current-branch) $1); }; f" # rebase to the common ancestor between the current branch and the supplied one
   ap               = add -p
+  files-changed    = show --pretty="format:" --name-only # shows files change in a commit
 [push]
   default = simple
 
