@@ -19,3 +19,10 @@ source $DOTFILES_DIR/bash/bash.rbenv
 source $DOTFILES_DIR/bash/bash.plugins
 source $DOTFILES_DIR/bash/bash.prompt
 source $DOTFILES_DIR/bash/bash.tmux
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# added by travis gem
+[ -f /Users/farruco/.travis/travis.sh ] && source /Users/farruco/.travis/travis.sh

@@ -42,6 +42,7 @@ set wildmode=list:longest
 set whichwrap+=<,>,h,l,[,] "http://vim.wikia.com/wiki/Automatically_wrap_left_and_right
 set exrc " Execute commands in per-project .vimrc files
 set secure
+set completeopt=menuone "By default set to preview,menuone but this is annoying if using YouCompleteMe [1]
 
 " Reduce timeout after <ESC> is recvd. This is only a good idea on fast links.
 " Got at: https://code.google.com/p/iterm2/issues/detail?id=1322
@@ -85,3 +86,5 @@ endif
 source ~/.vim/vim-mappings
 source ~/.vim/vim-helpers
 source ~/.vim/vim-autocommands
+
+" [1] https://github.com/Valloric/YouCompleteMe#the-gycm_add_preview_to_completeopt-option
