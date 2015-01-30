@@ -28,6 +28,7 @@ alias gna="git number add"
 alias gnd="git number diff"
 alias grc=resolve_conflict_in_editor
 alias ggh="git log -S"
+alias gpr="hub pull-request"
 
 alias tmuxnew="tmux -2 new-session" #Force 256 colors
 alias tmuxls="tmux list-sessions"
