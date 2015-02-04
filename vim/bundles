@@ -36,8 +36,14 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'LustyJuggler'
 Plugin 'ctrlp.vim'
 " Ctrlp:  {{{
-let g:ctrlp_custom_ignore = {
-  \ 'dir' : 'vendor/ruby/\|.git/\|node_modules/\|bower_components/',
+  "\ 'dir' : 'vendor/ruby/\|.git/\|node_modules/\|bower_components/',
+" If we don't prepend the current path then ctrlp won't work even if we
+" cd to some folder inside node_modules or vendor/ruby
+let s:node_modules_path_expression  = getcwd() . '/node_modules/\'
+let s:vendored_ruby_path_expression = getcwd() . '/vendor/ruby/\'
+let s:ignore_expression             = s:vendored_ruby_path_expression . '|.git/\|' . s:node_modules_path_expression . '|bower_components/'
+let g:ctrlp_custom_ignore           = {
+  \ 'dir' : s:ignore_expression,
   \ 'file' : '.beam$'
   \}
 
@@ -78,9 +84,11 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
 Plugin 'honza/vim-snippets'
 Plugin 'blueyed/vim-diminactive'
 Plugin 'marijnh/tern_for_vim'
+" Tern:{{{
 let g:tern#command               = ["tern"]
 let g:tern#arguments             = ["--no-port-file"]
 let g:tern_show_signature_in_pum = 1
+"}}}
 Plugin 'Valloric/YouCompleteMe'
 
 """"""""""""""""""""""""""""""""""""""""
