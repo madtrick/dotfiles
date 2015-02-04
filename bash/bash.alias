@@ -38,6 +38,7 @@ alias tmuxatc="tmux attach-session -t"
 alias vagrant="VAGRANT_DEFAULT_PROVIDER=virtualbox vagrant"
 
 alias npm-exec="PATH=$(npm bin):$PATH"
+alias ne="npm edit"
 
 alias pyhttp=python_http_server
 
