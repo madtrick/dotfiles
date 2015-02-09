@@ -56,13 +56,13 @@ var quarterBottomLeft = S.op("move",{
 var halfScreen = function(where){
   var origin;
   if (where === undefined)
-    origin = "windowTopLeftX"
+    origin = "windowTopLeftX";
 
   if (where === "left")
-    origin = "screenOriginX"
+    origin = "screenOriginX";
 
   if (where === "right")
-    origin = "screenOriginX+(screenSizeX/2)"
+    origin = "screenOriginX+(screenSizeX/2)";
  
  return S.op("move", {
     "x" : origin,
@@ -261,7 +261,7 @@ S.bind("k:ctrl;alt;cmd", moveTo("right"));
 S.bind("l:alt;cmd", fullHeight);
 S.bind("l:ctrl;alt;cmd", moveTo("left"));
 
-S.bind("r:ctrl;alt;cmd", S.op("relaunch"))
+S.bind("r:ctrl;alt;cmd", S.op("relaunch"));
 
 /************************************
  * Default setups
