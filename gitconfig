@@ -25,6 +25,7 @@
   ap               = add -p
   files-changed    = show --pretty="format:" --name-only # shows files change in a commit
   lp               = log -p
+  dh               = "!f() { git diff --color \"$@\" | /usr/local/share/git-core/contrib/diff-highlight/diff-highlight;  }; f"
 [push]
   default = simple
 
