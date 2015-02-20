@@ -64,11 +64,16 @@ nmap <leader>A :Ack<space>
 "}}}
 Plugin 'Syntastic'
 " Syntastic:{{{
-let g:syntastic_javascript_checkers      = ['jshint', 'jscs']
+let g:syntastic_javascript_checkers      = ['jsxhint']
+
+if filereadable(".jscsrc")
+  " jscs crashes if there's not jscsrc file
+  let g:syntastic_javascript_checkers = add(g:syntastic_javascript_checkers, 'jscs')
+endif
+
+let g:syntastic_javascript_jsxhint_exec  = 'jsx-jshint-wrapper'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open            = 1
-
-"let g:syntastic_auto_jump               = 1
 
 " To see a list of available colors go to:
 "
@@ -119,6 +124,7 @@ Plugin 'wavded/vim-stylus'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'vim-erlang/vim-erlang-tags'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'leafgarland/typescript-vim'
 
 """"""""""""""""""""""""""""""""""""""""
 " MOTIONS
