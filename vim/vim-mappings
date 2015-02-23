@@ -1,9 +1,8 @@
 """""""""""""""""""""""""""""""""""
 " Easy .vimrc edition
 """""""""""""""""""""""""""""""""""
-nnoremap <leader>e :tabedit ~/.vimrc<CR>
-nnoremap <leader>s :source ~/.vimrc<CR>
-nnoremap <leader>gs :source ~/.gvimrc<CR>
+nnoremap <leader>ve :tabedit ~/.vimrc<CR>
+nnoremap <leader>vs :source ~/.vimrc<CR>
 
 """""""""""""""""""""""""""""""""""
 " Bundles mappings
@@ -49,6 +48,10 @@ nnoremap tn :tabnew<cr>
 nnoremap ' `
 nnoremap ` '
 
+" Jump to next element in the location list
+" (list populated by Syntastic)
+nnoremap <leader>e :ll<CR>
+
 """""""""""""""""""""""""""""""""""
 " Copy/Paste mappings
 """""""""""""""""""""""""""""""""""
@@ -76,7 +79,6 @@ nnoremap <space><space> @@ "Execute again last executed macro
 
 nnoremap <BS> :nohlsearch<CR>
 inoremap <C-e> <ESC>A| "Go to EOL in insert mode
-inoremap kk <ESC>:w<CR> | "save a file
 
 " Close the QuickFix window
 nnoremap <leader>qc :cclose<CR>
