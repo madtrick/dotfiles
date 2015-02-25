@@ -36,7 +36,6 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'LustyJuggler'
 Plugin 'ctrlp.vim'
 " Ctrlp:  {{{
-  "\ 'dir' : 'vendor/ruby/\|.git/\|node_modules/\|bower_components/',
 " If we don't prepend the current path then ctrlp won't work even if we
 " cd to some folder inside node_modules or vendor/ruby
 let s:node_modules_path_expression  = getcwd() . '/node_modules/\'
@@ -109,18 +108,14 @@ Plugin 'molokai'
 "Plugin 'xoria256.vim'
 "Plugin 'Zenburn'
 "Plugin 'noahfrederick/Hemisu'
-Plugin 'Solarized'
 
 
 """""""""""""""""""""""""""""""""""""""
 " LANGUAGES
 """""""""""""""""""""""""""""""""""""""
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'vim-coffee-script'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
-Plugin 'wavded/vim-stylus'
-Plugin 'digitaltoad/vim-jade'
 Plugin 'vim-erlang/vim-erlang-tags'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'leafgarland/typescript-vim'
@@ -152,7 +147,6 @@ Plugin 'matchit.zip'
 Plugin 'Auto-Pairs'
 Plugin 'tpope/vim-unimpaired'
 
-Plugin 'mbbill/undotree'
 Plugin 'abolish.vim'
 
 Plugin 'rizzatti/dash.vim'
