@@ -56,7 +56,6 @@ Plugin 'surround.vim'
 nmap <leader>" ysiw"E
 nmap <leader>' ysiw'E
 "}}}
-"Plugin 'ervandew/supertab'
 Plugin 'ack.vim'
 " Ack:{{{
 " Ack mappings
@@ -113,9 +112,9 @@ Plugin 'molokai'
 Plugin 'Solarized'
 
 
-""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
 " LANGUAGES
-""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-coffee-script'
 Plugin 'pangloss/vim-javascript'
