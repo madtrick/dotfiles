@@ -67,16 +67,10 @@ call vundle#end()
 " Integrate the shell Fuzzy Finder
 set rtp+=~/.fzf
 
-" Filetype
 filetype plugin indent on
-
-" Enable syntax highlight
 syntax enable
-
-" vim colorscheme for terminal
-if !has("gui_running")
-  color badwolf
-endif
+set background=light
+color solarized
 
 " As netwr is not loaded via a bundle
 " I set its config here
