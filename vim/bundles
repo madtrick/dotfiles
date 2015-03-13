@@ -13,20 +13,23 @@ Plugin 'bling/vim-airline'
 " Vim-airline{{{
 let g:airline#extensions#syntastic#enabled = 1
 
-let g:airline_powerline_fonts = 1
-let g:airline_enable_branch   = 1
-let g:airline_theme           = 'badwolf_custom'
+let g:airline_powerline_fonts           = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline_theme                     = 'badwolf_custom'
 
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
 "Setting here the symbols was the only way I found to
 " show the glyphs in the statusline (got at
 " https://github.com/bling/vim-airline/issues/76?source=cc)
-let g:airline_left_sep          = '⮀'
-let g:airline_left_alt_sep      = '⮁'
-let g:airline_right_sep         = '⮂'
-let g:airline_right_alt_sep     = '⮃'
-let g:airline_branch_prefix     = '⭠'
-let g:airline_readonly_symbol   = '⭤'
-let g:airline_linecolumn_prefix = '⭡'
+let g:airline_left_sep         = '⮀'
+let g:airline_left_alt_sep     = '⮁'
+let g:airline_right_sep        = '⮂'
+let g:airline_right_alt_sep    = '⮃'
+let g:airline_symbols.branch   = '⭠'
+let g:airline_symbols.readonly = '⭤'
+let g:airline_symbols.liner    = '⭡'
 "}}}
 Plugin 'tpope/vim-vinegar'
 
@@ -40,7 +43,7 @@ Plugin 'ctrlp.vim'
 " cd to some folder inside node_modules or vendor/ruby
 let s:node_modules_path_expression  = getcwd() . '/node_modules/\'
 let s:vendored_ruby_path_expression = getcwd() . '/vendor/ruby/\'
-let s:ignore_expression             = s:vendored_ruby_path_expression . '|.git/\|' . s:node_modules_path_expression . '|bower_components/'
+let s:ignore_expression             = s:vendored_ruby_path_expression . '|.git/\|' . s:node_modules_path_expression . '|bower_components/\' . '|deps/'
 let g:ctrlp_custom_ignore           = {
   \ 'dir' : s:ignore_expression,
   \ 'file' : '.beam$'
@@ -62,14 +65,15 @@ nmap <leader>A :Ack<space>
 "}}}
 Plugin 'Syntastic'
 " Syntastic:{{{
-let g:syntastic_javascript_checkers      = ['jsxhint']
+let g:syntastic_ignore_files = ['\.json$']
+let g:syntastic_javascript_checkers      = ['jshint']
 
 if filereadable(".jscsrc")
   " jscs crashes if there's not jscsrc file
   let g:syntastic_javascript_checkers = add(g:syntastic_javascript_checkers, 'jscs')
 endif
 
-let g:syntastic_javascript_jsxhint_exec  = 'jsx-jshint-wrapper'
+"let g:syntastic_javascript_jsxhint_exec  = 'jsx-jshint-wrapper'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open            = 1
 
@@ -95,6 +99,8 @@ let g:tern#arguments             = ["--no-port-file"]
 let g:tern_show_signature_in_pum = 1
 "}}}
 Plugin 'Valloric/YouCompleteMe'
+"let g:ycm_key_list_select_completion = ['<C-l>', '<Down>']
+
 Plugin 'fugitive.vim'
 
 """"""""""""""""""""""""""""""""""""""""
@@ -102,6 +108,7 @@ Plugin 'fugitive.vim'
 """"""""""""""""""""""""""""""""""""""""
 Plugin 'sjl/badwolf'
 Plugin 'molokai'
+Plugin 'madtrick/solarized'
 "Plugin 'Impact'
 "Plugin 'jellybeans.vim'
 "Plugin 'twilight256.vim'
@@ -115,11 +122,15 @@ Plugin 'molokai'
 """""""""""""""""""""""""""""""""""""""
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'pangloss/vim-javascript'
+" vim-javascript:{{{
+let g:javascript_conceal          = 1
+let g:javascript_conceal_function = "ƒ"
+"}}}
 Plugin 'mxw/vim-jsx'
 Plugin 'vim-erlang/vim-erlang-tags'
+Plugin 'jimenezrick/vimerl'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'leafgarland/typescript-vim'
-
 """"""""""""""""""""""""""""""""""""""""
 " MOTIONS
 """"""""""""""""""""""""""""""""""""""""

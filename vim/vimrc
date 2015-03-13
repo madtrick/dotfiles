@@ -43,6 +43,7 @@ set whichwrap+=<,>,h,l,[,] "http://vim.wikia.com/wiki/Automatically_wrap_left_an
 set exrc " Execute commands in per-project .vimrc files
 set secure
 set completeopt=menuone "By default set to preview,menuone but this is annoying if using YouCompleteMe [1]
+set cole=1 " Required by vim-javascript to apply its substitutions to keywords
 
 " Reduce timeout after <ESC> is recvd. This is only a good idea on fast links.
 " Got at: https://code.google.com/p/iterm2/issues/detail?id=1322

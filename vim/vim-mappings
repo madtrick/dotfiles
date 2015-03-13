@@ -89,5 +89,8 @@ nnoremap Z :call fzf#run({'source': 'find * -type d', 'sink': 'Explore'})<CR>
 " Use ctrlp to find tags within the current buffer
 nnoremap <leader>f :CtrlPBufTag<CR>
 
+" Limit ctrlp to current wd
+autocmd VimEnter * :nnoremap <c-p> :CtrlP pwd<CR>
+
 
 " vim:ft=vim
