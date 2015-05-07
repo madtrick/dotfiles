@@ -71,7 +71,9 @@ set rtp+=~/.fzf
 filetype plugin indent on
 syntax enable
 set background=light
-color solarized
+color molokai
+"hack to make diminactive looks nice when using molokai
+hi ColorColumn ctermbg=237
 
 " As netwr is not loaded via a bundle
 " I set its config here
