@@ -32,6 +32,7 @@ let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.liner    = '⭡'
 "}}}
 Plugin 'tpope/vim-vinegar'
+Plugin 'Shougo/unite.vim'
 
 """"""""""""""""""""""""""""""""""""""""
 " UTILS
@@ -93,15 +94,16 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
 "}}}
 Plugin 'honza/vim-snippets'
 Plugin 'blueyed/vim-diminactive'
-Plugin 'marijnh/tern_for_vim'
+"Plugin 'marijnh/tern_for_vim'
 " Tern:{{{
-let g:tern#command               = ["tern"]
-let g:tern#arguments             = ["--no-port-file"]
-let g:tern_show_signature_in_pum = 1
+"let g:tern#command               = ["tern"]
+"let g:tern#arguments             = ["--no-port-file"]
+"let g:tern_show_signature_in_pum = 1
 "}}}
 Plugin 'Valloric/YouCompleteMe'
 "let g:ycm_key_list_select_completion = ['<C-l>', '<Down>']
 Plugin 'fugitive.vim'
+Plugin 'chrisbra/csv.vim'
 
 """"""""""""""""""""""""""""""""""""""""
 " THEMES
@@ -133,8 +135,13 @@ let g:jsx_ext_required = 1
 "}}}
 Plugin 'vim-erlang/vim-erlang-tags'
 Plugin 'jimenezrick/vimerl'
+" vimerl:{{{
+let g:erlang_force_use_vimerl_indent = 1
+"}}}
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'SQLUtilities'
 """"""""""""""""""""""""""""""""""""""""
 " MOTIONS
 """"""""""""""""""""""""""""""""""""""""
@@ -166,6 +173,7 @@ Plugin 'tpope/vim-abolish'
 
 Plugin 'rizzatti/dash.vim'
 Plugin 'justinmk/vim-gtfo'
+Plugin 'Shougo/vimproc.vim'
 
 
 """"""""""""""""""""""""""""""""""""""""
@@ -187,5 +195,7 @@ Plugin 'justinmk/vim-gtfo'
 Plugin 'L9'
 " Funcoo is a dependency of dash
 Plugin 'rizzatti/funcoo.vim'
+" align is a dependency of SQLUtilities
+Plugin 'align'
 
 " vim:ft=vim:fdm=marker
