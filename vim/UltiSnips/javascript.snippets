@@ -39,3 +39,8 @@ afterEach(function () {
 	$0
 });
 endsnippet
+
+snippet insp "inspect object"
+var util = require('util');
+console.log(util.inspect($0, {showHidden: false, depth: null}));
+endsnippet

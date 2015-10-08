@@ -32,6 +32,9 @@ nnoremap K <C-w>k
 "nnoremap <silent>++ :5wincmd <<cr>
 "nnoremap <silent>-- :5wincmd ><cr>
 
+nnoremap <leader>h :split<CR>
+nnoremap <leader>j :vsplit<CR>
+
 """""""""""""""""""""""""""""""""""
 " Tabs mappings
 """""""""""""""""""""""""""""""""""

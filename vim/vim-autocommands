@@ -39,11 +39,4 @@ autocmd InsertEnter *.md call MatchTechWordsToAvoid()
 autocmd InsertLeave *.md call MatchTechWordsToAvoid()
 autocmd BufWinLeave *.md call clearmatches()
 
-function SetTabsForErlang()
-  setl tabstop      =4
-  setl softtabstop  =4
-  setl shiftwidth   =4
-endfunction
-autocmd BufWinEnter *.erl call SetTabsForErlang()
-
 " vim:ft=vim
