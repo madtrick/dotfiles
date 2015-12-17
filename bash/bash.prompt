@@ -14,15 +14,15 @@ function prompt_command {
   local host=$(hostname -s)
   local current_dir=$(basename $(pwd))
   local git_branch=$(__git_ps1 )
-  local ruby_version=$(rbenv version-name)
+  local node_version=$(nvm current)
   local time=$(date +"%m/%d %H:%M")
   local filler='.'
 
-  #   Find the width of the prompt:
+  # Find the width of the prompt:
   TERMWIDTH=${COLUMNS}
 
-  #   Add all the accessories below ...
-  local temp="[${username}@${host} {${current_dir}} ${git_branch} ${ruby_version}]"
+  # Add all the above accessories ...
+  local temp="[${username}@${host} {${current_dir}} ${git_branch} ${node_version}]"
   let fillsize=${TERMWIDTH}-${#temp}-${#time}
 
   ## 'eval' is required to use $fillsize into the brace expansion
@@ -43,7 +43,7 @@ function prompt_command {
   PS1=$PS1"$(colorize 68 "$username@$host")"
   PS1=$PS1" $(colorize 117 "$current_dir ")"
   PS1=$PS1"$(__git_ps1 "$(colorize 112 "∓ %s$NONE")")"
-  PS1=$PS1" $(colorize 161 "♦ $ruby_version")"
+  PS1=$PS1" $(colorize 161 "♦ $node_version")"
   PS1=$PS1"$(colorize 234 $fill)$(colorize 239 "$time")"
   PS1=$PS1"\n$(colorize 240 "➡$NONE ")"
   export PS1
