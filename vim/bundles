@@ -65,14 +65,21 @@ Plugin 'ack.vim'
 nmap <leader>A :Ack<space>
 "}}}
 Plugin 'gabesoft/vim-ags'
-Plugin 'Syntastic'
+Plugin 'scrooloose/syntastic'
 " Syntastic:{{{
 let g:syntastic_ignore_files        = ['\.json$']
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = []
 
-if filereadable(".jscsrc")
-  " jscs crashes if there's not jscsrc file
-  let g:syntastic_javascript_checkers = add(g:syntastic_javascript_checkers, 'jscs')
+if filereadable('.eslintrc')
+  let g:syntastic_javascript_checkers = add(g:syntastic_javascript_checkers, 'eslint')
+endif
+
+if filereadable('.jshintrc')
+  let g:syntastic_javascript_checkers = add(g:syntastic_javascript_checkers, 'jshint')
+endif
+
+if filereadable('.jscsrc')
+  let g:syntastic_javascript_checkers = add(g:syntastic_javascript_checkers, 'jscsrc')
 endif
 
 "let g:syntastic_javascript_jsxhint_exec  = 'jsx-jshint-wrapper'
@@ -142,6 +149,7 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'SQLUtilities'
+
 """"""""""""""""""""""""""""""""""""""""
 " MOTIONS
 """"""""""""""""""""""""""""""""""""""""

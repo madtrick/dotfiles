@@ -2,15 +2,24 @@ snippet ca "Create an asset"
 curl -X PUT \
      -H 'Content-Type: application/vnd.contentful.management.v1+json' \
      -H 'Authorization: Bearer `cat $HOME/.contentful-cma-token`' \
-     'https://api.contentful.com/spaces/${1:space_key}/assets/${2:bacon-pancakes}' \
-     -d '{"fields":{"title":{"en-US":"Bacon Pancakes"}${3:,"file":{"en-US":{"contentType":"image/jpeg","fileName":"example.jpg","upload":"${4}"}}}}}'
+     'https://api.contentful.com/spaces/${1:space_key}/assets/${3:bacon-pancakes}' \
+     -d '{"fields":{"title":{"en-US":"Bacon Pancakes"}${4:,"file":{"en-US":{"contentType":"image/jpeg","fileName":"example.jpg","upload":"${5}"}}}}}' \
+		 ${6:-H 'X-Contentful-Skip-Transformation: true'}
 endsnippet
 
 snippet ga "Get an asset"
 curl -X GET \
      -H 'Authorization: Bearer `cat $HOME/.contentful-cma-token`' \
-     'https://api.contentful.com/spaces/${1:space_key}/assets/${2}'
-end snippet
+     'https://api.contentful.com/spaces/${1:space_key}/assets/${2:asset_id}'
+endsnippet
+
+snippet pra "Process an asset"
+curl -X PUT \
+     -H 'Content-Type: application/vnd.contentful.management.v1+json' \
+     -H 'Authorization: Bearer `cat $HOME/.contentful-cma-token`' \
+     -H 'X-Contentful-Version: ${1:version}' \
+     'https://api.contentful.com/spaces/${2:space_key}/assets/${3:asset_id}/files/${4:en-US}/process'
+endsnippet
 
 snippet pua "Publish an asset"
 curl -X PUT \
@@ -25,7 +34,21 @@ curl -X PUT \
      -H 'Content-Type: application/vnd.contentful.management.v1+json' \
      -H 'Authorization: Bearer `cat $HOME/.contentful-cma-token`' \
      'https://api.contentful.com/spaces/${1:space_key}/content_types/${2:content-type-id}' \
-     -d '{"name":"${4:Blog Post}","fields":[${5:{"id":"title","name":"Title","type":"Text"}}]}'
+     -d '{"name":"${3:Blog Post}","fields":[${3:{"id":"title","name":"Title","type":"Text"}}]}' \
+		 ${5:-H 'X-Contentful-Skip-Transformation: true'}
+endsnippet
+
+snippet gct "Get a content type"
+curl -X GET \
+     -H 'Authorization: Bearer `cat $HOME/.contentful-cma-token`' \
+     'https://api.contentful.com/spaces/${1:space_key}/content_types/${2:content-type-id}' \
+		 ${3:-H 'X-Contentful-Skip-Transformation: true'}
+endsnippet
+
+snippet lct "List content types"
+curl -X GET \
+     -H 'Authorization: Bearer `cat $HOME/.contentful-cma-token`' \
+     'https://api.contentful.com/spaces/${1:space_key}/content_types'
 endsnippet
 
 snippet ce "Create an entry"
@@ -34,17 +57,48 @@ curl -X PUT \
      -H 'Authorization: Bearer `cat $HOME/.contentful-cma-token`' \
      -H 'X-Contentful-Content-Type: ${1:content-type-id}' \
      'https://api.contentful.com/spaces/${2:space_key}/entries/${3:entry-id}' \
-     -d '{"fields":${4}}'
+     -d '{"fields":${4}}' \
+		 ${5:-H 'X-Contentful-Skip-Transformation: true'}
 endsnippet
 
-snippet gct "Get a content type"
+snippet ge "Get an entry"
 curl -X GET \
      -H 'Authorization: Bearer `cat $HOME/.contentful-cma-token`' \
-     'https://api.contentful.com/spaces/${1:space_key}/content_types/${2:content-type-id}'
+		 'https://api.contentful.com/spaces/${1:space_key}/entries/${2:entry-id}' \
+		 ${3:-H 'X-Contentful-Skip-Transformation: true'}
 endsnippet
 
-snippet dge "Get an entry"
+snippet pu "Publish an entry"
+curl -X PUT \
+     -H 'Content-Type: application/vnd.contentful.management.v1+json' \
+     -H 'Authorization: Bearer `cat $HOME/.contentful-cma-token`' \
+     -H 'X-Contentful-Version: ${1:version}' \
+     'https://api.contentful.com/spaces/${2:space_key}/entries/${3:entry-id}/published'
+endsnippet
+
+snippet pu "Unpublish an entry"
+curl -X DELETE \
+     -H 'Authorization: Bearer `cat $HOME/.contentful-cma-token`' \
+     'https://api.contentful.com/spaces/${2:space_key}/entries/${3:entry-id}/published'
+endsnippet
+
+snippet de "Delete an entry"
+curl -X DELETE \
+     -H 'Authorization: Bearer `cat $HOME/.contentful-cma-token`' \
+     'https://api.contentful.com/spaces/${1:space_key}/entries/${2:entry-id}'
+endsnippet
+
+snippet gs "Get space"
 curl -X GET \
-     -H 'Authorization: Bearer `cat $HOME/.contentful-cdn-token`' \
-     'https://cdn.contentful.com/spaces/${1:space_key}/entries/${2:entry_id}'
+     -H 'Authorization: Bearer `cat $HOME/.contentful-cma-token`' \
+     'https://api.contentful.com/spaces/${1:space_key}' \
+		 ${2:-H 'X-Contentful-Skip-Transformation: true'}
+endsnippet
+
+snippet cs "Create space"
+curl -X POST \
+     -H 'Content-Type: application/vnd.contentful.management.v1+json' \
+     -H 'Authorization: Bearer `cat $HOME/.contentful-cma-token`' \
+     'https://api.contentful.com/spaces' \
+     -d '{"name":"Example Space"${1:,"locales":[{"code":"pu", "name":"ta"}]}}'
 endsnippet
