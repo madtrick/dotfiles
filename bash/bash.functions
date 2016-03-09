@@ -76,4 +76,10 @@ function resolve_conflict_in_editor(){
   vim $(git list $1)
 }
 
+# Export AWS env variables
+function eaws() {
+  export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)
+  export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
+}
+
 # vim:ft=sh
