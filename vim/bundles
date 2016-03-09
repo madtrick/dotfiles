@@ -79,7 +79,7 @@ if filereadable('.jshintrc')
 endif
 
 if filereadable('.jscsrc')
-  let g:syntastic_javascript_checkers = add(g:syntastic_javascript_checkers, 'jscsrc')
+  let g:syntastic_javascript_checkers = add(g:syntastic_javascript_checkers, 'jscs')
 endif
 
 "let g:syntastic_javascript_jsxhint_exec  = 'jsx-jshint-wrapper'
