@@ -82,4 +82,11 @@ function eaws() {
   export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
 }
 
+# Create a tunnel to the production RDS machines
+function tunnel_rds() {
+  local rds_host=$1
+  local app_server="cf-app-005-us-east-1-prod"
+  ssh -L 5432:localhost:5432 stargate-production "ssh -L 5432:$rds_host:5432 $app_server"
+}
+
 # vim:ft=sh
