@@ -25,7 +25,6 @@
   rebase-to-branch = "!f() { git rebase -i $(git merge-base $(git current-branch) $1); }; f" # rebase to the common ancestor between the current branch and the supplied one
   ap               = add -p
   files-changed    = show --pretty="format:" --name-only # shows files change in a commit
-  lp               = log -p
   dh               = "!f() { git diff --color \"$@\" | /usr/local/share/git-core/contrib/diff-highlight/diff-highlight;  }; f"
 [push]
   default = simple
