@@ -1,6 +1,7 @@
 [user]
   name = Farruco Sanjurjo
   email=madtrick@gmail.com
+	signingkey = FADA6934
 [color]
   ui = true
 [core]
@@ -30,5 +31,11 @@
   default = simple
 
 # vim:ft=sh
-[diff]
-	external = /Users/farruco/bin/git-external_patdiff
+#[diff]
+#  external = /Users/farruco/bin/git-external_patdiff
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+[commit]
+	gpgsign = true

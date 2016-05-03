@@ -20,6 +20,7 @@ source $DOTFILES_DIR/bash/bash.rbenv
 source $DOTFILES_DIR/bash/bash.plugins
 source $DOTFILES_DIR/bash/bash.prompt
 source $DOTFILES_DIR/bash/bash.tmux
+source $DOTFILES_DIR/bash/bash.gpg
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"

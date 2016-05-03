@@ -85,8 +85,9 @@ function eaws() {
 # Create a tunnel to the production RDS machines
 function tunnel_rds() {
   local rds_host=$1
-  local app_server="cf-app-005-us-east-1-prod"
-  ssh -L 5432:localhost:5432 stargate-production "ssh -L 5432:$rds_host:5432 $app_server"
+  local app_server=$2
+  local env=$3
+  ssh -L 5432:localhost:5432 stargate-$env "ssh -L 5432:$rds_host:5432 $app_server"
 }
 
 # vim:ft=sh

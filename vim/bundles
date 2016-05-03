@@ -141,7 +141,7 @@ Plugin 'mxw/vim-jsx'
 let g:jsx_ext_required = 1
 "}}}
 Plugin 'vim-erlang/vim-erlang-tags'
-Plugin 'jimenezrick/vimerl'
+"Plugin 'jimenezrick/vimerl'
 " vimerl:{{{
 let g:erlang_force_use_vimerl_indent = 1
 "}}}
@@ -149,6 +149,7 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'SQLUtilities'
+Plugin 'kylef/apiblueprint.vim'
 
 """"""""""""""""""""""""""""""""""""""""
 " MOTIONS
