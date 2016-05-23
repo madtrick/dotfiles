@@ -26,16 +26,6 @@ mkcd() {
   cd "$*"
 }
 
-function git_clone_config(){
-  local options=""
-  if [[ -f $PWD/.gitconfig.clone ]]; then
-    while read line ; do
-      options=$options" "$line
-    done < $PWD/.gitconfig.clone
-    echo "$options"
-  fi
-}
-
 # List 256 colours along with is code
 function colors(){
   for code in {0..255}
@@ -78,16 +68,24 @@ function resolve_conflict_in_editor(){
 
 # Export AWS env variables
 function eaws() {
+  echo "Setting AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY env variables"
+
   export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)
   export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
 }
 
 # Create a tunnel to the production RDS machines
 function tunnel_rds() {
-  local rds_host=$1
-  local app_server=$2
-  local env=$3
-  ssh -L 5432:localhost:5432 stargate-$env "ssh -L 5432:$rds_host:5432 $app_server"
+  local usage="tunnel_rds 'rds_host' 'app_server' 'stargate-env'"
+
+  if [ "$#" -lt 3 ]; then
+    echo "usage: $usage"
+  else
+    local rds_host=$1
+    local app_server=$2
+    local env=$3
+    ssh -L 5432:localhost:5432 stargate-$env "ssh -L 5432:$rds_host:5432 $app_server"
+  fi
 }
 
 # vim:ft=sh

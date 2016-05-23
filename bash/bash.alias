@@ -43,4 +43,6 @@ alias ne="npm edit"
 alias pyhttp=python_http_server
 
 alias f=search_for
+
+alias de='eval $(docker-machine env)'
 # vim:ft=sh

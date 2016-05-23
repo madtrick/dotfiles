@@ -255,7 +255,7 @@ S.bind("down:cmd", focusTo("down"));
 S.bind("down:cmd;shift", twoMonitorThrow("down"));
 
 S.bind("c:alt;cmd", center);
-S.bind("g:alt;cmd", fullscreen);
+//S.bind("g:alt;cmd", fullscreen);
 S.bind("h:alt;cmd", halfScreen());
 S.bind("k:ctrl;alt;cmd", moveTo("right"));
 S.bind("l:alt;cmd", fullHeight);
