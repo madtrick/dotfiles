@@ -37,3 +37,19 @@
 	smudge = git-lfs smudge %f
 [commit]
 	gpgsign = true
+
+# Color config extracted from
+# https://github.com/so-fancy/diff-so-fancy#improved-colors-for-the-highlighted-bits
+[color "diff"]
+	meta = yellow bold
+	commit = green bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = "red bold 52"
+	newNormal = "green bold"
+	newHighlight = "green bold 22"

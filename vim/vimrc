@@ -57,7 +57,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Plugin 'VundleVim/Vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 " Load all the other plugins
 source ~/.vim/bundles
