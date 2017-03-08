@@ -83,14 +83,14 @@ function eaws() {
 
 # Create a tunnel to the production RDS machines
 function tunnel_rds() {
-  local usage="tunnel_rds 'rds_host' 'app_server' 'stargate-env' ['local port']"
+  local usage="tunnel_rds 'stargate-env' 'rds_host' ['app_server'] ['local port']"
 
   if [ "$#" -lt 3 ]; then
     echo "usage: $usage"
   else
-    local rds_host=$1
-    local app_server=$2
-    local env=$3
+    local env=$1
+    local rds_host=$2
+    local app_server=$(ssh stargate-$env "cat ~/.ssh/config" | grep '^Host all-in' | awk '{print $2}' | gshuf | head -n 1)
     if [ -z "$4" ]; then
       local port=5432
     else
