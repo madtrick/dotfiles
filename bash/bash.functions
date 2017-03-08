@@ -83,21 +83,53 @@ function eaws() {
 
 # Create a tunnel to the production RDS machines
 function tunnel_rds() {
-  local usage="tunnel_rds 'stargate-env' 'rds_host' ['app_server'] ['local port']"
+  local usage="tunnel_rds 'stargate-env' 'db_shard' ['local_port']"
+  local env=$1
+  local db_shard=$2
+  local shard_config=""
+  local rds_host=""
+  local rds_password=""
+  local datastore_file=""
 
-  if [ "$#" -lt 3 ]; then
+  if [ "$#" -lt 2 ]; then
     echo "usage: $usage"
   else
-    local env=$1
-    local rds_host=$2
-    local app_server=$(ssh stargate-$env "cat ~/.ssh/config" | grep '^Host all-in' | awk '{print $2}' | gshuf | head -n 1)
-    if [ -z "$4" ]; then
-      local port=5432
-    else
-      local port=$4
+    if [[ $env == "production" ]]; then
+      datastore_file="$HOME/repos/work/chef-databags-prod/applications/datastores.json"
     fi
 
-    ssh -L $port:localhost:5432 stargate-$env "ssh -L 5432:$rds_host:5432 $app_server"
+    if [[ $env == "staging" ]]; then
+      datastore_file="$HOME/repos/work/chef-databags/applications/datastores.json"
+    fi
+
+    if [ -f $datastore_file ]; then
+      shard_config=$(cat $datastore_file | jq '.'"$env"'.shards."'"$db_shard"'"')
+    fi
+
+    if [[ $shard_config == "null" ]]; then
+      echo "Error: no rds host for the given shard"
+    else
+      rds_host=$(echo $shard_config | jq .host)
+      rds_password=$(echo $shard_config | jq .password)
+
+      # copy the password to the clipboard (removing double quotes)
+      echo $rds_password | tr -d '"' | tr -d '\n' | pbcopy
+
+      local app_server=$(ssh stargate-$env "cat ~/.ssh/config" | grep '^Host all-in' | awk '{print $2}' | gshuf | head -n 1)
+
+      if [ -z "$3" ]; then
+        local port=5432
+      else
+        local port=$3
+      fi
+
+      echo "Openning a connection to $rds_host through $app_server"
+      echo "RDS host password (copied in the clipboard): $rds_password"
+      echo ""
+      echo ""
+
+      ssh -L $port:localhost:5432 stargate-$env "ssh -L 5432:$rds_host:5432 $app_server"
+    fi
   fi
 }
 
