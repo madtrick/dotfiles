@@ -21,6 +21,7 @@ source $DOTFILES_DIR/bash/bash.plugins
 source $DOTFILES_DIR/bash/bash.prompt
 source $DOTFILES_DIR/bash/bash.tmux
 source $DOTFILES_DIR/bash/bash.gpg
+source $DOTFILES_DIR/bash/bash.options
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -28,3 +29,9 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # added by travis gem
 [ -f /Users/farruco/.travis/travis.sh ] && source /Users/farruco/.travis/travis.sh
+
+# erlang version manager
+[ -f /Users/farruco/.evm/scripts/evm ] && source /Users/farruco/.evm/scripts/evm
+
+# Hook direnv https://direnv.net/
+eval "$(direnv hook bash)"
