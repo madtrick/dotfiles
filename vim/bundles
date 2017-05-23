@@ -9,6 +9,9 @@
 "noremap <leader>ñ :NERDTreeTabsToggle<CR>
 ""}}}
 Plugin 'scrooloose/nerdcommenter'
+" nercommenter{{{
+let g:NERDSpaceDelims = 1
+"}}}
 Plugin 'bling/vim-airline'
 " Vim-airline{{{
 let g:airline#extensions#syntastic#enabled = 1
@@ -43,16 +46,20 @@ Plugin 'ctrlp.vim'
 " If we don't prepend the current path then ctrlp won't work even if we
 " cd to some folder inside node_modules or vendor/ruby
 let s:node_modules_path_expression  = getcwd() . '/node_modules/\'
-let s:vendored_ruby_path_expression = getcwd() . '/vendor/ruby/\'
-let s:ignore_expression             = s:vendored_ruby_path_expression . '|.git/\|' . s:node_modules_path_expression . '|bower_components/\' . '|deps/'
+" exclude vendor/ (ruby and golang with glide)
+let s:vendored_path_expression = getcwd() . '/vendor/\'
+" exclude build artifacts
+let s:dist_path_expression = getcwd() . '/dist/'
+let s:ignore_expression             = s:vendored_path_expression . '|.git/\|' . s:node_modules_path_expression . '|' . s:dist_path_expression
 let g:ctrlp_custom_ignore           = {
   \ 'dir' : s:ignore_expression,
   \ 'file' : '.beam$'
   \}
-
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 " Hack to fix the root directory for ctrlp
 "autocmd VimEnter * :nnoremap <c-p> :CtrlP pwd<CR>
 "}}}
+Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'surround.vim'
 " Surround:{{{
 " Surround mappings
@@ -70,8 +77,15 @@ Plugin 'scrooloose/syntastic'
 let g:syntastic_ignore_files        = ['\.json$']
 let g:syntastic_javascript_checkers = []
 
-if filereadable('.eslintrc')
+if filereadable('.eslintrc') || filereadable('.eslintrc.json') || filereadable('.eslintrc.yml') || filereadable('.eslintrc.js')
   let g:syntastic_javascript_checkers = add(g:syntastic_javascript_checkers, 'eslint')
+
+  " vimscript to set the vendored eslint got at:
+  " https://github.com/eslint/eslint/issues/1238#issuecomment-139471958
+  let local_eslint = finddir('node_modules') . '/.bin/eslint'
+  if executable(local_eslint)
+    let g:syntastic_javascript_eslint_exec = local_eslint
+  endif
 endif
 
 if filereadable('.jshintrc')
@@ -92,7 +106,7 @@ let g:syntastic_check_on_open            = 1
 highlight SyntasticErrorLine ctermfg=white ctermbg=196
 highlight SyntasticWarningLine ctermbg=216
 "}}}
-Plugin 'tpope/vim-jdaddy'
+"Plugin 'tpope/vim-jdaddy'
 Plugin 'SirVer/ultisnips'
 " ultisnips:{{{
 let g:UltiSnipsExpandTrigger       = "<c-l>"
@@ -111,6 +125,22 @@ Plugin 'Valloric/YouCompleteMe'
 "let g:ycm_key_list_select_completion = ['<C-l>', '<Down>']
 Plugin 'fugitive.vim'
 Plugin 'chrisbra/csv.vim'
+"Plugin 'christoomey/vim-tmux-navigator'
+"" vim-tmux-navigator:{{{
+"let g:tmux_navigator_no_mappings = 1
+
+"nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+"nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+"nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+"nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+""nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+""}}}
+" Plugin 'ternjs/tern_for_vim'
+Plugin 'mhinz/vim-signify'
+" vim-signify:{{{
+let g:signify_vcs_list = [ 'git', 'hg' ]
+let g:signify_update_on_focusgained = 1
+"}}}
 
 """"""""""""""""""""""""""""""""""""""""
 " THEMES
@@ -118,6 +148,7 @@ Plugin 'chrisbra/csv.vim'
 Plugin 'sjl/badwolf'
 Plugin 'molokai'
 Plugin 'madtrick/solarized'
+Plugin 'lifepillar/vim-solarized8'
 "Plugin 'Impact'
 "Plugin 'jellybeans.vim'
 "Plugin 'twilight256.vim'
@@ -150,6 +181,13 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'SQLUtilities'
 Plugin 'kylef/apiblueprint.vim'
+Plugin 'fatih/vim-go'
+" vim-go:{{{
+let g:go_fmt_command = "goimports"
+" Disable default mapping in Plugin: nmap K :GoDoc<CR>
+" which conflicts with one of my custom mappings
+let g:go_doc_keywordprg_enabled = 0
+"}}}
 
 """"""""""""""""""""""""""""""""""""""""
 " MOTIONS
