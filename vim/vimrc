@@ -80,8 +80,7 @@ set rtp+=~/.fzf
 
 filetype plugin indent on
 syntax enable
-set background=light
-color molokai
+color nova
 "hack to make diminactive looks nice when using molokai
 hi ColorColumn ctermbg=237
 
