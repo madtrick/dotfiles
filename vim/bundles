@@ -155,6 +155,7 @@ Plugin 'lifepillar/vim-solarized8'
 "Plugin 'xoria256.vim'
 "Plugin 'Zenburn'
 "Plugin 'noahfrederick/Hemisu'
+Plugin 'trevordmiller/nova-vim'
 
 
 """""""""""""""""""""""""""""""""""""""
