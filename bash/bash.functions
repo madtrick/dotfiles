@@ -133,4 +133,9 @@ function tunnel_rds() {
   fi
 }
 
+# Log in AWS ECR
+function lecr () {
+  $(aws ecr get-login --region us-east-1 --no-include-email)
+}
+
 # vim:ft=sh
