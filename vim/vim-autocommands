@@ -7,6 +7,13 @@ autocmd BufRead *.coffee.erb :set ft=coffee
 " Set haml coffee files to be interpreted ass haml
 autocmd BufREad,BufNewFile *.hamlc set ft=haml
 
+" Do not show tabs in Go files (note the whitespace after the latest \)
+autocmd BufREad,BufNewFile *.go set listchars+=tab:\ \ 
+
+" Disable cursorline on ruby files
+" http://stackoverflow.com/questions/22949067/macvim-quite-slow-when-syntax-is-set-to-ruby
+autocmd BufRead *.rb :set nocursorline
+
 " Move all vim help files to the right
 augroup Help2Right
   autocmd!

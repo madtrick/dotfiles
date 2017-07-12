@@ -59,10 +59,10 @@ nnoremap <leader>e :ll<CR>
 " Copy/Paste mappings
 """""""""""""""""""""""""""""""""""
 " Move lines with ease
-nnoremap <C-j> :m+<CR>==
-nnoremap <C-k> :m-2<CR>==
-vnoremap <C-j> :m'>+<CR>gv=gv
-vnoremap <C-k> :m-2<CR>gv=gv
+"nnoremap <C-j> :m+<CR>==
+"nnoremap <C-k> :m-2<CR>==
+"vnoremap <C-j> :m'>+<CR>gv=gv
+"vnoremap <C-k> :m-2<CR>gv=gv
 
 " Play with Yanked/Deleted objects
 nnoremap gV `[v`]

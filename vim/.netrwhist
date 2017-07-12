@@ -1,8 +1,8 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/farruco/Repos/Work/area-51/sharejs/test/types'
-let g:netrw_dirhist_2='/Users/farruco/Repos/Work/area-51/sharejs/test/helpers'
-let g:netrw_dirhist_3='/Users/farruco/Repos/Work/area-51/sharejs/node_modules/nodeunit/lib'
-let g:netrw_dirhist_4='/Users/farruco/Repos/Work/area-51'
-let g:netrw_dirhist_5='/Users/farruco/Repos/Personal/dotfiles'
-let g:netrw_dirhist_6='/Users/farruco/Repos/Personal/dotfiles/bash'
+let g:netrw_dirhist_1='/Users/farruco/repos/work/sharejs_lock_archive/lib'
+let g:netrw_dirhist_2='/Users/farruco/repos/work/sharejs_lock_archive'
+let g:netrw_dirhist_3='/Users/farruco/repos/work/sharejs_lock_archive/lib'
+let g:netrw_dirhist_4='/Users/farruco/repos/work/sharejs_lock_archive/lib/helpers'
+let g:netrw_dirhist_5='/Users/farruco/repos/work/sharejs_lock_archive/lib'
+let g:netrw_dirhist_6='/Users/farruco/repos/work/sharejs_lock_archive/lib/bulk-client'

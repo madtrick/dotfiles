@@ -135,7 +135,12 @@ function tunnel_rds() {
 
 # Log in AWS ECR
 function lecr () {
-  $(aws ecr get-login --region us-east-1 --no-include-email)
+  if [ -z "$AWS_PROFILE" ]; then
+    echo "Need to set AWS_PROFILE"
+  else
+    $(aws ecr get-login --region us-east-1 --no-include-email)
+  fi
+
 }
 
 # vim:ft=sh
