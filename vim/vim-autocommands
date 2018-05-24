@@ -9,6 +9,9 @@ autocmd BufREad,BufNewFile *.hamlc set ft=haml
 
 " Do not show tabs in Go files (note the whitespace after the latest \)
 autocmd BufREad,BufNewFile *.go set listchars+=tab:\ \ 
+"
+" Set files matching Dockerfile* as Dockefiles
+autocmd BufRead Dockerfile* :set ft=dockerfile
 
 " Disable cursorline on ruby files
 " http://stackoverflow.com/questions/22949067/macvim-quite-slow-when-syntax-is-set-to-ruby
@@ -45,5 +48,11 @@ autocmd BufWinEnter *.md call MatchTechWordsToAvoid()
 autocmd InsertEnter *.md call MatchTechWordsToAvoid()
 autocmd InsertLeave *.md call MatchTechWordsToAvoid()
 autocmd BufWinLeave *.md call clearmatches()
+
+" Autowrap at 80 characters in Markdown files. Also wrap when inserting
+" on already existing lines http://vim.wikia.com/wiki/Automatic_word_wrapping
+
+autocmd BufEnter *.md :set tw=80
+autocmd BufEnter *.md :set fo-=l
 
 " vim:ft=vim

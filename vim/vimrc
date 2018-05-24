@@ -22,8 +22,8 @@ set expandtab
 set number
 set nobackup
 set nowritebackup
-set backupdir    =~/.vim/backup
-set directory    =~/.vim/backup
+set backupdir    =~/.vim_backup
+set directory    =~/.vim_backup
 set laststatus   =2
 set hlsearch
 set incsearch
@@ -63,17 +63,6 @@ Plugin 'VundleVim/Vundle.vim'
 source ~/.vim/bundles
 let g:bundles_file ="~/.vim/bundles"
 call vundle#end()
-
-" Unite config has to be set after vundle#end(). Otherwise it crashes : (
-" Unite.vim{{{
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-call unite#custom#source('file,file/new,buffer,file_rec,line', 'matchers', 'matcher_fuzzy')
-let g:unite_source_grep_command='ag'
-let g:unite_source_grep_default_opts='--vimgrep --line-numbers --nogroup -S -C4'
-let g:unite_source_grep_recursive_opt=''
-nnoremap <leader>u :<C-u>Unite -buffer-name=search -start-insert line<cr>
-"}}}
 
 " Integrate the shell Fuzzy Finder
 set rtp+=~/.fzf

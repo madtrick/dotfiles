@@ -1,12 +1,12 @@
 [user]
   name = Farruco Sanjurjo
   email=madtrick@gmail.com
-	signingkey = FADA6934
+	signingkey = 5A312D80763499E3
 [color]
   ui = true
 [core]
   editor = vim
-  excludesfile = ~/.global_gitignore
+  excludesfile = ~/.gitignore
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [alias]
   f                = "!git ls-files | grep -i" # find files

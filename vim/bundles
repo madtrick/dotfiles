@@ -1,10 +1,6 @@
 """"""""""""""""""""""""""""""""""""""""
 " UI ENHANCEMENTS
 """"""""""""""""""""""""""""""""""""""""
-"Plugin 'The-NERD-tree'
-"" Nerdtree  {{{
-"}}}
-"Plugin 'jistr/vim-nerdtree-tabs'
 "" Nerdtree-Tabs  {{{
 "noremap <leader>ñ :NERDTreeTabsToggle<CR>
 ""}}}
@@ -35,12 +31,12 @@ let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.liner    = '⭡'
 "}}}
 Plugin 'tpope/vim-vinegar'
-Plugin 'Shougo/unite.vim'
 
-""""""""""""""""""""""""""""""""""""""""
-" UTILS
-""""""""""""""""""""""""""""""""""""""""
-Plugin 'LustyJuggler'
+" """"""""""""""""""""""""""""""""""""""""
+" " UTILS
+" """"""""""""""""""""""""""""""""""""""""
+" " Pluging to quickly switch between buffers
+" Plugin 'LustyJuggler'
 Plugin 'ctrlp.vim'
 " Ctrlp:  {{{
 " If we don't prepend the current path then ctrlp won't work even if we
@@ -59,6 +55,7 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 " Hack to fix the root directory for ctrlp
 "autocmd VimEnter * :nnoremap <c-p> :CtrlP pwd<CR>
 "}}}
+" Faster fuzzy matcher for ctrl-p
 Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'surround.vim'
 " Surround:{{{
@@ -66,16 +63,29 @@ Plugin 'surround.vim'
 nmap <leader>" ysiw"E
 nmap <leader>' ysiw'E
 "}}}
-Plugin 'ack.vim'
-" Ack:{{{
-" Ack mappings
-nmap <leader>A :Ack<space>
-"}}}
 Plugin 'gabesoft/vim-ags'
+" vim-ags:{{{
+" Percentage of the window to use to display the results
+let g:ags_winheight = '20'
+"}}}
 Plugin 'scrooloose/syntastic'
 " Syntastic:{{{
+" YouCompleteMe diagnosis features seem to collide with Syntastic
+" in particular it overrides the values in the loclist
+"
+" So we disable the diagnosis in YCM to properly use the errors from
+" Syntastic
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_always_populate_location_list = 0
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_ignore_files        = ['\.json$']
 let g:syntastic_javascript_checkers = []
+" To see a list of available colors go to:
+"
+" http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
+highlight SyntasticErrorLine ctermfg=white ctermbg=196
+highlight SyntasticWarningLine ctermbg=216
 
 if filereadable('.eslintrc') || filereadable('.eslintrc.json') || filereadable('.eslintrc.yml') || filereadable('.eslintrc.js')
   let g:syntastic_javascript_checkers = add(g:syntastic_javascript_checkers, 'eslint')
@@ -88,6 +98,17 @@ if filereadable('.eslintrc') || filereadable('.eslintrc.json') || filereadable('
   endif
 endif
 
+if filereadable('tsconfig.json')
+  let g:syntastic_aggregate_errors = 1
+  let g:syntastic_typescript_tslint_args = '-p tsconfig.json'
+  let g:syntastic_typescript_checkers = ['tslint', 'tsuquyomi']
+
+  let local_tslint = finddir('node_modules') . '/.bin/tslint'
+  if executable(local_tslint)
+    let g:syntastic_typescript_tslint_exec = local_tslint
+  endif
+endif
+
 if filereadable('.jshintrc')
   let g:syntastic_javascript_checkers = add(g:syntastic_javascript_checkers, 'jshint')
 endif
@@ -97,14 +118,6 @@ if filereadable('.jscsrc')
 endif
 
 "let g:syntastic_javascript_jsxhint_exec  = 'jsx-jshint-wrapper'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open            = 1
-
-" To see a list of available colors go to:
-"
-" http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
-highlight SyntasticErrorLine ctermfg=white ctermbg=196
-highlight SyntasticWarningLine ctermbg=216
 "}}}
 "Plugin 'tpope/vim-jdaddy'
 Plugin 'SirVer/ultisnips'
@@ -113,33 +126,18 @@ let g:UltiSnipsExpandTrigger       = "<c-l>"
 let g:UltiSnipsJumpForwardTrigger  = "<c-b>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
 "}}}
-Plugin 'honza/vim-snippets'
+" Plugin 'honza/vim-snippets'
 Plugin 'blueyed/vim-diminactive'
-"Plugin 'marijnh/tern_for_vim'
-" Tern:{{{
-"let g:tern#command               = ["tern"]
-"let g:tern#arguments             = ["--no-port-file"]
-"let g:tern_show_signature_in_pum = 1
-"}}}
 Plugin 'Valloric/YouCompleteMe'
 "let g:ycm_key_list_select_completion = ['<C-l>', '<Down>']
 Plugin 'fugitive.vim'
 Plugin 'chrisbra/csv.vim'
-"Plugin 'christoomey/vim-tmux-navigator'
-"" vim-tmux-navigator:{{{
-"let g:tmux_navigator_no_mappings = 1
-
-"nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-"nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-"nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-"nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
-""nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
-""}}}
-" Plugin 'ternjs/tern_for_vim'
 Plugin 'mhinz/vim-signify'
 " vim-signify:{{{
-let g:signify_vcs_list = [ 'git', 'hg' ]
+let g:signify_vcs_list = [ 'git' ]
 let g:signify_update_on_focusgained = 1
+
+nmap <leader>gh :SignifyToggleHighlight<CR>
 "}}}
 
 """"""""""""""""""""""""""""""""""""""""
@@ -149,12 +147,6 @@ Plugin 'sjl/badwolf'
 Plugin 'molokai'
 Plugin 'madtrick/solarized'
 Plugin 'lifepillar/vim-solarized8'
-"Plugin 'Impact'
-"Plugin 'jellybeans.vim'
-"Plugin 'twilight256.vim'
-"Plugin 'xoria256.vim'
-"Plugin 'Zenburn'
-"Plugin 'noahfrederick/Hemisu'
 Plugin 'trevordmiller/nova-vim'
 
 
@@ -173,12 +165,14 @@ Plugin 'mxw/vim-jsx'
 let g:jsx_ext_required = 1
 "}}}
 Plugin 'vim-erlang/vim-erlang-tags'
-"Plugin 'jimenezrick/vimerl'
-" vimerl:{{{
-let g:erlang_force_use_vimerl_indent = 1
-"}}}
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'leafgarland/typescript-vim'
+" Plugin 'Quramy/tsuquyomi'
+" "" tsuquyomi:{{{
+"   let g:tsuquyomi_disable_quickfix = 1
+"   let g:tsuquyomi_use_local_typescript = 1
+"   let g:tsuquyomi_single_quote_import = 1
+" "}}}
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'SQLUtilities'
 Plugin 'kylef/apiblueprint.vim'
@@ -234,6 +228,10 @@ Plugin 'Shougo/vimproc.vim'
 " The following changes the default filetype back to 'tex':
 "let g:tex_flavor='latex'
 "let g:Tex_ViewRule_pdf='Preview'
+"}}}
+"Plugin 'jimenezrick/vimerl'
+" vimerl:{{{
+let g:erlang_force_use_vimerl_indent = 1
 "}}}
 
 

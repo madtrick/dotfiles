@@ -94,8 +94,8 @@ var twoMonitorThrow = function(to){
 
   if (to === "left") screenReference = "0";
   if (to === "right") screenReference = "1";
-  if (to === "down") screenReference = "1";
-  if (to === "up") screenReference = "0";
+  if (to === "down") screenReference = "2";
+  if (to === "up") screenReference = "1";
 
   return S.op("throw",{
     "screen" : screenReference,
@@ -129,106 +129,6 @@ var focusTo = function(to){
   });
 };
 
-
-/************************************
- * Screen setups
- ************************************/
-var monitorsResolutions = {
-  samsung : "2560x1440",
-  macbook : "1280x800"
-};
-
-var twoMonitorScreenConfigBigUpLaptopDown = {
-  resolutions : [monitorsResolutions.samsung, monitorsResolutions.macbook],
-  screens : {
-    samsung : 0,
-    macbook : 1
-  }
-};
-
-var oneMonitorScreenConfigBig = {
-  resolutions : [monitorsResolutions.samsung],
-  screens : {
-    samsung : 0
-  }
-};
-
-var oneMonitorScreenConfigLaptop = {
-  resolutions : [monitorsResolutions.macbook],
-  screens : {
-    macbook : 0
-  }
-};
-
-/************************************
- * Layout setups
- ************************************/
-var twoMonitorLayouBigUpLaptopDown = S.layout("twoMonitorLayouBigUpLaptopDown", {
-  "iTerm" : {
-    operations : [fullscreen]
-  },
-  "Google Chrome" : {
-    operations : [S.op("move", {
-      x : "screenOriginX",
-      y : "screenOriginY",
-      width : "screenSizeX",
-      height : "screenSizeY",
-      screen : twoMonitorScreenConfigBigUpLaptopDown.screens.macbook
-    })]
-  }
-});
-
-
-var oneMonitorLayoutBig = S.layout("oneMonitorLayoutBig", {
-  "iTerm" : {
-     //NOTE: 
-     //I have to use a function to apply to operations to the same window as "chain" and "sequence" didn't work
-     
-    operations : [function(win){
-      win.doOperation(widthSlice(8/12));
-      win.doOperation(fullHeight);
-      win.doOperation(moveTo("left"));
-    }]
-  },
-  "Google Chrome" : {
-     //see https://github.com/jigish/slate/issues/287
-    //operations : [function(win){
-    //NOTE: using the win object to move the Chrome window doesn't work 
-    //  win.doOperation(widthSlice(4/12));
-    //  win.doOperation(fullHeight);
-    //  win.doOperation(moveTo("right"));
-    //}]
-    operations : [S.op("move",{
-      x : "screenSizeX-(trunc(screenSizeX*4/12))",
-      y : "screenOriginY",
-      width : "trunc(screenSizeX*4/12)",
-      height: "screenSizeY"
-    })]
-  }
-});
-
-var oneMonitorLayoutLaptop = S.layout("oneMonitorLayoutLaptop", {
-  "iTerm" : { operations : [fullscreen] },
-  "Google Chrome" : { operations : [fullscreen] }
-});
-
-var latexEditionLayout = S.layout("latexEditionLayout", {
-  "iTerm" : {
-    operations : [function(win){
-      win.doOperation(widthSlice(8/12));
-      win.doOperation(fullHeight);
-      win.doOperation(moveTo("left"));
-    }]
-  },
-  "Preview" : {
-  operations : [function(win){
-      win.doOperation(widthSlice(4/12));
-      win.doOperation(fullHeight);
-      win.doOperation(moveTo("right"));
-    }]
-  }
-});
-
 /************************************
  * Binding setups
  ************************************/
@@ -255,22 +155,10 @@ S.bind("down:cmd", focusTo("down"));
 S.bind("down:cmd;shift", twoMonitorThrow("down"));
 
 S.bind("c:alt;cmd", center);
-//S.bind("g:alt;cmd", fullscreen);
+S.bind("g:alt;cmd", fullscreen);
 S.bind("h:alt;cmd", halfScreen());
 S.bind("k:ctrl;alt;cmd", moveTo("right"));
 S.bind("l:alt;cmd", fullHeight);
 S.bind("l:ctrl;alt;cmd", moveTo("left"));
 
 S.bind("r:ctrl;alt;cmd", S.op("relaunch"));
-
-/************************************
- * Default setups
- ************************************/
-S.default(twoMonitorScreenConfigBigUpLaptopDown.resolutions, "twoMonitorLayouBigUpLaptopDown");
-S.default(oneMonitorScreenConfigBig.resolutions, "oneMonitorLayoutBig");
-S.default(oneMonitorScreenConfigLaptop.resolutions, "oneMonitorLayoutLaptop");
-
-/*
- * Helpers
- */
-

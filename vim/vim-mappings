@@ -95,5 +95,7 @@ nnoremap <leader>f :CtrlPBufTag<CR>
 " Limit ctrlp to current wd
 autocmd VimEnter * :nnoremap <c-p> :CtrlP pwd<CR>
 
+" Prefill the command :Ags <current word under cursor>
+nnoremap ss :Ags <cword>
 
 " vim:ft=vim

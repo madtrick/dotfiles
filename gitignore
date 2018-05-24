@@ -6,3 +6,6 @@ vendor/ruby/
 
 # Desktop Services Store
 .DS_Store
+
+# Direnv conf files
+.envrc

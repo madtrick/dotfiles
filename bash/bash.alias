@@ -12,7 +12,7 @@ alias gcm="git commit"
 alias glg="git lg"
 alias gdi="git diff"
 alias gdic="git diff --cached"
-alias gfp="git fetch --prun"
+alias gfp="git fetch --prune"
 alias gba="git ba"
 alias gcam="git cam"
 alias gru="git rebase -i @{u}"
@@ -46,5 +46,7 @@ alias f=search_for
 
 alias delete_merged_branches="git branch --merged | egrep -v \"(^\*|master|dev)\" | xargs git branch -d"
 
-alias de='eval $(docker-machine env)'
+
+alias rm=trash
+
 # vim:ft=sh
