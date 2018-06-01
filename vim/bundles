@@ -98,17 +98,6 @@ if filereadable('.eslintrc') || filereadable('.eslintrc.json') || filereadable('
   endif
 endif
 
-if filereadable('tsconfig.json')
-  let g:syntastic_aggregate_errors = 1
-  let g:syntastic_typescript_tslint_args = '-p tsconfig.json'
-  let g:syntastic_typescript_checkers = ['tslint', 'tsuquyomi']
-
-  let local_tslint = finddir('node_modules') . '/.bin/tslint'
-  if executable(local_tslint)
-    let g:syntastic_typescript_tslint_exec = local_tslint
-  endif
-endif
-
 if filereadable('.jshintrc')
   let g:syntastic_javascript_checkers = add(g:syntastic_javascript_checkers, 'jshint')
 endif
@@ -130,6 +119,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
 Plugin 'blueyed/vim-diminactive'
 Plugin 'Valloric/YouCompleteMe'
 "let g:ycm_key_list_select_completion = ['<C-l>', '<Down>']
+let g:ycm_filetype_blacklist = {'typescript' : 1}
 Plugin 'fugitive.vim'
 Plugin 'chrisbra/csv.vim'
 Plugin 'mhinz/vim-signify'
@@ -167,12 +157,13 @@ let g:jsx_ext_required = 1
 Plugin 'vim-erlang/vim-erlang-tags'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'leafgarland/typescript-vim'
-" Plugin 'Quramy/tsuquyomi'
-" "" tsuquyomi:{{{
-"   let g:tsuquyomi_disable_quickfix = 1
-"   let g:tsuquyomi_use_local_typescript = 1
-"   let g:tsuquyomi_single_quote_import = 1
-" "}}}
+Plugin 'w0rp/ale'
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
+let g:ale_fixers = {'typescript': ['tslint']}
+let g:ale_completion_enabled = 1
+
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'SQLUtilities'
 Plugin 'kylef/apiblueprint.vim'
