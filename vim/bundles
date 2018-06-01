@@ -41,12 +41,14 @@ Plugin 'ctrlp.vim'
 " Ctrlp:  {{{
 " If we don't prepend the current path then ctrlp won't work even if we
 " cd to some folder inside node_modules or vendor/ruby
-let s:node_modules_path_expression  = getcwd() . '/node_modules/\'
+let s:node_modules_path_expression  = '/node_modules/\'
 " exclude vendor/ (ruby and golang with glide)
-let s:vendored_path_expression = getcwd() . '/vendor/\'
+let s:vendored_path_expression = '/vendor/\'
 " exclude build artifacts
-let s:dist_path_expression = getcwd() . '/dist/'
-let s:ignore_expression             = s:vendored_path_expression . '|.git/\|' . s:node_modules_path_expression . '|' . s:dist_path_expression
+let s:dist_path_expression = '/dist/\'
+" exclude build artifacts (typescript)
+let s:built_path_expression = '/built/'
+let s:ignore_expression             = s:vendored_path_expression . '|.git/\|' . s:node_modules_path_expression . '|' . s:dist_path_expression . '|' . s:built_path_expression
 let g:ctrlp_custom_ignore           = {
   \ 'dir' : s:ignore_expression,
   \ 'file' : '.beam$'
