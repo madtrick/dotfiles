@@ -167,8 +167,6 @@ let g:ale_fixers = {'typescript': ['tslint']}
 if filereadable('tslint.yaml')
   " Some projects have a yaml file for the tslint config
   let g:ale_typescript_tslint_config_path = getcwd() . '/tslint.yaml'
-else
-  echom 'Not found'
 endif
 let g:ale_completion_enabled = 1
 
