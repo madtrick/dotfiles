@@ -169,6 +169,9 @@ if filereadable('tslint.yaml')
   let g:ale_typescript_tslint_config_path = getcwd() . '/tslint.yaml'
 endif
 let g:ale_completion_enabled = 1
+let g:ale_pattern_options = {
+\   './node_modules/.*$': {'ale_enabled': 0},
+\}
 
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'SQLUtilities'
