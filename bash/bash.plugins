@@ -1,35 +1,9 @@
-if [ -r "$HOME/repos/todir/todir" ]; then
-    . "$HOME/repos/todir/todir"
-    to_dir "rp" "$HOME/repos/"
-fi
-
-if [ -e $CODEPATH/scripts/git-flow-completion ]; then
- . $CODEPATH/scripts/git-flow-completion/git-flow-completion.bash
-fi
-
  #Check if brew is available
 if $(command -v brew >/dev/null 2>&1) && [[ $? && -f $(brew --prefix)/etc/bash_completion ]]; then
   #
   # Bash completion in Mac
   #
-    . $(brew --prefix)/etc/bash_completion
-fi
-
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-  #
-  # Bash completion in Ubuntun
-  #
-   . /etc/bash_completion
- fi
-
-# The test to know if a command exists was
-# found here:
-# http://stackoverflow.com/questions/592620/how-to-check-if-a-program-exists-from-a-bash-script
-if hash grunt 2>/dev/null; then
-  #
-  # Grunt completion
-  #
-  eval "$(grunt --completion=bash)"
+  . $(brew --prefix)/etc/bash_completion
 fi
 
 # vim:ft=sh

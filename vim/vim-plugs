@@ -1,0 +1,257 @@
+""""""""""""""""""""""""""""""""""""""""
+" UI ENHANCEMENTS
+""""""""""""""""""""""""""""""""""""""""
+"" Nerdtree-Tabs  {{{
+"noremap <leader>ñ :NERDTreeTabsToggle<CR>
+""}}}
+Plug 'scrooloose/nerdcommenter'
+" nercommenter{{{
+let g:NERDSpaceDelims = 1
+"}}}
+Plug 'bling/vim-airline'
+" Vim-airline{{{
+let g:airline#extensions#syntastic#enabled = 1
+
+let g:airline_powerline_fonts           = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline_theme                     = 'badwolf_custom'
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+"Setting here the symbols was the only way I found to
+" show the glyphs in the statusline (got at
+" https://github.com/bling/vim-airline/issues/76?source=cc)
+let g:airline_left_sep         = '⮀'
+let g:airline_left_alt_sep     = '⮁'
+let g:airline_right_sep        = '⮂'
+let g:airline_right_alt_sep    = '⮃'
+let g:airline_symbols.branch   = '⭠'
+let g:airline_symbols.readonly = '⭤'
+let g:airline_symbols.liner    = '⭡'
+"}}}
+Plug 'tpope/vim-vinegar'
+
+" """"""""""""""""""""""""""""""""""""""""
+" " UTILS
+" """"""""""""""""""""""""""""""""""""""""
+" " Plug to quickly switch between buffers
+" Plug 'LustyJuggler'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+nnoremap <c-F> :Files
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~40%' }
+
+" In Neovim, you can set up fzf window using a Vim command
+" let g:fzf_layout = { 'window': 'enew' }
+" let g:fzf_layout = { 'window': '-tabnew' }
+" let g:fzf_layout = { 'window': '10split enew' }
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Plug 'ctrlpvim/ctrlp.vim'
+" Ctrlp:  {{{
+" If we don't prepend the current path then ctrlp won't work even if we
+" cd to some folder inside node_modules or vendor/ruby
+" let s:node_modules_path_expression  = '/node_modules/\'
+" " exclude vendor/ (ruby and golang with glide)
+" let s:vendored_path_expression = '/vendor/\'
+" " exclude build artifacts
+" let s:dist_path_expression = '/dist/\'
+" " exclude build artifacts (typescript)
+" let s:built_path_expression = '/built/'
+" let s:ignore_expression             = s:vendored_path_expression . '|.git/\|' . s:node_modules_path_expression . '|' . s:dist_path_expression . '|' . s:built_path_expression
+" let g:ctrlp_custom_ignore           = {
+"   \ 'dir' : s:ignore_expression,
+"   \ 'file' : '.beam$'
+"   \}
+" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+" Hack to fix the root directory for ctrlp
+"autocmd VimEnter * :nnoremap <c-p> :CtrlP pwd<CR>
+"}}}
+" Faster fuzzy matcher for ctrl-p
+Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'tpope/vim-surround'
+" Surround:{{{
+" Surround mappings
+nmap <leader>" ysiw"E
+nmap <leader>' ysiw'E
+"}}}
+Plug 'gabesoft/vim-ags'
+" vim-ags:{{{
+" Percentage of the window to use to display the results
+let g:ags_winheight = '20'
+"}}}
+Plug 'scrooloose/syntastic'
+" Syntastic:{{{
+" YouCompleteMe diagnosis features seem to collide with Syntastic
+" in particular it overrides the values in the loclist
+"
+" So we disable the diagnosis in YCM to properly use the errors from
+" Syntastic
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_always_populate_location_list = 0
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_ignore_files        = ['\.json$']
+let g:syntastic_javascript_checkers = []
+" To see a list of available colors go to:
+"
+" http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
+highlight SyntasticErrorLine ctermfg=white ctermbg=196
+highlight SyntasticWarningLine ctermbg=216
+
+if filereadable('.eslintrc') || filereadable('.eslintrc.json') || filereadable('.eslintrc.yml') || filereadable('.eslintrc.js')
+  let g:syntastic_javascript_checkers = add(g:syntastic_javascript_checkers, 'eslint')
+
+  " vimscript to set the vendored eslint got at:
+  " https://github.com/eslint/eslint/issues/1238#issuecomment-139471958
+  let local_eslint = finddir('node_modules') . '/.bin/eslint'
+  if executable(local_eslint)
+    let g:syntastic_javascript_eslint_exec = local_eslint
+  endif
+endif
+
+if filereadable('.jshintrc')
+  let g:syntastic_javascript_checkers = add(g:syntastic_javascript_checkers, 'jshint')
+endif
+
+if filereadable('.jscsrc')
+  let g:syntastic_javascript_checkers = add(g:syntastic_javascript_checkers, 'jscs')
+endif
+
+"let g:syntastic_javascript_jsxhint_exec  = 'jsx-jshint-wrapper'
+"}}}
+"Plug 'tpope/vim-jdaddy'
+Plug 'SirVer/ultisnips'
+" ultisnips:{{{
+let g:UltiSnipsExpandTrigger       = "<c-l>"
+let g:UltiSnipsJumpForwardTrigger  = "<c-b>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
+"}}}
+" Plug 'honza/vim-snippets'
+Plug 'blueyed/vim-diminactive'
+" Plug 'Valloric/YouCompleteMe'
+"let g:ycm_key_list_select_completion = ['<C-l>', '<Down>']
+let g:ycm_filetype_blacklist = {'typescript' : 1}
+Plug 'tpope/vim-fugitive'
+Plug 'chrisbra/csv.vim'
+Plug 'mhinz/vim-signify'
+" vim-signify:{{{
+let g:signify_vcs_list = [ 'git' ]
+let g:signify_update_on_focusgained = 1
+
+nmap <leader>gh :SignifyToggleHighlight<CR>
+"}}}
+
+""""""""""""""""""""""""""""""""""""""""
+" THEMES
+""""""""""""""""""""""""""""""""""""""""
+Plug 'sjl/badwolf'
+Plug 'madtrick/solarized'
+Plug 'lifepillar/vim-solarized8'
+Plug 'trevordmiller/nova-vim'
+
+
+"""""""""""""""""""""""""""""""""""""""
+" LANGUAGES
+"""""""""""""""""""""""""""""""""""""""
+Plug 'vim-ruby/vim-ruby'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'elzr/vim-json'
+" vim-json:{{{
+let g:vim_json_syntax_conceal = 0
+"}}}
+Plug 'mxw/vim-jsx'
+" vim-jsx:{{{
+let g:jsx_ext_required = 1
+"}}}
+Plug 'vim-erlang/vim-erlang-tags'
+Plug 'elixir-lang/vim-elixir'
+Plug 'leafgarland/typescript-vim'
+Plug 'w0rp/ale'
+let g:ale_set_loclist = 1
+let g:ale_open_list = 1
+let g:ale_fixers = {'typescript': ['tslint']}
+" if filereadable('tslint.yaml')
+"   " Some projects have a yaml file for the tslint config
+"   let g:ale_typescript_tslint_config_path = getcwd() . '/tslint.yaml'
+" endif
+let g:ale_completion_enabled = 1
+let g:ale_pattern_options = {
+\   './node_modules/.*$': {'ale_enabled': 0},
+\}
+
+Plug 'kchmck/vim-coffee-script'
+Plug 'kylef/apiblueprint.vim'
+Plug 'fatih/vim-go'
+" vim-go:{{{
+let g:go_fmt_command = "goimports"
+" Disable default mapping in Plug: nmap K :GoDoc<CR>
+" which conflicts with one of my custom mappings
+let g:go_doc_keywordprg_enabled = 0
+"}}}
+
+""""""""""""""""""""""""""""""""""""""""
+" MOTIONS
+""""""""""""""""""""""""""""""""""""""""
+Plug 'goldfeld/vim-seek'
+" Vim-seek{{{
+let g:seek_subst_disable=1
+let g:seek_enable_jumps=1
+"}}}
+
+" Utils
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-line'
+Plug 'adelarsq/vim-matchit'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-unimpaired'
+
+Plug 'tpope/vim-abolish'
+
+Plug 'rizzatti/dash.vim'
+Plug 'justinmk/vim-gtfo'
+Plug 'Shougo/vimproc.vim'
+
+
+""""""""""""""""""""""""""""""""""""""""
+" DISABLED PLUGINS
+""""""""""""""""""""""""""""""""""""""""
+"Plug 'jcf/vim-latex'
+" Vimlatex:{{{
+"Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+"let g:tex_flavor='latex'
+"let g:Tex_ViewRule_pdf='Preview'
+"}}}
+"Plug 'jimenezrick/vimerl'
+" vimerl:{{{
+let g:erlang_force_use_vimerl_indent = 1
+"}}}
+
+
+" vim:ft=vim:fdm=marker

@@ -1,9 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/farruco/repos/work/graph-api/node_modules/@contentful/hapi-statsd/node_modules'
-let g:netrw_dirhist_2='/Users/farruco/repos/work/graph-api/node_modules/@contentful/hapi-statsd'
-let g:netrw_dirhist_3='/Users/farruco/repos/work/graph-api/node_modules/@contentful/hapi-statsd/lib'
-let g:netrw_dirhist_4='/Users/farruco/repos/work/graph-api'
-let g:netrw_dirhist_5='/Users/farruco/repos/work/graph-api/test'
-let g:netrw_dirhist_6='/Users/farruco/repos/work/graph-api'
-let g:netrw_dirhist_7='/Users/farruco/repos/work/graph-api/node_modules'
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/farruco'
+let g:netrw_dirhist_2='/Users/farruco/repos/personal/dotfiles'
+let g:netrw_dirhist_3='/Users/farruco/repos/personal/dotfiles/bash'
+let g:netrw_dirhist_4='/Users/farruco/repos/personal/dotfiles'
+let g:netrw_dirhist_5='/Users/farruco/repos/personal/dotfiles/bash'
+let g:netrw_dirhist_6='/Users/farruco/repos/personal/dotfiles'

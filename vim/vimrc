@@ -50,22 +50,25 @@ set ttimeout
 set ttimeoutlen=20
 set notimeout
 
-set nocompatible               " be iMproved
-filetype off                   " required! by vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/vim-plug-installs')
 
-" let Vundle manage Vundle
-" required!
-Plugin 'VundleVim/Vundle.vim'
+"set nocompatible               " be iMproved
+"filetype off                   " required! by vundle
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
+"
+"" let Vundle manage Vundle
+"" required!
+"Plugin 'VundleVim/Vundle.vim'
 
 " Load all the other plugins
-source ~/.vim/bundles
-let g:bundles_file ="~/.vim/bundles"
-call vundle#end()
+source ~/.vim/vim-plugs
+call plug#end()
+"let g:bundles_file ="~/.vim/bundles"
+"call vundle#end()
 
 " Integrate the shell Fuzzy Finder
-set rtp+=~/.fzf
+"set rtp+=~/.fzf
 
 filetype plugin indent on
 syntax enable
