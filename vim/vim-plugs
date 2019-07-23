@@ -1,9 +1,6 @@
 """"""""""""""""""""""""""""""""""""""""
 " UI ENHANCEMENTS
 """"""""""""""""""""""""""""""""""""""""
-"" Nerdtree-Tabs  {{{
-"noremap <leader>ñ :NERDTreeTabsToggle<CR>
-""}}}
 Plug 'scrooloose/nerdcommenter'
 " nercommenter{{{
 let g:NERDSpaceDelims = 1
@@ -36,10 +33,12 @@ Plug 'tpope/vim-vinegar'
 " " UTILS
 " """"""""""""""""""""""""""""""""""""""""
 " " Plug to quickly switch between buffers
-" Plug 'LustyJuggler'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-nnoremap <c-F> :Files
+" Use GFiles instead of plain Files to avoid getting results for
+" non tracked files as for example anything under `node_modules`
+nnoremap <c-F> :GFiles<CR>
+nnoremap W :W<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
@@ -48,11 +47,6 @@ let g:fzf_action = {
 " Default fzf layout
 " - down / up / left / right
 let g:fzf_layout = { 'down': '~40%' }
-
-" In Neovim, you can set up fzf window using a Vim command
-" let g:fzf_layout = { 'window': 'enew' }
-" let g:fzf_layout = { 'window': '-tabnew' }
-" let g:fzf_layout = { 'window': '10split enew' }
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -70,28 +64,6 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-" Plug 'ctrlpvim/ctrlp.vim'
-" Ctrlp:  {{{
-" If we don't prepend the current path then ctrlp won't work even if we
-" cd to some folder inside node_modules or vendor/ruby
-" let s:node_modules_path_expression  = '/node_modules/\'
-" " exclude vendor/ (ruby and golang with glide)
-" let s:vendored_path_expression = '/vendor/\'
-" " exclude build artifacts
-" let s:dist_path_expression = '/dist/\'
-" " exclude build artifacts (typescript)
-" let s:built_path_expression = '/built/'
-" let s:ignore_expression             = s:vendored_path_expression . '|.git/\|' . s:node_modules_path_expression . '|' . s:dist_path_expression . '|' . s:built_path_expression
-" let g:ctrlp_custom_ignore           = {
-"   \ 'dir' : s:ignore_expression,
-"   \ 'file' : '.beam$'
-"   \}
-" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-" Hack to fix the root directory for ctrlp
-"autocmd VimEnter * :nnoremap <c-p> :CtrlP pwd<CR>
-"}}}
-" Faster fuzzy matcher for ctrl-p
-Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'tpope/vim-surround'
 " Surround:{{{
 " Surround mappings
@@ -103,58 +75,8 @@ Plug 'gabesoft/vim-ags'
 " Percentage of the window to use to display the results
 let g:ags_winheight = '20'
 "}}}
-Plug 'scrooloose/syntastic'
-" Syntastic:{{{
-" YouCompleteMe diagnosis features seem to collide with Syntastic
-" in particular it overrides the values in the loclist
-"
-" So we disable the diagnosis in YCM to properly use the errors from
-" Syntastic
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_always_populate_location_list = 0
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_ignore_files        = ['\.json$']
-let g:syntastic_javascript_checkers = []
-" To see a list of available colors go to:
-"
-" http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
-highlight SyntasticErrorLine ctermfg=white ctermbg=196
-highlight SyntasticWarningLine ctermbg=216
-
-if filereadable('.eslintrc') || filereadable('.eslintrc.json') || filereadable('.eslintrc.yml') || filereadable('.eslintrc.js')
-  let g:syntastic_javascript_checkers = add(g:syntastic_javascript_checkers, 'eslint')
-
-  " vimscript to set the vendored eslint got at:
-  " https://github.com/eslint/eslint/issues/1238#issuecomment-139471958
-  let local_eslint = finddir('node_modules') . '/.bin/eslint'
-  if executable(local_eslint)
-    let g:syntastic_javascript_eslint_exec = local_eslint
-  endif
-endif
-
-if filereadable('.jshintrc')
-  let g:syntastic_javascript_checkers = add(g:syntastic_javascript_checkers, 'jshint')
-endif
-
-if filereadable('.jscsrc')
-  let g:syntastic_javascript_checkers = add(g:syntastic_javascript_checkers, 'jscs')
-endif
-
-"let g:syntastic_javascript_jsxhint_exec  = 'jsx-jshint-wrapper'
-"}}}
 "Plug 'tpope/vim-jdaddy'
-Plug 'SirVer/ultisnips'
-" ultisnips:{{{
-let g:UltiSnipsExpandTrigger       = "<c-l>"
-let g:UltiSnipsJumpForwardTrigger  = "<c-b>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
-"}}}
-" Plug 'honza/vim-snippets'
 Plug 'blueyed/vim-diminactive'
-" Plug 'Valloric/YouCompleteMe'
-"let g:ycm_key_list_select_completion = ['<C-l>', '<Down>']
-let g:ycm_filetype_blacklist = {'typescript' : 1}
 Plug 'tpope/vim-fugitive'
 Plug 'chrisbra/csv.vim'
 Plug 'mhinz/vim-signify'
@@ -164,6 +86,17 @@ let g:signify_update_on_focusgained = 1
 
 nmap <leader>gh :SignifyToggleHighlight<CR>
 "}}}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
+" Trigger autocompletion with <TAB>
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+" " Note: yats is required by nvim-typescript. It's a syntax description for TS
+" " files
+Plug 'HerringtonDarkholme/yats.vim'
+" " Note: this plugin requires the npm package 'neovim' to be installed
+" Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 
 """"""""""""""""""""""""""""""""""""""""
 " THEMES
@@ -172,7 +105,6 @@ Plug 'sjl/badwolf'
 Plug 'madtrick/solarized'
 Plug 'lifepillar/vim-solarized8'
 Plug 'trevordmiller/nova-vim'
-
 
 """""""""""""""""""""""""""""""""""""""
 " LANGUAGES
@@ -188,23 +120,23 @@ Plug 'mxw/vim-jsx'
 " vim-jsx:{{{
 let g:jsx_ext_required = 1
 "}}}
-Plug 'vim-erlang/vim-erlang-tags'
-Plug 'elixir-lang/vim-elixir'
-Plug 'leafgarland/typescript-vim'
 Plug 'w0rp/ale'
+" ale:{{{
 let g:ale_set_loclist = 1
-let g:ale_open_list = 1
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'typescript': ['tsserver', 'tslint'],
+\}
 let g:ale_fixers = {'typescript': ['tslint']}
-" if filereadable('tslint.yaml')
-"   " Some projects have a yaml file for the tslint config
-"   let g:ale_typescript_tslint_config_path = getcwd() . '/tslint.yaml'
-" endif
-let g:ale_completion_enabled = 1
+let g:ale_lint_delay = 800
 let g:ale_pattern_options = {
 \   './node_modules/.*$': {'ale_enabled': 0},
 \}
+let g:ale_completion_enabled = 0
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+nmap ad :ALEGoToDefinitionInTab<cr>
+"}}}
 
-Plug 'kchmck/vim-coffee-script'
 Plug 'kylef/apiblueprint.vim'
 Plug 'fatih/vim-go'
 " vim-go:{{{
@@ -226,32 +158,13 @@ let g:seek_enable_jumps=1
 " Utils
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
-Plug 'adelarsq/vim-matchit'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-unimpaired'
 
 Plug 'tpope/vim-abolish'
 
-Plug 'rizzatti/dash.vim'
 Plug 'justinmk/vim-gtfo'
 Plug 'Shougo/vimproc.vim'
-
-
-""""""""""""""""""""""""""""""""""""""""
-" DISABLED PLUGINS
-""""""""""""""""""""""""""""""""""""""""
-"Plug 'jcf/vim-latex'
-" Vimlatex:{{{
-"Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-"let g:tex_flavor='latex'
-"let g:Tex_ViewRule_pdf='Preview'
-"}}}
-"Plug 'jimenezrick/vimerl'
-" vimerl:{{{
-let g:erlang_force_use_vimerl_indent = 1
-"}}}
-
+Plug 'Valloric/ListToggle'
 
 " vim:ft=vim:fdm=marker

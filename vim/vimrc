@@ -52,33 +52,21 @@ set notimeout
 
 call plug#begin('~/.vim/vim-plug-installs')
 
-"set nocompatible               " be iMproved
-"filetype off                   " required! by vundle
-"set rtp+=~/.vim/bundle/Vundle.vim
-"call vundle#begin()
-"
-"" let Vundle manage Vundle
-"" required!
-"Plugin 'VundleVim/Vundle.vim'
-
-" Load all the other plugins
 source ~/.vim/vim-plugs
 call plug#end()
-"let g:bundles_file ="~/.vim/bundles"
-"call vundle#end()
-
-" Integrate the shell Fuzzy Finder
-"set rtp+=~/.fzf
+" Need to make the call to deoplete#custom#source here
+" since the runtimepaths are only updated after the call
+" to plug#end. If I move the deoplete call together with
+" the plugin configuration I would get the following error
+"
+" Unknown function: deoplete#custom#source
+call deoplete#custom#source('ale', 'rank', 999)
 
 filetype plugin indent on
 syntax enable
 color nova
 "hack to make diminactive looks nice when using molokai
 hi ColorColumn ctermbg=237
-
-" As netwr is not loaded via a bundle
-" I set its config here
-"let g:netrw_keepdir=0 " change the current dir to the directory you are currently browsing
 
 " Load all the other files
 source ~/.vim/vim-mappings

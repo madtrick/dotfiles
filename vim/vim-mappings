@@ -11,11 +11,6 @@ nnoremap <leader>vs :source ~/.vimrc<CR>
 " Open bundles file
 nnoremap <leader>bu :tabedit ~/.vim/bundles<CR>
 
-" Bundle shortcuts
-nnoremap <leader>Bs :BundleSearch<CR>
-nnoremap <leader>Bl :BundleList<CR>
-nnoremap <leader>Bi :BundleInstall<CR>
-
 """""""""""""""""""""""""""""""""""
 " Windows mappings
 """""""""""""""""""""""""""""""""""
@@ -25,12 +20,6 @@ nnoremap H <C-w>h
 nnoremap L <C-w>l
 nnoremap J <C-w>j
 nnoremap K <C-w>k
-
-"nnoremap <tab> <C-w>w | "Fast cycling between windows
-
-" Resize windows horizontally
-"nnoremap <silent>++ :5wincmd <<cr>
-"nnoremap <silent>-- :5wincmd ><cr>
 
 nnoremap <leader>h :split<CR>
 nnoremap <leader>j :vsplit<CR>
@@ -52,7 +41,7 @@ nnoremap ' `
 nnoremap ` '
 
 " Jump to next element in the location list
-" (list populated by Syntastic)
+" (list populated by linters and syntax checkers)
 nnoremap <leader>e :ll<CR>
 
 """""""""""""""""""""""""""""""""""
@@ -77,25 +66,8 @@ nnoremap <leader>sT :silent execute 'Ack "TODO" '. getcwd() .'/src'<cr>
 " Help mappings
 nnoremap <leader>H :vert help<space>
 
-nnoremap <space>  @q "Execute the macro in register q
-nnoremap <space><space> @@ "Execute again last executed macro
-
 nnoremap <BS> :nohlsearch<CR>
 inoremap <C-e> <ESC>A| "Go to EOL in insert mode
 
-" Close the QuickFix window
-nnoremap <leader>qc :cclose<CR>
-
-" Fuzzy Find a directory
-nnoremap Z :call fzf#run({'source': 'find * -type d', 'sink': 'Explore'})<CR>
-
-" Use ctrlp to find tags within the current buffer
-nnoremap <leader>f :CtrlPBufTag<CR>
-
-" Limit ctrlp to current wd
-autocmd VimEnter * :nnoremap <c-p> :CtrlP pwd<CR>
-
-" Prefill the command :Ags <current word under cursor>
-nnoremap ss :Ags <cword>
 
 " vim:ft=vim
