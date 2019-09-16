@@ -68,14 +68,13 @@ function resolve_conflict_in_editor(){
 }
 
 function set_one_password_session () {
-  # OP_SESSION_fankyfunky is set after doing "op signin fankyfunky.1password.com"
   if [[ -z "${ONE_PASSWORD_ACCOUNT}" ]]; then
     echo "Please set the ONE_PASSWORD_ACCOUNT env variable to log in 1Password"
     return
   fi
 
   SESSION_FILE="$HOME/.op/session"
-  SESSION_VARIABLE=OP_SESSION_${OP_ACCOUNT}
+  SESSION_VARIABLE=OP_SESSION_${ONE_PASSWORD_ACCOUNT}
 
   if [[ -f "${SESSION_FILE}" ]]; then
     source $SESSION_FILE
@@ -84,7 +83,7 @@ function set_one_password_session () {
 
   if [ -z "${SESSION_VARIABLE}" ] || ! op get account --session="${SESSION_VARIABLE}" >/dev/null 2>&1 ; then
     echo "You appear to be signed out of 1Password, signing in..."
-    ONEPASS_SESSION=$( op signin fankyfunky.1password.com --output=raw )
+    ONEPASS_SESSION=$( op signin $ONE_PASSWORD_ACCOUNT.1password.com --output=raw )
 
     if [ -z "${ONEPASS_SESSION}" ]; then
       echo "Unable to sign in to 1password!"
