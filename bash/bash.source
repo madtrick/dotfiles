@@ -1,0 +1,13 @@
+# Source 3rd party scripts
+
+# Required by the google-cloud-sdk
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# added by travis gem
+[ -f /Users/farruco/.travis/travis.sh ] && source /Users/farruco/.travis/travis.sh
+
+# erlang version manager
+[ -f /Users/farruco/.evm/scripts/evm ] && source /Users/farruco/.evm/scripts/evm
