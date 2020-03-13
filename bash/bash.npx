@@ -1,0 +1,2 @@
+# Code got at https://www.npmjs.com/package/npx#shell-auto-fallback
+source <(npx --shell-auto-fallback bash)
