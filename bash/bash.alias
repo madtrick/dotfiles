@@ -45,8 +45,6 @@ alias pyhttp=python_http_server
 alias f=search_for
 
 alias delete_merged_branches="git branch --merged | egrep -v \"(^\*|master|dev)\" | xargs git branch -d"
-
-
-alias rm=trash
+alias vim=nvim
 
 # vim:ft=sh
