@@ -9,3 +9,5 @@ vendor/ruby/
 
 # Direnv conf files
 .envrc
+
+bash/bash.contentful

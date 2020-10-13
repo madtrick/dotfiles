@@ -24,6 +24,7 @@ source $DOTFILES_DIR/bash/bash.tmux
 source $DOTFILES_DIR/bash/bash.gpg
 source $DOTFILES_DIR/bash/bash.options
 source $DOTFILES_DIR/bash/bash.source
+source $DOTFILES_DIR/bash/bash.contentful
 
 
 # Hook direnv https://direnv.net/

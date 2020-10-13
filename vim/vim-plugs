@@ -127,6 +127,9 @@ let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'typescript': ['tsserver', 'tslint'],
 \}
+if filereadable(getcwd()."/tslint.js")
+  let g:ale_typescript_tslint_config_path = getcwd().'/tslint.js'
+endif
 let g:ale_fixers = {'typescript': ['tslint']}
 let g:ale_lint_delay = 800
 let g:ale_pattern_options = {
