@@ -11,3 +11,4 @@ vendor/ruby/
 .envrc
 
 bash/bash.contentful
+vim/.netrwhist
